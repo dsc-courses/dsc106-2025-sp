@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 105">
+
+  <!-- Define a Linear Gradient -->
+  <defs>
+    <radialGradient id="fadeGradient" cx="50%" cy="50%" r="60%" fx="50%" fy="50%">
+      <stop offset="90%" stop-color="white" />
+      <stop offset="100%" stop-color="transparent" />
+    </radialGradient>
+  </defs>
+  <!-- Highlight Rectangle with Gradient -->
+  <rect x="0" y="0" width="700" height="105" fill="url(#fadeGradient)" />
+
+  <!-- <rect x="0" y="0" width="700" height="105" fill="blue" /> -->
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="black" font-size="100" font-family="Georgia" font-weight="bold">
+    Javascript II
+  </text>
+</svg>
