@@ -21,9 +21,9 @@ nav_order: 2
 
 ---
 
-[piazza]: https://edstem.org/us/join/HzA7pj
+[piazza]: https://piazza.com/ucsd/spring2025/dsc106_sp25
 [github]: https://github.com/dsc-courses/dsc106-2025-wi
-[gradescope]: https://www.gradescope.com/courses/935202
+[gradescope]: https://www.gradescope.com/courses/1014179
 
 ## About 🧐
 
