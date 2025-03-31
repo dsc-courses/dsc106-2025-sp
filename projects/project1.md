@@ -2,7 +2,7 @@
 layout: assignment
 title: 'Project 1: Expository Visualization'
 parent: '📝 Projects'
-released: true
+released: false
 nav_order: 1
 ---
 
@@ -127,9 +127,10 @@ You must submit your assignment using Gradescope. Please upload a single PDF wit
 <ul>
     <li>3 plots that you are considering for your project</li>
     <li>1 paragraph describing which plot you prefer the most and why</li>
-</ul>   
-   
+</ul>
+
 ### Final Submission
+
 You must submit your assignment using Gradescope. Please upload a PDF with a
 single image of your visualization design and your write-up, in two **separate** pages.
 

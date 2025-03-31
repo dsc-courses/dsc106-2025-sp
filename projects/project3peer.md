@@ -2,7 +2,7 @@
 layout: assignment
 title: 'Project 3: Interactive Visualization - Peer Grading'
 parent: '📝 Projects'
-released: true
+released: false
 nav_order: 5
 ---
 

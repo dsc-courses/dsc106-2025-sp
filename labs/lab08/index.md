@@ -3,7 +3,7 @@ layout: assignment
 title: 'Lab 8: Animation & Scrollytelling'
 lab: 8
 parent: '👩‍🔬 Programming Labs'
-released: true
+released: false
 ---
 
 # Lab {{ page.lab }}: Animation
@@ -148,7 +148,10 @@ let commitProgress = 100;
 To map this percentage to a date, we will need a new [time scale](https://d3js.org/d3-scale/time). Once we have our scale, we can easily get from the 0-100 number to a date:
 
 ```js
-let timeScale = d3.scaleTime([d3.min(commits, d => d.datetime), d3.max(commits, d => d.datetime)], [0, 100]);
+let timeScale = d3.scaleTime(
+  [d3.min(commits, (d) => d.datetime), d3.max(commits, (d) => d.datetime)],
+  [0, 100],
+);
 let commitMaxTime = timeScale.invert(commitProgress);
 ```
 
@@ -169,6 +172,7 @@ If everything went well, your slider should now be working!
 ![](videos/slider.gif)
 
 {: .note }
+
 > To make the time string present, you should have the following lines:
 >
 > ```js
@@ -225,7 +229,7 @@ function updateScatterplot(filteredCommits) {
 
   // same as before
 
-  dots.selectAll('circle').remove(); 
+  dots.selectAll('circle').remove();
   dots.selectAll('circle').data(filteredCommits).join('circle')...
 
   // same as before
@@ -317,9 +321,7 @@ Now that we have our files, let's output them (filenames and number of lines). W
     </dt>
     <dd>{file.lines.length} lines</dd>
   </div>
-  <div>
-    ...
-  </div>
+  <div>...</div>
 </dl>
 ```
 
@@ -788,12 +790,12 @@ First, let's restructure how we want to display the scatterplot along with our s
 
 ```html
 <div id="scrollytelling">
-    <div id="scroll-container">
-        <div id="spacer"></div>
-        <div id="items-container"></div>
-    </div>
-    <!-- our old scatterplot div -->
-    <div id="chart"></div>
+  <div id="scroll-container">
+    <div id="spacer"></div>
+    <div id="items-container"></div>
+  </div>
+  <!-- our old scatterplot div -->
+  <div id="chart"></div>
 </div>
 ```
 
@@ -859,7 +861,10 @@ const itemsContainer = d3.select('#items-container');
 scrollContainer.on('scroll', () => {
   const scrollTop = scrollContainer.property('scrollTop');
   let startIndex = Math.floor(scrollTop / ITEM_HEIGHT);
-  startIndex = Math.max(0, Math.min(startIndex, commits.length - VISIBLE_COUNT));
+  startIndex = Math.max(
+    0,
+    Math.min(startIndex, commits.length - VISIBLE_COUNT),
+  );
   renderItems(startIndex);
 });
 ```
@@ -899,8 +904,9 @@ so that writing the narrative is not a blocker:
   On {commit.datetime.toLocaleString("en", {dateStyle: "full", timeStyle:
   "short"})}, I made
   <a href="{commit.url}" target="_blank">
-    { index > 0 ? 'another glorious commit' : 'my first commit, and it was glorious' }
-  </a>. I edited {commit.totalLines} lines across { d3.rollups(commit.lines, D =>
+    { index > 0 ? 'another glorious commit' : 'my first commit, and it was
+    glorious' } </a
+  >. I edited {commit.totalLines} lines across { d3.rollups(commit.lines, D =>
   D.length, d => d.file).length } files. Then I looked over all I had made, and
   I saw that it was very good.
 </p>
@@ -930,20 +936,32 @@ Now that everything works, you should remove the slider as it is irrelevant/redu
 function displayCommitFiles() {
   const lines = filteredCommits.flatMap((d) => d.lines);
   let fileTypeColors = d3.scaleOrdinal(d3.schemeTableau10);
-  let files = d3.groups(lines, (d) => d.file).map(([name, lines]) => {
-    return { name, lines };
-  });
+  let files = d3
+    .groups(lines, (d) => d.file)
+    .map(([name, lines]) => {
+      return { name, lines };
+    });
   files = d3.sort(files, (d) => -d.lines.length);
   d3.select('.files').selectAll('div').remove();
-  let filesContainer = d3.select('.files').selectAll('div').data(files).enter().append('div');
-  filesContainer.append('dt').html(d => `<code>${d.name}</code><small>${d.lines.length} lines</small>`);
-  filesContainer.append('dd')
-                .selectAll('div')
-                .data(d => d.lines)
-                .enter()
-                .append('div')
-                .attr('class', 'line')
-                .style('background', d => fileTypeColors(d.type));
+  let filesContainer = d3
+    .select('.files')
+    .selectAll('div')
+    .data(files)
+    .enter()
+    .append('div');
+  filesContainer
+    .append('dt')
+    .html(
+      (d) => `<code>${d.name}</code><small>${d.lines.length} lines</small>`,
+    );
+  filesContainer
+    .append('dd')
+    .selectAll('div')
+    .data((d) => d.lines)
+    .enter()
+    .append('div')
+    .attr('class', 'line')
+    .style('background', (d) => fileTypeColors(d.type));
 }
 ```
 

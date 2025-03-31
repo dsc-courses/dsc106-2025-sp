@@ -21,7 +21,7 @@ nav_order: 2
 
 ---
 
-[ed]: https://edstem.org/us/join/HzA7pj
+[piazza]: https://edstem.org/us/join/HzA7pj
 [github]: https://github.com/dsc-courses/dsc106-2025-wi
 [gradescope]: https://www.gradescope.com/courses/935202
 
@@ -38,7 +38,7 @@ in data visualization. By the end of the course, you will:
 - Implement interactive data visualizations for the web using D3.js.
 - Develop a substantial visualization project.
 
-**New**{: .label .label-green } In this quarter's (and Spring 2025's) offering
+**New**{: .label .label-green } In this quarter's offering
 of DSC 106, the course will be themed around health data with help from
 professor [Benjamin Smarr][ben] from HDSI.
 
@@ -57,10 +57,10 @@ course content. There are also a few things you'll need to do to get set up.
 
 You'll need to make accounts or join the class on the following sites.
 
-- **Ed:** We’ll be using Ed as our course message and discussion board. More
+- **Piazza:** We’ll be using Piazza as our course message and discussion board. More
   details are in the [Communication](#communication-) section below. If you
   didn’t already get an invitation to our Ed course, [sign up
-  here][ed].
+  here][piazza].
 
 - **Gradescope:** You’ll submit all assignments to [Gradescope][gradescope]. This is where
   all of your grades will live as well. You should have received an email
@@ -106,17 +106,19 @@ post instead.**
 
 ### Lectures
 
-Lectures will be held in-person on Wednesdays and Fridays from 11:00-11:50AM and
-12:00-12:50PM in Center Hall 109. **Lecture attendance is not strictly required,
+Lectures will be held in-person on Wednesdays and Fridays from 1:00-1:50PM and
+2:00-2:50PM in Podemos Hall 1A20. **Lecture attendance is not strictly required,
 but is one option for earning your participation grade (detailed below)**.
 Lectures will be podcasted, and lecture slides will be posted before class.
 
 ### Discussions
 
-We will be holding discussions as scheduled from 3:00-3:50pm and 4:00-4:50pm in
-CENTR 216. **Discussion attendance is not strictly required,
-but is one option for earning your participation grade (detailed below)**.
-Discussions will be podcasted, and slides will be posted on the course website.
+**New**{: .label .label-green } We will be holding discussions during the
+scheduled Monday lecture 1:00-1:50PM and 2:00-2:50PM in Podemos Hall 1A20. We
+will **not** hold discussions during the scheduled discussion time on Fridays.
+**Discussion attendance is not strictly required, but is one option for earning
+your participation grade (detailed below)**. Discussions will be podcasted, and
+slides will be posted on the course website.
 
 ### Participation
 
@@ -166,9 +168,9 @@ end of each lab assignment.
 
 [worked examples]: https://tll.mit.edu/teaching-resources/how-people-learn/worked-examples/
 
-Each lab is worth 1% of your final grade, and the lowest lab grade will be
-dropped. Labs will be released on Fridays and due on the following **Fridays**
-at 11:59PM.
+Each lab is worth 1% of your final grade, and the lowest lab grade
+will be dropped. Labs will be released on Fridays and due on the following
+**Fridays** at 11:59PM.
 
 You will access labs by pulling the course GitHub repository.
 
@@ -213,7 +215,7 @@ At the end of the quarter, we will have a Final Project Showcase where you will
 present your Final Project work to course staff, faculty in HDSI, and our
 industry partners. This showcase will take place during our regularly scheduled
 Final Exam slot in the HDSI MPR. We will announce logistical details of this
-showcase on Ed. **All DSC 106 students will be required to attend the Final
+showcase via email. **All DSC 106 students will be required to attend the Final
 Project Showcase.**
 
 ### Office Hours
@@ -231,7 +233,7 @@ schedule (which is subject to change in any given week):
 
 | Monday     | Tuesday                                           | Wednesday | Thursday | Friday                                        |
 | ---------- | ------------------------------------------------- | --------- | -------- | --------------------------------------------- |
-| NO LECTURE |                                                   | Lecture   |          | Lecture                                       |
+| Discussion |                                                   | Lecture   |          | Lecture                                       |
 |            | <span style='color:red'><b>Project due</b></span> |           |          | <span style='color:red'><b>Lab due</b></span> |
 
 ---
@@ -242,15 +244,15 @@ schedule (which is subject to change in any given week):
 
 Here is how we'll compute your grade:
 
-| Component           | Weight | Notes                                                                        |
-| ------------------- | ------ | ---------------------------------------------------------------------------- |
-| Participation       | 8%     | 1% per week, 2 lowest weeks dropped                                          |
-| Labs                | 8%     | 1% per lab, 1 lowest lab dropped                                             |
-| Project 1           | 10%    |                                                                              |
-| Project 2           | 15%    | 10% for submission, 5% for peer review                                       |
-| Project 3           | 15%    | 10% for submission, 5% for peer review                                       |
-| Project Checkpoints | 4%     | 1% for Project 1 and 2 checkpoints, 2% for Project 3 checkpoint              |
-| Final Project       | 40%    | 2% for proposal, 3% prototype, 10% video, 15% final submission, 10% showcase |
+| Component           | Weight | Notes                                                                       |
+| ------------------- | ------ | --------------------------------------------------------------------------- |
+| Participation       | 8%     | 1% per week, 2 lowest weeks dropped                                         |
+| Labs                | 8%     | 1% per lab, 1 lowest lab dropped                                            |
+| Project 1           | 10%    |                                                                             |
+| Project 2           | 15%    | 14% for submission, 1% for peer review                                      |
+| Project 3           | 15%    | 14% for submission, 1% for peer review                                      |
+| Project Checkpoints | 4%     | 1% for Project 1 and 2 checkpoints, 2% for Project 3 checkpoint             |
+| Final Project       | 40%    | 1% for proposal, 2% prototype, 10% video, 20% final submission, 7% showcase |
 
 ### Late Policy, Slip Days, and Drops
 
@@ -267,8 +269,7 @@ on an assignment depends on the kind of assignment:
 - On labs, you may use up to 1 slip day.
 - On projects, you may use up to 2 slip days. Projects will not be
   accepted more than 48 hours after the deadline. Note that you will not be
-  able to use slip days on the Final Project Deliverables due on Monday,
-  March 17, 2025.
+  able to use slip days on the Final Project Deliverables.
 
 Slip days are designed to be a transparent and predictable source of leniency
 in deadlines. You can use a slip day if you are too busy to complete an
@@ -331,8 +332,8 @@ mapping from project and exam scores to a final GPA. There is no pre-determined
 score (e.g., 90% of all possible points) that earns an A or a B or a C or any
 other grade. To determine the final grade, we will ask questions like “Did this
 student master the material?”. With that said, grades will not be any stricter
-than the standard grading scale (where an A+ is a 97+, A is 93+, A- is 90+,
-etc). For instance, the threshold for an “A” will never be higher than 93%.
+than the standard grading scale (where an A is 93+, A- is 90+, etc). For
+instance, the threshold for an “A” will never be higher than 93%.
 
 Try your best not to worry about grades, and we’ll reciprocate by being fair.
 We’re in this together 😎.

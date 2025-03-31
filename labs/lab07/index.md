@@ -3,7 +3,7 @@ layout: assignment
 title: 'Lab 7: Geospatial Visualizations'
 lab: 7
 parent: '👩‍🔬 Programming Labs'
-released: true
+released: false
 ---
 
 # Lab {{ page.lab }}: Geospatial visualizations
@@ -30,7 +30,7 @@ released: true
 
 ---
 
-## Submission 
+## Submission
 
 To get checked off for the lab, please record a 2 minute video in mp4 format with the following components:
 
@@ -106,14 +106,14 @@ Example:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bikewatching</title>
-</head>
-<body>
-  <h1>🚴🏼‍♀️ Bikewatching</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bikewatching</title>
+  </head>
+  <body>
+    <h1>🚴🏼‍♀️ Bikewatching</h1>
+  </body>
 </html>
 ```
 
@@ -147,8 +147,9 @@ body {
 Make sure the CSS file is linked in your `index.html` file (as shown in **Step 0.4**) via:
 
 ```html
-<link rel="stylesheet" href="global.css">
+<link rel="stylesheet" href="global.css" />
 ```
+
 ### Step 0.5: Add a Bike Favicon
 
 To make your project tabs stand out in the browser, you can customize the _[favicon](https://en.wikipedia.org/wiki/Favicon)_.
@@ -170,7 +171,7 @@ To make your project tabs stand out in the browser, you can customize the _[favi
    Open your `index.html` file and add (or update) the following line inside the `<head>` section to point to your new favicon:
 
    ```html
-   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
    ```
 
 At this point, you should be seeing something like this:
@@ -197,11 +198,14 @@ We'll use **CDN links** to include Mapbox GL JS directly in our HTML.
 
    ```html
    <!-- Mapbox GL JS CSS -->
-   <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+   <link
+     href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css"
+     rel="stylesheet"
+   />
    ```
 
 2. We then **import Mapbox GL JS as an ES module directly in a new `map.js` file**:
- 
+
 Firstly, create a file called `map.js` in your repo. Add the following import statement:
 
 ```javascript
@@ -209,9 +213,9 @@ Firstly, create a file called `map.js` in your repo. Add the following import st
 import mapboxgl from 'https://cdn.jsdelivr.net/npm/mapbox-gl@2.15.0/+esm';
 ```
 
-2. **Link `map.js` in `index.html`**  
+2. **Link `map.js` in `index.html`**
 
-Add this inside the `<head>` of your`index.html`:  
+Add this inside the `<head>` of your`index.html`:
 
 ```html
 <script src="map.js" type="module"></script>
@@ -219,21 +223,21 @@ Add this inside the `<head>` of your`index.html`:
 
 This ensures your JavaScript file loads correctly as an **ES module**.
 
-3. **Verify Mapbox GL JS in Console**  
+3. **Verify Mapbox GL JS in Console**
 
-In your `map.js` file, add this line:  
+In your `map.js` file, add this line:
 
 ```javascript
 // Check that Mapbox GL JS is loaded
-console.log("Mapbox GL JS Loaded:", mapboxgl);
+console.log('Mapbox GL JS Loaded:', mapboxgl);
 ```
 
 Then, check your console:
 
-- Open your browser’s **Developer Tools (`F12` or `Ctrl+Shift+I`)**  
-- Go to the **Console** tab  
-- If Mapbox is properly loaded, you should see an object logged.  
-- If you see an error, double-check your **script import** in `index.html`. 
+- Open your browser’s **Developer Tools (`F12` or `Ctrl+Shift+I`)**
+- Go to the **Console** tab
+- If Mapbox is properly loaded, you should see an object logged.
+- If you see an error, double-check your **script import** in `index.html`.
 
 ### Step 1.2: Add an Element to Hold the Map
 
@@ -248,22 +252,23 @@ Then, check your console:
    Create a `map.css` file and link it to your html file with the following content (you can add more style to it if you like ):
 
    ```css
-    html, body {
-      margin: 0;
-      padding: 5;
-      height: 100%;
-      width: 100%;
-      display: flex;
-      justify-content: center; /* Center horizontally */
-      align-items: center;     /* Center vertically */
-    }
-    
-    #map {
-      width: 100%;    /* Adjust width to your desired size */
-      height: 100%;   /* Adjust height to your desired size */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for effect */
-      border-radius: 8px; /* Optional: rounded corners */
-    }
+   html,
+   body {
+     margin: 0;
+     padding: 5;
+     height: 100%;
+     width: 100%;
+     display: flex;
+     justify-content: center; /* Center horizontally */
+     align-items: center; /* Center vertically */
+   }
+
+   #map {
+     width: 100%; /* Adjust width to your desired size */
+     height: 100%; /* Adjust height to your desired size */
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for effect */
+     border-radius: 8px; /* Optional: rounded corners */
+   }
    ```
 
 <!-- ### Step 1.1: Install Mapbox.js
@@ -336,29 +341,31 @@ To create the map, we create a new `mapboxgl.Map` object with [settings](https:/
 
 Here is some sample code on how to instantiate a `mapboxgl.Map` object:
 
-   ```js
-   // Set your Mapbox access token here
-   mapboxgl.accessToken = 'YOUR_ACCESS_TOKEN_HERE';
+```js
+// Set your Mapbox access token here
+mapboxgl.accessToken = 'YOUR_ACCESS_TOKEN_HERE';
 
-   // Initialize the map
-   const map = new mapboxgl.Map({
-     container: 'map', // ID of the div where the map will render
-     style: 'mapbox://styles/mapbox/streets-v12', // Map style
-     center: [-71.09415, 42.36027], // [longitude, latitude]
-     zoom: 12, // Initial zoom level
-     minZoom: 5, // Minimum allowed zoom
-     maxZoom: 18 // Maximum allowed zoom
-   });
-   ```
+// Initialize the map
+const map = new mapboxgl.Map({
+  container: 'map', // ID of the div where the map will render
+  style: 'mapbox://styles/mapbox/streets-v12', // Map style
+  center: [-71.09415, 42.36027], // [longitude, latitude]
+  zoom: 12, // Initial zoom level
+  minZoom: 5, // Minimum allowed zoom
+  maxZoom: 18, // Maximum allowed zoom
+});
+```
+
 **Find Your Access Token**
 
-  1. Go to your [Mapbox Account Dashboard](https://account.mapbox.com/).
-  2. Copy your **default public access token** (it starts with `pk.`).
-  3. Replace `'YOUR_ACCESS_TOKEN_HERE'` in `map.js` with your actual token:
+1. Go to your [Mapbox Account Dashboard](https://account.mapbox.com/).
+2. Copy your **default public access token** (it starts with `pk.`).
+3. Replace `'YOUR_ACCESS_TOKEN_HERE'` in `map.js` with your actual token:
 
 ```js
 mapboxgl.accessToken = 'pk.your_actual_mapbox_access_token_here';
 ```
+
 In terms of what values to apply to options:
 
 - For the container, we want to specify an id so we don't have to worry about element references.
@@ -376,7 +383,7 @@ Another way is via the URL, it's the part after the `@`:
 
 Note that you will need to specify them in the reverse order, as [Mapbox expects longitude first](https://docs.mapbox.com/api/overview/#coordinate-format).
 
-If everything went well, you should have a map of Boston already! 
+If everything went well, you should have a map of Boston already!
 
 <img src="images/step-1.png" class="browser" alt="">
 
@@ -437,16 +444,16 @@ Mapbox provides an `addSource` function to connect the map with an external data
 However, to use any of that, we first need to wait for the `"load"` event to fire on `map` to make sure the map is fully loaded before fetching and displaying the data:
 
 ```js
-map.on('load', async () => { 
-  //code 
+map.on('load', async () => {
+  //code
 });
 ```
 
-2. **Adding the Data Source with `addSource`:**  
+2. **Adding the Data Source with `addSource`:**
    ```javascript
    map.addSource('boston_route', {
      type: 'geojson',
-     data: 'https://bostonopendata-boston.opendata.arcgis.com/datasets/boston::existing-bike-network-2022.geojson'
+     data: 'https://bostonopendata-boston.opendata.arcgis.com/datasets/boston::existing-bike-network-2022.geojson',
    });
    ```
    - **`boston_route`** is a unique ID for this data source.
@@ -460,7 +467,7 @@ You can name it anything you want, but it should be unique to this source.
 This won’t produce much of a visible result.
 To actually _see_ something, we need to actually _use_ the data to draw something.
 
-3. **Visualizing Data with `addLayer`:**  
+3. **Visualizing Data with `addLayer`:**
    ```javascript
    map.addLayer({
      id: 'bike-lanes',
@@ -469,8 +476,8 @@ To actually _see_ something, we need to actually _use_ the data to draw somethin
      paint: {
        'line-color': 'green',
        'line-width': 3,
-       'line-opacity': 0.4
-     }
+       'line-opacity': 0.4,
+     },
    });
    ```
    - **`id: 'bike-lanes'`** is a unique identifier for the layer.
@@ -494,11 +501,11 @@ To actually _see_ something, we need to actually _use_ the data to draw somethin
    }
    ```
 
-  {: .caveat }
-  Mapbox does not yet understand newer color formats like `oklch()`.
-  You can see the [docs](https://docs.mapbox.com/style-spec/reference/types/#color) on what it accepts, but at the time of writing it's basically named colors (e.g. `green`), hex codes (e.g. `#32D400`), `hsl()` and `rgb()`.
-  You can convert any valid CSS color to the closest `rgb()` or `hsl()` equivalent using [this tool](https://colorjs.io/apps/convert).
-  If it shows two versions, you want the one marked "gamut mapped".
+{: .caveat }
+Mapbox does not yet understand newer color formats like `oklch()`.
+You can see the [docs](https://docs.mapbox.com/style-spec/reference/types/#color) on what it accepts, but at the time of writing it's basically named colors (e.g. `green`), hex codes (e.g. `#32D400`), `hsl()` and `rgb()`.
+You can convert any valid CSS color to the closest `rgb()` or `hsl()` equivalent using [this tool](https://colorjs.io/apps/convert).
+If it shows two versions, you want the one marked "gamut mapped".
 
 2. **Try Different Layer Types:**
 
@@ -606,7 +613,7 @@ As you probably know, [Bluebikes](https://bluebikes.com/) is a bicycle sharing p
 They make many [datasets](https://bluebikes.com/system-data) publicly available, including real-time and historical data.
 The first Bluebikes dataset we will use in this lab is station information, which is a JSON file with names, IDs and coordinates (among other info) for each station.
 
-We have made a copy of this data in <a href="data/bluebikes-stations.json" download markdown="1">`https://dsc106.com/labs/lab07/data/bluebikes-stations.json`</a>. 
+We have made a copy of this data in <a href="data/bluebikes-stations.json" download markdown="1">`https://dsc106.com/labs/lab07/data/bluebikes-stations.json`</a>.
 This is a JSON file with the following properties:
 
 - `Number`: a code like "L32001"
@@ -622,11 +629,11 @@ We will be using the latitude and longitude data to add markers to our map for e
 While we _could_ use Mapbox’s `addSource()` and [`addLayer()`](https://docs.mapbox.com/mapbox-gl-js/api/map/#map#addlayer) functions to plot the stations as another layer on the map canvas (like we just did with bike lanes), we will try a different approach here so we can learn how to combine the two visualization methods we have already learned: Mapbox and D3.
 We will be adding an SVG layer on top of our map to hold the station markers, and use D3 to fetch and parse the data, and to draw the markers.
 
-**Import D3 as an ES Module**  
+**Import D3 as an ES Module**
 
-Before using D3 functions, we need to import it as an **ES module** in `map.js`.  
+Before using D3 functions, we need to import it as an **ES module** in `map.js`.
 
-Add this **at the top** of `map.js`:  
+Add this **at the top** of `map.js`:
 
 ```javascript
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
@@ -640,16 +647,16 @@ We need to ensure the map is fully loaded before fetching and displaying the sta
 map.on('load', async () => {
   //previous code
   let jsonData;
-    try {
-        const jsonurl = INPUT_BLUEBIKES_CSV_URL;
-        
-        // Await JSON fetch
-        const jsonData = await d3.json(jsonurl);
-        
-        console.log('Loaded JSON Data:', jsonData); // Log to verify structure
-    } catch (error) {
-        console.error('Error loading JSON:', error); // Handle errors
-    }
+  try {
+    const jsonurl = INPUT_BLUEBIKES_CSV_URL;
+
+    // Await JSON fetch
+    const jsonData = await d3.json(jsonurl);
+
+    console.log('Loaded JSON Data:', jsonData); // Log to verify structure
+  } catch (error) {
+    console.error('Error loading JSON:', error); // Handle errors
+  }
 });
 ```
 
@@ -657,7 +664,7 @@ map.on('load', async () => {
 2. await d3.json(jsonurl) loads the JSON file asynchronously using D3.js, ensuring the script doesn't proceed until the data is fully loaded.
 3. The jsonData variable holds the successfully loaded data, which is then logged to the console for verification.
 4. The catch (error) {...} block properly handles errors (e.g., file not found, CORS issues, or incorrect JSON formatting) and logs them for debugging.
-Once the JSON file is loaded, we access the **nested stations array**. Based on your JSON structure, the station data is stored under `data.stations`.
+   Once the JSON file is loaded, we access the **nested stations array**. Based on your JSON structure, the station data is stored under `data.stations`.
 
 ```javascript
 let stations = jsonData.data.stations;
@@ -668,11 +675,11 @@ console.log('Stations Array:', stations);
 2. `console.log('Stations Array:', stations);` helps you verify that the data is correctly accessed.
 
 Check the Browser Console:
-  - Open Developer Tools in your browser (F12 or right-click → Inspect → Console).
-  - You should see:
-    - Loaded JSON Data: Displays the entire JSON structure.
-    - Stations Array: Displays the array of station objects.
 
+- Open Developer Tools in your browser (F12 or right-click → Inspect → Console).
+- You should see:
+  - Loaded JSON Data: Displays the entire JSON structure.
+  - Stations Array: Displays the array of station objects.
 
 ### Step 3.2: Overlaying SVG on the map
 
@@ -724,7 +731,6 @@ Why not just use D3 scales for this?
 `map.project()` takes into account many things: panning, zooming, even rotation.
 It’s certainly _possible_ to calculate this manually, but it’s nontrivial.
 
-
 1. Select the SVG element inside the map container
 
 Before fetching data, we'll select the svg element inside the map container.
@@ -739,9 +745,9 @@ We’ll create a helper function, `getCoords()`, that takes in a station object 
 
 ```javascript
 function getCoords(station) {
-  const point = new mapboxgl.LngLat(+station.lon, +station.lat);  // Convert lon/lat to Mapbox LngLat
-  const { x, y } = map.project(point);  // Project to pixel coordinates
-  return { cx: x, cy: y };  // Return as object for use in SVG attributes
+  const point = new mapboxgl.LngLat(+station.lon, +station.lat); // Convert lon/lat to Mapbox LngLat
+  const { x, y } = map.project(point); // Project to pixel coordinates
+  return { cx: x, cy: y }; // Return as object for use in SVG attributes
 }
 ```
 
@@ -753,62 +759,61 @@ Back inside `map.on('load',...`, once the map has fully loaded, we'll append SVG
 
 ```javascript
 // Append circles to the SVG for each station
-const circles = svg.selectAll('circle')
+const circles = svg
+  .selectAll('circle')
   .data(stations)
   .enter()
   .append('circle')
-  .attr('r', 5)               // Radius of the circle
-  .attr('fill', 'steelblue')  // Circle fill color
-  .attr('stroke', 'white')    // Circle border color
-  .attr('stroke-width', 1)    // Circle border thickness
-  .attr('opacity', 0.8);      // Circle opacity
+  .attr('r', 5) // Radius of the circle
+  .attr('fill', 'steelblue') // Circle fill color
+  .attr('stroke', 'white') // Circle border color
+  .attr('stroke-width', 1) // Circle border thickness
+  .attr('opacity', 0.8); // Circle opacity
 ```
 
 - The `enter()` selection binds the data and appends a `<circle>` for each station.
 - You can adjust the radius (`r`), fill color, and opacity as needed.
 
-At this point, you **won’t see any circles** on the map yet! That’s because we haven’t set their **x (`cx`) and y (`cy`) positions**.  
+At this point, you **won’t see any circles** on the map yet! That’s because we haven’t set their **x (`cx`) and y (`cy`) positions**.
 
-Right now, the circles exist in the SVG but don’t have coordinates to place them correctly on the map.  
+Right now, the circles exist in the SVG but don’t have coordinates to place them correctly on the map.
 
 4. Update Circle Positions When the Map Moves
 
 We need to ensure the station markers stay aligned when the map pans, zooms, or resizes. We'll define an `updatePositions()` function to reposition the circles whenever the map changes. Place this code right beneath `const circles = ...`.
 
 ```javascript
-    // Function to update circle positions when the map moves/zooms
-    function updatePositions() {
-      circles
-        .attr('cx', d => getCoords(d).cx)  // Set the x-position using projected coordinates
-        .attr('cy', d => getCoords(d).cy); // Set the y-position using projected coordinates
-    }
+// Function to update circle positions when the map moves/zooms
+function updatePositions() {
+  circles
+    .attr('cx', (d) => getCoords(d).cx) // Set the x-position using projected coordinates
+    .attr('cy', (d) => getCoords(d).cy); // Set the y-position using projected coordinates
+}
 
-    // Initial position update when map loads
-    updatePositions();
+// Initial position update when map loads
+updatePositions();
 ```
 
 - `cx` and `cy` attributes determine the position of the circles on the SVG.
 - The `getCoords()` function ensures positions are recalculated based on the map's current viewport.
-
 
 5. Add Event Listeners to Adjust Markers Dynamically
 
 We'll listen to Mapbox events like `move`, `zoom`, and `moveend` to call the `updatePositions()` function whenever the map changes.
 
 ```javascript
-  //updatePositions(); <- previous code
+//updatePositions(); <- previous code
 
-  // Reposition markers on map interactions
-  map.on('move', updatePositions);     // Update during map movement
-  map.on('zoom', updatePositions);     // Update during zooming
-  map.on('resize', updatePositions);   // Update on window resize
-  map.on('moveend', updatePositions);  // Final adjustment after movement ends
+// Reposition markers on map interactions
+map.on('move', updatePositions); // Update during map movement
+map.on('zoom', updatePositions); // Update during zooming
+map.on('resize', updatePositions); // Update on window resize
+map.on('moveend', updatePositions); // Final adjustment after movement ends
 ```
 
 If everything went well, you should see something like this:
 
 ![](images/stations-static.png)
-
 
 ## Step 4: Visualizing bike traffic
 
@@ -849,6 +854,7 @@ const departures = d3.rollup(
   (d) => d.start_station_id,
 );
 ```
+
 Now, implement the same thing as above for `arrivals`.
 
 {: .note }
@@ -865,6 +871,7 @@ stations = stations.map((station) => {
   return station;
 });
 ```
+
 **Fill in the `// TODO` sections in the code chunk above to create departures and totalTraffic properties to each station in addition to the arrival property that is given.**
 
 {: .tip }
@@ -913,15 +920,17 @@ In addition to providing additional info, it helps us debug as well to be able t
 _Please note here that tooltips take a a few minutes to render so be patient this one!_
 We will be implementing tooltips with D3! When creating circles using D3, we'll append a `title` element inside each circle to display the total trips, arrivals, and departures. Make sure that `.each(function (d)){...}` goes after all previously defined circle attributes!
 
-
 ```javascript
-const circles = svg.selectAll('circle')
+const circles = svg
+  .selectAll('circle')
   // all other previously defined attributes omitted for brevity
-  .each(function(d) {
+  .each(function (d) {
     // Add <title> for browser tooltips
     d3.select(this)
       .append('title')
-      .text(`${d.totalTraffic} trips (${d.departures} departures, ${d.arrivals} arrivals)`);
+      .text(
+        `${d.totalTraffic} trips (${d.departures} departures, ${d.arrivals} arrivals)`,
+      );
   });
 ```
 
@@ -984,12 +993,13 @@ Now, we’ll create a **global helper function** (outside of `map.on()`) to form
 
 ```javascript
 function formatTime(minutes) {
-  const date = new Date(0, 0, 0, 0, minutes);  // Set hours & minutes
+  const date = new Date(0, 0, 0, 0, minutes); // Set hours & minutes
   return date.toLocaleString('en-US', { timeStyle: 'short' }); // Format as HH:MM AM/PM
 }
 ```
 
 We'll write a function that:
+
 - Updates `timeFilter` based on the slider's value.
 - Shows the formatted time in the `<time>` element.
 - Displays "(any time)" when no filter is applied (`timeFilter === -1`).
@@ -998,14 +1008,14 @@ Then we can create a function to update the UI when the slider moves:
 
 ```javascript
 function updateTimeDisplay() {
-  timeFilter = Number(timeSlider.value);  // Get slider value
+  timeFilter = Number(timeSlider.value); // Get slider value
 
   if (timeFilter === -1) {
-    selectedTime.textContent = '';  // Clear time display
-    anyTimeLabel.style.display = 'block';  // Show "(any time)"
+    selectedTime.textContent = ''; // Clear time display
+    anyTimeLabel.style.display = 'block'; // Show "(any time)"
   } else {
-    selectedTime.textContent = formatTime(timeFilter);  // Display formatted time
-    anyTimeLabel.style.display = 'none';  // Hide "(any time)"
+    selectedTime.textContent = formatTime(timeFilter); // Display formatted time
+    anyTimeLabel.style.display = 'none'; // Hide "(any time)"
   }
 
   // Trigger filtering logic which will be implemented in the next step
@@ -1028,44 +1038,46 @@ updateTimeDisplay();
 Our slider now _looks_ like a filter, but doesn’t actually _do_ anything.
 To make it work there are a few more things we need to do.
 
-Firstly, since we **need to repeatedly compute station traffic**, it’s best to **extract** this logic into a separate function (aka we will refactor our code into a new function).   
-Right now, the logic for computing station traffic (arrivals, departures, and total trips) is inside `map.on('load', ...)`. This means every time we need to **recalculate traffic**, we would have to rewrite the same logic or duplicate code. 
+Firstly, since we **need to repeatedly compute station traffic**, it’s best to **extract** this logic into a separate function (aka we will refactor our code into a new function).
+Right now, the logic for computing station traffic (arrivals, departures, and total trips) is inside `map.on('load', ...)`. This means every time we need to **recalculate traffic**, we would have to rewrite the same logic or duplicate code.
 
-The new function should be **defined globally** (outside `map.on('load', ...)`) with the following content: 
+The new function should be **defined globally** (outside `map.on('load', ...)`) with the following content:
 
 ```javascript
 function computeStationTraffic(stations, trips) {
-    // Compute departures
-    const departures = d3.rollup(
-        trips, 
-        (v) => v.length, 
-        (d) => d.start_station_id
-    );
+  // Compute departures
+  const departures = d3.rollup(
+    trips,
+    (v) => v.length,
+    (d) => d.start_station_id,
+  );
 
-    // Computed arrivals as you did in step 4.2
-  
-    // Update each station..
-    return stations.map((station) => {
-      let id = station.short_name;
-      station.arrivals = arrivals.get(id) ?? 0;
-      // what you updated in step 4.2
-      return station;
+  // Computed arrivals as you did in step 4.2
+
+  // Update each station..
+  return stations.map((station) => {
+    let id = station.short_name;
+    station.arrivals = arrivals.get(id) ?? 0;
+    // what you updated in step 4.2
+    return station;
   });
 }
 ```
-What Does the Function Do?
-1. Take `stations` and `trips` as arguments (so it works with any dataset).  
-2. Compute arrivals and departures** using `d3.rollup()`.  
-3. Update each station with the calculated values (arrivals, departures, and total traffic).  
-4. Return the updated station data** so it can be used elsewhere.  
 
-Inside `map.on('load', ...)`, instead of computing everything inline, we **call** the new function like this:  
+What Does the Function Do?
+
+1. Take `stations` and `trips` as arguments (so it works with any dataset).
+2. Compute arrivals and departures\*\* using `d3.rollup()`.
+3. Update each station with the calculated values (arrivals, departures, and total traffic).
+4. Return the updated station data\*\* so it can be used elsewhere.
+
+Inside `map.on('load', ...)`, instead of computing everything inline, we **call** the new function like this:
 
 ```javascript
 const stations = computeStationTraffic(jsonData.data.stations, trips);
 ```
 
-It should replace the previous stations variable created in step 3.1 as shown below: 
+It should replace the previous stations variable created in step 3.1 as shown below:
 
 ```javascript
 let stations = jsonData.data.stations;
@@ -1082,7 +1094,7 @@ This ensures that every trip's started_at and ended_at values are converted as s
 Inside `map.on('load', ...)`, **we'll use the second argument of `d3.csv()` to parse the date strings into `Date` objects**, ensuring they are correctly formatted as soon as the data is loaded:
 
 ```js
-//within the map.on('load') 
+//within the map.on('load')
 let trips = await d3.csv(
   'https://dsc106.com/labs/lab07/data/bluebikes-traffic-2024-03.csv',
   (trip) => {
@@ -1105,80 +1117,82 @@ Then, we can use this function in another function to filter the data to trips t
 
 ```js
 function filterTripsbyTime(trips, timeFilter) {
-  return timeFilter === -1 
+  return timeFilter === -1
     ? trips // If no filter is applied (-1), return all trips
     : trips.filter((trip) => {
         // Convert trip start and end times to minutes since midnight
         const startedMinutes = minutesSinceMidnight(trip.started_at);
         const endedMinutes = minutesSinceMidnight(trip.ended_at);
-        
+
         // Include trips that started or ended within 60 minutes of the selected time
         return (
           Math.abs(startedMinutes - timeFilter) <= 60 ||
           Math.abs(endedMinutes - timeFilter) <= 60
         );
-    });
+      });
 }
-``` 
+```
 
 Next, to dynamically update the scatterplot based on the selected time filter, we will **create a function called `updateScatterPlot()`** and ensure that it is called whenever the slider value changes.
 
-Inside `map.on('load', ...)`, add the following function:  
+Inside `map.on('load', ...)`, add the following function:
 
 ```js
 function updateScatterPlot(timeFilter) {
-    // Get only the trips that match the selected time filter
-    const filteredTrips = filterTripsbyTime(trips, timeFilter);
-    
-    // Recompute station traffic based on the filtered trips
-    const filteredStations = computeStationTraffic(stations, filteredTrips);
-    
-    // Update the scatterplot by adjusting the radius of circles
-    circles
-      .data(filteredStations)
-      .join('circle') // Ensure the data is bound correctly
-      .attr('r', (d) => radiusScale(d.totalTraffic)); // Update circle sizes
+  // Get only the trips that match the selected time filter
+  const filteredTrips = filterTripsbyTime(trips, timeFilter);
+
+  // Recompute station traffic based on the filtered trips
+  const filteredStations = computeStationTraffic(stations, filteredTrips);
+
+  // Update the scatterplot by adjusting the radius of circles
+  circles
+    .data(filteredStations)
+    .join('circle') // Ensure the data is bound correctly
+    .attr('r', (d) => radiusScale(d.totalTraffic)); // Update circle sizes
 }
 ```
+
 Place this Inside `map.on('load', ...)`, **after** `updateTimeDisplay()` has been defined.
 This function will:
+
 - Filter the trip data based on the selected time.
 - Recompute station traffic using the filtered trips.
 - Update the circle sizes to reflect the new traffic values.
 
 After defining `updateScatterPlot()`, update `updateTimeDisplay()` so it **calls `updateScatterPlot(timeFilter)` whenever the slider value changes**.
 
-Modify `updateTimeDisplay()` as follows:  
+Modify `updateTimeDisplay()` as follows:
 
 ```js
 function updateTimeDisplay() {
-    let timeFilter = Number(timeSlider.value); // Get slider value
+  let timeFilter = Number(timeSlider.value); // Get slider value
 
-    if (timeFilter === -1) {
-      selectedTime.textContent = ''; // Clear time display
-      anyTimeLabel.style.display = 'block'; // Show "(any time)"
-    } else {
-      selectedTime.textContent = formatTime(timeFilter); // Display formatted time
-      anyTimeLabel.style.display = 'none'; // Hide "(any time)"
-    }
-    
-    // Call updateScatterPlot to reflect the changes on the map
-    updateScatterPlot(timeFilter);
+  if (timeFilter === -1) {
+    selectedTime.textContent = ''; // Clear time display
+    anyTimeLabel.style.display = 'block'; // Show "(any time)"
+  } else {
+    selectedTime.textContent = formatTime(timeFilter); // Display formatted time
+    anyTimeLabel.style.display = 'none'; // Hide "(any time)"
+  }
+
+  // Call updateScatterPlot to reflect the changes on the map
+  updateScatterPlot(timeFilter);
 }
 ```
+
 Now, `updateScatterPlot(timeFilter)` is called every time the slider changes to update the scatterplot dynamically. The filtering logic is now separate from the visualization logic, making the code cleaner and easier to manage and circle sizes update in real-time to reflect the new trip data filtered by time.
 
-To ensure that **D3 properly reuses existing circle elements** instead of unnecessarily destroying and recreating them, we need to **set a key for the `.data()` calls**.  
+To ensure that **D3 properly reuses existing circle elements** instead of unnecessarily destroying and recreating them, we need to **set a key for the `.data()` calls**.
 
 Currently, `.data(stations)` and `.data(filteredStations)` do not specify a key, meaning D3 does not track which circles correspond to which stations across updates. By **using a key (`d.short_name`)**, D3 will match data points to existing elements efficiently.
 
-We will update **two locations** in the code:  
+We will update **two locations** in the code:
 
-1. When initially creating the circles inside `map.on('load', ...)`.  
+1. When initially creating the circles inside `map.on('load', ...)`.
 2. When updating circles inside `updateScatterPlot()`.
-  
 
-Inside `map.on('load', ...)`, locate the following code where we create the circles:  
+Inside `map.on('load', ...)`, locate the following code where we create the circles:
 
 ```js
 const circles = svg
@@ -1189,19 +1203,19 @@ const circles = svg
   ...
 ```
 
-Modify it to use a **key function**:  
+Modify it to use a **key function**:
 
 ```js
 const circles = svg
   .selectAll('circle')
-  .data(stations, (d) => d.short_name)  // Use station short_name as the key
+  .data(stations, (d) => d.short_name) // Use station short_name as the key
   .enter()
   .append('circle');
 ```
 
-Again, the **key function `(d) => d.short_name`** ensures that D3 keeps track of circles corresponding to each station. Without this key, D3 might delete and recreate elements unnecessarily, reducing performance.  
+Again, the **key function `(d) => d.short_name`** ensures that D3 keeps track of circles corresponding to each station. Without this key, D3 might delete and recreate elements unnecessarily, reducing performance.
 
-Next, inside `updateScatterPlot()`, locate this code:  
+Next, inside `updateScatterPlot()`, locate this code:
 
 ```js
 circles
@@ -1211,22 +1225,23 @@ circles
   ...
 ```
 
-Modify it to also **use a key function**:  
+Modify it to also **use a key function**:
 
 ```js
 circles
-  .data(filteredStations, (d) => d.short_name)  // Ensure D3 tracks elements correctly
+  .data(filteredStations, (d) => d.short_name) // Ensure D3 tracks elements correctly
   .join('circle')
   .attr('r', (d) => radiusScale(d.totalTraffic));
-``` 
+```
 
 We want to **change the range of our circle size scale (`radiusScale`)** depending on whether filtering is applied. This ensures that circles appear **larger when fewer trips are shown** and remain **smaller when displaying all trips**.
 
 Currently, our circles always use the same size range `[0, 25]`. When we **filter trips by time**, fewer trips will be displayed. To ensure stations remain visible and proportional, **we increase the maximum circle size when filtering**. This is done by **modifying the `.range()` values** of `radiusScale` based on `timeFilter`.
 
-We will **update the `updateScatterPlot()` function**  to modify the `radiusScale.range()` dynamically.
+We will **update the `updateScatterPlot()` function** to modify the `radiusScale.range()` dynamically.
 
 Insert this line before updating the circles and after defining filteredStations:
+
 ```js
 timeFilter === -1 ? radiusScale.range([0, 25]) : radiusScale.range([3, 50]);
 ```
@@ -1262,15 +1277,17 @@ let arrivalsByMinute = Array.from({ length: 1440 }, () => []);
 ```
 
 Why 1440?
-  - There are **1440 minutes in a day** (24 × 60).
-  - Each index in `departuresByMinute` represents a specific **minute of the day**.
-  - This allows us to quickly look up and filter trips based on their departure time.
 
-Inside `map.on('load', ...)`, where we already convert `trip.started_at` and `trip.ended_at` into `Date` objects in  `let trips = await d3.csv(...)`, we **add trips into their respective minute buckets**.
+- There are **1440 minutes in a day** (24 × 60).
+- Each index in `departuresByMinute` represents a specific **minute of the day**.
+- This allows us to quickly look up and filter trips based on their departure time.
+
+Inside `map.on('load', ...)`, where we already convert `trip.started_at` and `trip.ended_at` into `Date` objects in `let trips = await d3.csv(...)`, we **add trips into their respective minute buckets**.
+
 ```js
-let startedMinutes = minutesSinceMidnight(trip.started_at); 
+let startedMinutes = minutesSinceMidnight(trip.started_at);
 //This function returns how many minutes have passed since `00:00` (midnight).
-departuresByMinute[startedMinutes].push(trip); 
+departuresByMinute[startedMinutes].push(trip);
 //This adds the trip to the correct index in `departuresByMinute` so that later we can efficiently retrieve all trips that started at a specific time.
 
 // TODO: Same for arrivals
@@ -1278,8 +1295,7 @@ departuresByMinute[startedMinutes].push(trip);
 
 **Make sure to do the same for arrivals as departures in the //TODO part**
 
-
-Next, we are **removing `filterTripsByTime`** and introducing a **more efficient approach** by implementing `filterByMinute()` and updating `computeStationTraffic()` to work with this new filtering method.  
+Next, we are **removing `filterTripsByTime`** and introducing a **more efficient approach** by implementing `filterByMinute()` and updating `computeStationTraffic()` to work with this new filtering method.
 
 Previously, `filterTripsByTime(trips, timeFilter)` **looped through all trips** and checked if each trip started or ended within 60 minutes of `timeFilter`. This approach **required filtering a large array** every time the slider moved, leading to **unnecessary computation** on each update. As the dataset grows, filtering every trip on every update becomes a major performance issue.
 
@@ -1308,7 +1324,7 @@ function filterByMinute(tripsByMinute, minute) {
 }
 ```
 
-Now we must refactor `computeStationTraffic()`. The original function **filtered trips directly** based on `filterTripsByTime()`, which was inefficient. Instead, we now **pass the `timeFilter` to `filterByMinute()`**, which **retrieves trips instantly**.  
+Now we must refactor `computeStationTraffic()`. The original function **filtered trips directly** based on `filterTripsByTime()`, which was inefficient. Instead, we now **pass the `timeFilter` to `filterByMinute()`**, which **retrieves trips instantly**.
 
 ```js
 function computeStationTraffic(stations, timeFilter = -1) {
@@ -1335,34 +1351,42 @@ Lastly, we have to update all calls to `computeStationTraffic()` to use the new 
 
 Updating the first call to `computeStationTraffic()`:
 
-**Before (Old Code)**  
+**Before (Old Code)**
+
 ```js
 const stations = computeStationTraffic(jsonData.data.stations, trips);
 ```
+
 - `trips` was passed in, requiring the function to **filter trips manually**.
 - This approach was **redundant and inefficient**, since filtering was being performed multiple times.
 
 **After (Updated Code)**
+
 ```js
 const stations = computeStationTraffic(jsonData.data.stations);
 ```
+
 - Now, `computeStationTraffic()` **handles trip filtering internally**.
 - The function automatically defaults to `timeFilter = -1`, meaning **all trips are used initially**.
 
-Updating `updateScatterPlot()`: 
+Updating `updateScatterPlot()`:
 
 **Before (Old Code)**
+
 ```js
 const filteredTrips = filterTripsbyTime(trips, timeFilter);
 const filteredStations = computeStationTraffic(stations, filteredTrips);
 ```
+
 - `filterTripsbyTime()` was used to filter trips before passing them into `computeStationTraffic()`.
 - This approach **duplicated filtering logic**, slowing down performance.
 
 **After (Updated Code)**
+
 ```js
 const filteredStations = computeStationTraffic(stations, timeFilter);
 ```
+
 - Instead of pre-filtering trips, we now pass `timeFilter` directly.
 - `computeStationTraffic()` **retrieves trips efficiently** using `filterByMinute()`.
 - This reduces redundant filtering and speeds up updates.
@@ -1407,10 +1431,14 @@ Then, on our circles, we calculate the ratio of departures to total traffic,
 map it to our discrete scale, and assign the result to a CSS variable. You can implement this style with the following code:
 
 ```js
-const circles = svg.selectAll('circle')
+const circles = svg
+  .selectAll('circle')
   // previous code implemented ommitted for brevity
-    .style("--departure-ratio", d => stationFlow(d.departures / d.totalTraffic)) 
+  .style('--departure-ratio', (d) =>
+    stationFlow(d.departures / d.totalTraffic),
+  );
 ```
+
 We also need to add this within our `updateScatterPlot()` function:
 
 ```js

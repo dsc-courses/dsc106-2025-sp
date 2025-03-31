@@ -33,13 +33,13 @@ released: true
 
 ## Prerequisites
 
-This lab assumes you have already gone through the setup instructions in [Lab 0](../lab00/) (except those marked for Lab 2 or later),
+This lab assumes you have already gone through the setup instructions in [Lab 0](../lab00/)
 i.e. that you have (latest versions of, where applicable):
 
 - Google Chrome
 - Visual Studio Code (and you have verified Emmet works)
 - Git that is set up with your name and email
-- A GitHub account (upgraded to Pro via the [GitHub Student Developer Pack](https://education.github.com/pack)
+- A GitHub account (optionally upgraded to Pro via the [GitHub Student Developer Pack](https://education.github.com/pack))
 - GitHub Desktop, connected to GitHub and with VS Code set as the default editor
 
 ## Part 1: Web fundamentals

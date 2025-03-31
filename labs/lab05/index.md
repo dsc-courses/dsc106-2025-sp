@@ -3,7 +3,7 @@ layout: assignment
 title: 'Lab 5: Visualizing categorical data with D3'
 lab: 5
 parent: '👩‍🔬 Programming Labs'
-released: true
+released: false
 ---
 
 # Lab 5: Visualizing categorical data with D3
@@ -39,7 +39,9 @@ In your submission for the lab, along with the link to your github repo and webs
 1. Present your visualizations.
 2. Show you interacting with your visualizations.
 3. Explain why you can't search in the bar and then click a pie slice at the same time, and which lines of code you would need to change to solve this.
-  - If you fix the bug and show the fixed interaction in your video, you will get 10% extra credit on this lab.
+
+- If you fix the bug and show the fixed interaction in your video, you will get 10% extra credit on this lab.
+
 4. Share the most interesting thing you learned from this lab.
 
 **Videos longer than 2 minutes will be trimmed to 2 minutes before we grade, so
@@ -157,7 +159,7 @@ Now let's use D3 to create the same path, as a first step towards our pie chart.
 You can import D3 directly in your `projects.js` like follows:
 
 ```javascript
-import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm";
+import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 ```
 
 Now let’s use the [`d3.arc()`](https://d3js.org/d3-shape/arc#arc) function from the [D3 Shape](https://d3js.org/d3-shape) module to create the path for our circle.
@@ -239,9 +241,9 @@ let arcs = arcData.map((d) => arcGenerator(d));
 Now let’s translate the arcs array into `<path>` element since we are now generating multiple paths:
 
 ```javascript
-arcs.forEach(arc => {
+arcs.forEach((arc) => {
   // TODO, fill in step for appending path to svg using D3
-})
+});
 ```
 
 If we reload at this point, all we see is …the same red circle.
@@ -368,9 +370,7 @@ We first create a `<ul>` element, but a `<dl>` would have been fine too, and pla
     <span class="swatch"></span>
     {data[i].label} <em>({data[i].value})</em>
   </li>
-  <li>
-    ...
-  </li>
+  <li>...</li>
   ...
 </ul>
 ```
@@ -390,10 +390,11 @@ Next, we use D3 to help us create all the `<li></li>` tags (this happens in your
 ```javascript
 let legend = d3.select('.legend');
 data.forEach((d, idx) => {
-    legend.append('li')
-          .attr('style', `--color:${colors(idx)}`) // set the style attribute while passing in parameters
-          .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
-})
+  legend
+    .append('li')
+    .attr('style', `--color:${colors(idx)}`) // set the style attribute while passing in parameters
+    .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
+});
 ```
 
 At this point, it doesn’t look like a legend very much:
@@ -556,7 +557,6 @@ searchInput.addEventListener('change', (event) => {
   // TODO: filter the projects
 
   // TODO: render updated projects!
-
 });
 ```
 
@@ -569,7 +569,9 @@ which returns a new array containing only the elements that pass the test implem
 For example, this is how we’d search in project titles:
 
 ```js
-let filteredProjects = projects.filter((project) => project.title.includes(query));
+let filteredProjects = projects.filter((project) =>
+  project.title.includes(query),
+);
 ```
 
 <!-- {: .fyi }
@@ -594,7 +596,9 @@ Let’s fix both of these!
 To do this, we can simply convert _both_ the query and the title to lowercase before comparing them by using the [`string.toLowerCase()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase) function:
 
 ```js
-let filteredProjects = projects.filter((project) => project.title.toLowerCase().includes(query));
+let filteredProjects = projects.filter((project) =>
+  project.title.toLowerCase().includes(query),
+);
 ```
 
 #### Search across all project metadata, not just titles
@@ -688,7 +692,7 @@ searchInput.addEventListener('change', (event) => {
 > Remember to reset/clean-up your `<svg>` and legend as you filter your projects and render new pie chart and legends. Here's one way you can do this:
 >
 > ```js
-> let newSVG = d3.select('svg'); 
+> let newSVG = d3.select('svg');
 > newSVG.selectAll('path').remove();
 > ```
 >
@@ -724,10 +728,10 @@ by using the `:has()` pseudo-class:
 
 ```css
 &:has(path:hover) {
-   path:not(:hover) {
-     opacity: 0.5;
-   }
- }
+  path:not(:hover) {
+    opacity: 0.5;
+  }
+}
 ```
 
 This gives us something like this:
@@ -773,24 +777,24 @@ First, create a `selectedIndex` variable and initialize it to `-1` (a convention
 let selectedIndex = -1;
 ```
 
-Then, add a click event to your `<path>` which will set `selectedIndex` to the index of the wedge that was clicked. 
+Then, add a click event to your `<path>` which will set `selectedIndex` to the index of the wedge that was clicked.
 The skeleton logic should look like the following:
 
 ```js
 let svg = d3.select('svg');
-  svg.selectAll('path').remove();
-  arcs.forEach((arc, i) => {
-    svg
-      .append('path')
-      .attr('d', arc)
-      .attr('fill', colors(i))
-      .on('click', () => {
-        // What should we do? (Keep scrolling to find out!)
-      });
-  });
+svg.selectAll('path').remove();
+arcs.forEach((arc, i) => {
+  svg
+    .append('path')
+    .attr('d', arc)
+    .attr('fill', colors(i))
+    .on('click', () => {
+      // What should we do? (Keep scrolling to find out!)
+    });
+});
 ```
 
-As shown above, we would like to highlight the selected wedge using a different color than its own and every other wedge. 
+As shown above, we would like to highlight the selected wedge using a different color than its own and every other wedge.
 Let’s apply CSS to change the color of the selected wedge and legend item:
 
 ```css
@@ -825,7 +829,7 @@ Putting it together, we should now be able to expand our event monitoring logic 
 ```js
 .on('click', () => {
   selectedIndex = selectedIndex === i ? -1 : i;
-  
+
   svg
     .selectAll('path')
     .attr('class', (_, idx) => (
@@ -834,7 +838,7 @@ Putting it together, we should now be able to expand our event monitoring logic 
 });
 ```
 
- We have not implemented how we would like to handle the legend as we select and deselect wedges. For consistency and clarity, lets implement the same feature and logic used for the wedges to the legend! One important point to keep in mind though. We shouldn’t set the color attribute on the `<li>` elements directly, we just need to add the `.selected` class to apply the appropriate style to the right pie slice.
+We have not implemented how we would like to handle the legend as we select and deselect wedges. For consistency and clarity, lets implement the same feature and logic used for the wedges to the legend! One important point to keep in mind though. We shouldn’t set the color attribute on the `<li>` elements directly, we just need to add the `.selected` class to apply the appropriate style to the right pie slice.
 
 ```js
 legend
@@ -856,7 +860,7 @@ legend
 
 ### Step 5.3: Filtering the projects by the selected year
 
-Selecting a wedge doesn’t really do that much right now and our job is far from finished! Most notably, we have not implemented how we would filter the projects as we select and deselect the wedges. This may seem complex at first but we can break it down into two smaller, more manageable cases! 
+Selecting a wedge doesn’t really do that much right now and our job is far from finished! Most notably, we have not implemented how we would filter the projects as we select and deselect the wedges. This may seem complex at first but we can break it down into two smaller, more manageable cases!
 
 1. When selectedIndex is not -1, we’ve selected a wedge that represents a given year, and we should filter out projects data based on the year value, recalculating projects, arc, legend, etc.
 2. When selectedIndex is -1, we simply go ahead and render projects, arc, legend, etc. with the existing projects data.
@@ -873,7 +877,7 @@ if (selectedIndex === -1) {
 ```
 
 {: .fyi }
-The `--color` variable we set in the if-branch is exactly the HTML hex code for `oklch(60% 45% 0)`. You may also do your own conversion of Oklab color space colors. You may find this [website](https://oklch.com/) helpful. 
+The `--color` variable we set in the if-branch is exactly the HTML hex code for `oklch(60% 45% 0)`. You may also do your own conversion of Oklab color space colors. You may find this [website](https://oklch.com/) helpful.
 
 Once you finish your projects page should achieve the following, finally!
 

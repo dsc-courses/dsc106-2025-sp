@@ -103,7 +103,7 @@ Run the following commands to let git know your name and email address. Open a t
 
 ```bash
 git config --global user.name "Your Name"
-git config --global user.email "your_email@mit.edu"
+git config --global user.email "your_email@ucsd.edu"
 ```
 
 ### Git concepts: repo(sitory), staging area, commit
@@ -202,8 +202,15 @@ In this class (and many others), we will be using GitHub repositories for your w
 
 If you don’t already have a GitHub account, please [create one now](https://github.com/).
 
-Please sign up for the [GitHub Student Developer Pack](https://education.github.com/pack) to get access to a GitHub Pro account and many other useful tools for free.
-We will be using [GitHub Pages](https://pages.github.com/) to publish websites, which requires a paid account for private repos.
+Please sign up for the [GitHub Student Developer
+Pack](https://education.github.com/pack) to get access to a GitHub Pro account
+and many other useful tools for free. We will be using [GitHub
+Pages](https://pages.github.com/) to publish websites, which requires a paid
+account for private repos.
+
+**Note**{: .label .label-green }: Getting approval for a GitHub Pro account is
+notoriously finicky. Don't worry if you don't get approved the first few times
+you apply. You don't need GitHub Pro to complete anything in this course.
 
 ### New Git concepts: Remote, pushing, and pulling
 
@@ -266,35 +273,7 @@ You should also go to Settings > Integrations and set Visual Studio Code as your
 ![GitHub Desktop settings showing VS Code as default editor](images/ghdesktop-settings.png)
 
 {:.note}
-This is all the setup needed for Lab 1!
-We will not need the rest of the tools until at least Lab 2 (and Svelte not until Lab 6),
-but we recommend you install them now so you don't have to worry about it later.
-
-## Node.js and npm
-
-As we will learn, JS (short for JavaScript) is the web’s programming language.
-Node.js is a program that allows us to use JS outside of the browser, in the same way as any other programming language, e.g. Python.
-npm is a package manager for JS, which allows us to install and use libraries (also called packages) written in JS.
-If you are familiar with Python, npm serves the same purpose as pip.
-
-You may already have Node.js installed. To find out, open the terminal and type:
-
-```bash
-node --version
-```
-
-If you get an error, or if the version is way behind what you see on the [official website](https://nodejs.org/en),
-you need to [install or update Node.js](https://nodejs.org/en/download/).
-
-[npm](https://www.npmjs.com/) is included with every Node.js installation.
-You can verify that you have it installed by typing:
-
-```bash
-npm --version
-```
-
-{:.note}
-If you update Node and npm, you may need to restart your terminal for these commands to show the correct version.
+This is all the setup needed!
 
 ## Installing a local server
 

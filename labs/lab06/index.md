@@ -3,7 +3,7 @@ layout: assignment
 title: 'Lab 6: Visualizing quantitative data with D3'
 lab: 6
 parent: '👩‍🔬 Programming Labs'
-released: true
+released: false
 ---
 
 # Lab 6: Visualizing quantitative data with D3
@@ -545,7 +545,7 @@ First, we use `d3.rollup()` / `d3.rollups()` to compute the aggregate within eac
 const fileLengths = d3.rollups(
   data,
   (v) => d3.max(v, (v) => v.line),
-  (d) => d.file
+  (d) => d.file,
 );
 ```
 
@@ -576,7 +576,7 @@ We’d use [`date.toLocaleString()`](https://developer.mozilla.org/en-US/docs/We
 const workByPeriod = d3.rollups(
   data,
   (v) => v.length,
-  (d) => new Date(d.datetime).toLocaleString('en', { dayPeriod: 'short' })
+  (d) => new Date(d.datetime).toLocaleString('en', { dayPeriod: 'short' }),
 );
 ```
 
@@ -1174,7 +1174,7 @@ function isCommitSelected(commit) {
 ```
 
 </details>
-  
+
 Uh oh! `xscale` and `yscale` are undefined, as their scope was limited to the `createScatterplot` function. How would you fix it?
 
 <details markdown="1">
@@ -1239,7 +1239,7 @@ function updateLanguageBreakdown() {
   const breakdown = d3.rollup(
     lines,
     (v) => v.length,
-    (d) => d.type
+    (d) => d.type,
   );
 
   // Update DOM with breakdown

@@ -3,7 +3,7 @@ layout: assignment
 title: 'Lab 3: Introduction to JS'
 lab: 3
 parent: '👩‍🔬 Programming Labs'
-released: true
+released: false
 ---
 
 # Lab 3: Introduction to JS
@@ -127,7 +127,7 @@ Putting it together, we can get the link to the current page via:
 
 ```js
 let currentLink = navLinks.find(
-  (a) => a.host === location.host && a.pathname === location.pathname
+  (a) => a.host === location.host && a.pathname === location.pathname,
 );
 ```
 
@@ -308,7 +308,7 @@ You can even use `a.className.toggle()` to do the checking and the class adding 
 ```javascript
 a.classList.toggle(
   'current',
-  a.host === location.host && a.pathname === location.pathname
+  a.host === location.host && a.pathname === location.pathname,
 );
 ```
 
@@ -451,7 +451,7 @@ document.body.insertAdjacentHTML(
 		<select>
 			<!-- TODO add <option> elements here -->
 		</select>
-	</label>`
+	</label>`,
 );
 ```
 

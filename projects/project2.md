@@ -2,7 +2,7 @@
 layout: assignment
 title: 'Project 2: Deceptive Visualization'
 parent: '📝 Projects'
-released: true
+released: false
 nav_order: 2
 ---
 
@@ -49,7 +49,7 @@ An obvious deception: The "wrong"/deceptive image makes use of a truncated axis 
 ![](project2_images/subtle.png)
 
 <figcaption>
-A subtle deception: The tweet author suggests that since there are more vaccinated cases, the vaccinated are ‘super-spreaders.’ This interpretation, however, fails to account for the high proportion of vaccinated in the general population—likely as high as 95% at the time of data collection. 
+A subtle deception: The tweet author suggests that since there are more vaccinated cases, the vaccinated are ‘super-spreaders.’ This interpretation, however, fails to account for the high proportion of vaccinated in the general population—likely as high as 95% at the time of data collection.
 </figcaption>
 
 </figure>
