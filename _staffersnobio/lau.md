@@ -5,5 +5,5 @@ pronouns: he/him
 email: lau@ucsd.edu
 website: https://lau.ucsd.edu/
 photo: assets/images/lau.jpg
-lecture: Wed, Fri 11:00am-11:50am (A00), 12:00pm-12:50pm (B00) in Center Hall 109
+lecture: Wed, Fri 1:00pm-1:50pm (A00), 2:00pm-2:50pm (B00) in Podemos 1A20
 ---

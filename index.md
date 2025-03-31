@@ -17,10 +17,10 @@ nav_order: 1
 
 <!-- [Recordings](https://podcast.ucsd.edu/){: .btn .btn-blue } -->
 
-{: .note }
+<!-- {: .note }
 **March 25, 2025:** The Winter 2025 offering of DSC 106 has
 concluded. Please visit our [Final Project Showcase](showcase) page to see our
-students' final projects, including our award winners!
+students' final projects, including our award winners! -->
 
 {% for module in site.modules %}
 {{ module }}

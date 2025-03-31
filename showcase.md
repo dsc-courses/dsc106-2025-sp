@@ -3,6 +3,7 @@ layout: page
 title: 📺 Final Project Showcase
 description: Showcase of student final projects from Winter 2025.
 nav_order: 1
+nav_exclude: true
 ---
 
 # Final Project Showcase
