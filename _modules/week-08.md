@@ -2,34 +2,30 @@
 title: Week 8
 weekNumber: 8
 days:
-  - date: '2025-02-25'
+  - date: '2025-05-19'
+    events:
+      - name: DISC 7
+        type: disc
+        title: Disc 7
+  - date: '2025-05-20'
     events:
       - name: PROJ 3
         type: proj
         title: Project 3 Peer Review
-        url: projects/project3peer.md
-      - name: LAB 7
-        type: lab
-        title: Lab 7
-        url: labs/lab07
       - name: FINAL PROJ
         type: proj
         title: Final Project Proposal
-  - date: '2025-02-26'
+  - date: '2025-05-21'
     events:
-      - name: CANCELED
-        type: canceled
-        title: NO Lecture - Sam traveling
-  - date: '2025-02-28'
+      - name: LEC 14
+        type: lecture
+        title: Narrative
+  - date: '2025-05-23'
     events:
       - name: LAB 8
         type: lab
         title: Lab 8
-        url: labs/lab08
-      - name: DISC 8
-        type: disc
-        title: Disc 8
-      - name: CANCELED
-        type: canceled
-        title: NO Lecture - Sam traveling
+      - name: LEC 15
+        type: lecture
+        title: Animation
 ---

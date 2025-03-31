@@ -2,14 +2,14 @@
 title: Week 11
 weekNumber: 11
 days:
-- date: '2025-03-17'
+- date: '2025-06-09'
   events:
   - name: FINAL PROJ
     type: proj
     title: Final Project
-- date: '2025-03-18'
+- date: '2025-06-10'
   events:
-  - name: LEC 19
+  - name: LEC 20
     type: lecture
     title: Final Project Showcase
 ---

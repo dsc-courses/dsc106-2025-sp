@@ -1,3 +1,13 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#     "numpy<=2.3",
+#     "pandas<=2.3",
+#     "pyyaml<=6.1",
+#     "docopt<=0.7",
+# ]
+# ///
 """Generate week-by-week schedule for website from CSV file.
 
 Use this to convert from the course calendar spreadsheet to modules that work
