@@ -16,12 +16,12 @@ days:
   events:
   - name: LEC 4
     type: lecture
-    title: 'Health Data (Guest Lecture: Ben Smarr)'
+    title: Perception
 - date: '2025-04-18'
   events:
   - name: LEC 5
     type: lecture
-    title: Perception
+    title: Color
   - name: LAB 3
     type: lab
     title: Lab 3

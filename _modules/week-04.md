@@ -16,13 +16,13 @@ days:
   events:
   - name: LEC 6
     type: lecture
-    title: Color
+    title: JavaScript
 - date: '2025-04-25'
   events:
-  - name: LEC 7
-    type: lecture
-    title: JavaScript
   - name: LAB 4
     type: lab
     title: Lab 4
+  - name: LEC 7
+    type: lecture
+    title: D3.js Part 1
 ---

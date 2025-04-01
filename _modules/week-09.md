@@ -16,12 +16,9 @@ days:
   events:
   - name: LEC 16
     type: lecture
-    title: Uncertainty & Review
+    title: Final Project Feedback
 - date: '2025-05-30'
   events:
-  - name: LAB 9
-    type: lab
-    title: Lab 9
   - name: LEC 17
     type: lecture
     title: Final Project Feedback

@@ -16,13 +16,13 @@ days:
   events:
   - name: LEC 10
     type: lecture
-    title: Interaction
+    title: Critiquing Past Final Projects (with Prof Smarr)
 - date: '2025-05-09'
   events:
-  - name: LEC 11
-    type: lecture
-    title: Project 3 Feedback
   - name: LAB 6
     type: lab
     title: Lab 6
+  - name: LEC 11
+    type: lecture
+    title: Interaction
 ---

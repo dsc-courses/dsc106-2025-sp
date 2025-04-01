@@ -19,10 +19,10 @@ days:
     title: (In)Effective Visual Encoding
 - date: '2025-04-11'
   events:
-  - name: LAB 2
-    type: lab
-    title: Lab 2
   - name: CANCELED
     type: canceled
     title: NO Lecture - Sam traveling
+  - name: LAB 2
+    type: lab
+    title: Lab 2
 ---

@@ -2,7 +2,7 @@
 layout: assignment
 title: 'Project 1: Expository Visualization'
 parent: '📝 Projects'
-released: false
+released: true
 nav_order: 1
 ---
 

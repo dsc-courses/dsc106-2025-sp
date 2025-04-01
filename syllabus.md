@@ -159,7 +159,7 @@ for the corresponding week is **Sunday at 11:59 PM**.
 
 ### Labs
 
-There will be **9 lab assignments** due weekly throughout the quarter. Each lab
+There will be **8 lab assignments** due weekly throughout the quarter. Each lab
 assignment is designed to be a walkthrough of practical material that you will
 use for your projects. Labs are meant to serve as [worked examples][worked examples]: much of the solution code will be given to you as part of the lab. To
 receive credit for labs, you will need to complete the lab and then submit your
@@ -168,9 +168,8 @@ end of each lab assignment.
 
 [worked examples]: https://tll.mit.edu/teaching-resources/how-people-learn/worked-examples/
 
-Each lab is worth 1% of your final grade, and the lowest lab grade
-will be dropped. Labs will be released on Fridays and due on the following
-**Fridays** at 11:59PM.
+Each lab is worth 1% of your final grade. Labs will be released on Fridays and
+due on the following **Fridays** at 11:59PM.
 
 You will access labs by pulling the course GitHub repository.
 
@@ -247,7 +246,7 @@ Here is how we'll compute your grade:
 | Component           | Weight | Notes                                                                       |
 | ------------------- | ------ | --------------------------------------------------------------------------- |
 | Participation       | 8%     | 1% per week, 2 lowest weeks dropped                                         |
-| Labs                | 8%     | 1% per lab, 1 lowest lab dropped                                            |
+| Labs                | 8%     | 1% per lab                                                                  |
 | Project 1           | 10%    |                                                                             |
 | Project 2           | 15%    | 14% for submission, 1% for peer review                                      |
 | Project 3           | 15%    | 14% for submission, 1% for peer review                                      |

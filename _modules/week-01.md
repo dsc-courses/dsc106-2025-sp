@@ -2,17 +2,17 @@
 title: Week 1
 weekNumber: 1
 days:
-  - date: '2025-04-02'
-    events:
-      - name: LEC 1
-        type: lecture
-        title: The Value of Visualization
-  - date: '2025-04-04'
-    events:
-      - name: LEC 2
-        type: lecture
-        title: Data & Image Models
-      - name: LAB 1
-        type: lab
-        title: Lab 1
+- date: '2025-04-02'
+  events:
+  - name: LEC 1
+    type: lecture
+    title: The Value of Visualization
+- date: '2025-04-04'
+  events:
+  - name: LEC 2
+    type: lecture
+    title: Data & Image Models
+  - name: LAB 1
+    type: lab
+    title: Lab 1
 ---

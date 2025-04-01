@@ -16,7 +16,7 @@ days:
   events:
   - name: LEC 8
     type: lecture
-    title: D3.js Part 1
+    title: 'Health Data (Guest Lecture: Ben Smarr)'
 - date: '2025-05-02'
   events:
   - name: LEC 9

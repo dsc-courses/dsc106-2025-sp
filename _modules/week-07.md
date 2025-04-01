@@ -19,10 +19,10 @@ days:
     title: Maps
 - date: '2025-05-16'
   events:
-  - name: LEC 13
-    type: lecture
-    title: Critiquing Past Final Projects
   - name: LAB 7
     type: lab
     title: Lab 7
+  - name: LEC 13
+    type: lecture
+    title: Narrative
 ---
