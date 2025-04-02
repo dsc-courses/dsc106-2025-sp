@@ -6,10 +6,19 @@ released: true
 nav_order: 1
 ---
 
-[dataset]: https://github.com/dsc-courses/dsc106-wi24/raw/gh-pages/resources/data/grocerydb.csv
+[dataset]: ../../resources/data/grocerydb.csv
 [paper]: ../../resources/reading/Prevalence-of-processed-foods-in-major-US-grocery-stores.pdf
 
 # Project 1: Expository Visualization
+
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
 
 An expository article requires the author to investigate an idea, evaluate
 evidence, expound on the idea, and set forth an argument concerning that idea
@@ -57,12 +66,12 @@ The data has the following columns:
 The nutrition data (protein, fat, carbs, sugar, fiber, sodium, and cholesterol)
 is normalized to grams per 100g of product.
 
-The GroceryDB dataset was developed to make information about food processing
-accessible and to guide consumers toward less processed food choices. More
-information about the dataset can be found in their [Nature Food paper][paper].
-You might also find their website [TrueFood.Tech](http://TrueFood.Tech/)
-helpful. For more information on the NOVA classification system, see pages 4-6
-of the [NOVA
+This dataset is a simplified version of the GroceryDB dataset, which was
+originally developed to make information about food processing accessible and to
+guide consumers toward less processed food choices. More information about the
+dataset can be found in their [Nature Food paper][paper]. You might also find
+their website [TrueFood.Tech](http://TrueFood.Tech/) helpful. For more
+information on the NOVA classification system, see pages 4-6 of the [NOVA
 paper](https://worldnutritionjournal.org/index.php/wn/article/view/5/4).
 
 ## Task
@@ -133,7 +142,7 @@ project requirements (Satisfactory column) will get 8.5/10 points.
 | Component                  | Excellent                                                                                                                                                                                                                 | Satisfactory                                                                                                                                                                                                                                                                                                   | Not Satisfactory                                                                                                                                                                                    |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Visual Encodings           | The visualization does not violate the expressiveness criteria and the design choices (marks and encoding channels) are clear, evocative, and effective. (+3.5 points)                                                    | The visualization does not violate the expressiveness criteria, but another set of design choices (marks and encoding channels) could have been more effective (e.g. using the area visual channel instead of position when possible). (+3 points)                                                             | The visualization violates the expressiveness criteria (e.g. heavy overplotting, encodings that imply incorrect readings, etc.). (+2 points)                                                        |
-| Annotations                | In addition to the Satisfactory requirements, the plot contains appropriate and helpful annotations (e.g. text, coloring, shading) that draw the reader’s attention to the most relevant parts of the data. (+2.5 points) | The plot’s title contains an interesting research question or takeaway; the axes have clear, human-readable labels with units; and a legend is present if appropriate. (+2 points)                                                                                                                             | One or more of the required annotations are missing (e.g. a title that describes the plot rather than an interesting takeaway, axes use auto-generated labels from data columns, etc.). (+1 points) |
+| Annotations                | In addition to the Satisfactory requirements, the plot contains appropriate and helpful annotations (e.g. text, coloring, shading) that draw the reader's attention to the most relevant parts of the data. (+2.5 points) | The plot's title contains an interesting research question or takeaway; the axes have clear, human-readable labels with units; and a legend is present if appropriate. (+2 points)                                                                                                                             | One or more of the required annotations are missing (e.g. a title that describes the plot rather than an interesting takeaway, axes use auto-generated labels from data columns, etc.). (+1 points) |
 | Data Transformations       |                                                                                                                                                                                                                           | The visualization uses appropriate data transformations (e.g. filtering, aggregating) and describes the transformations to the reader (e.g. in the subtitle of the plot), In addition, it clearly and explicitly describes the transformations to the reader (e.g. in the subtitle of the plot). (+1.5 points) | The visualization used an inappropriate set of data transformations (e.g. filtering out important outliers), or did not clearly describe these transformations to the reader. (+1 point)            |
 | Writeup                    |                                                                                                                                                                                                                           | The writeup clearly describes the motivation for the visualization and the rationale for its design decisions (e.g. the visual encodings, data transformations, color palette, etc.). It also contains an overview of the development process. (+2 points)                                                     | One or more required elements of the writeup has major issues (e.g. rationale misses important parts of the visualization design) or is missing. (+1 points)                                        |
 | Creativity and Originality | The submission exceeds the assignment requirements, with original insights or particularly engaging visualizations. (up to +1 bonus point)                                                                                | The submission meets the assignment requirements. (+0 points)                                                                                                                                                                                                                                                  |                                                                                                                                                                                                     |
@@ -163,3 +172,30 @@ Be sure your image is sized for a reasonable viewing experience! Viewers should
 not have to zoom or scroll in order to effectively view your submission. Ensure
 that the content of your write-up follows the instructions above. Do not include
 your name or PID in the filename!
+
+## Inspiration (Past Project 1 Best Project Awards)
+
+To inspire more creative ideas for your Project 1, we've included a few Project
+1 submissions from previous quarters (that used a dataset about weather) that
+were especially effective, insightful, or creative.
+
+<figure markdown="1">
+![](../../resources/proj1_inspiration/a.png){:width="500"}
+<figcaption>
+Example 1
+</figcaption>
+</figure>
+
+<figure markdown="1">
+![](../../resources/proj1_inspiration/b.png)
+<figcaption>
+Example 2
+</figcaption>
+</figure>
+
+<figure markdown="1">
+![](../../resources/proj1_inspiration/c.png){:width="600"}
+<figcaption>
+Example 3
+</figcaption>
+</figure>
