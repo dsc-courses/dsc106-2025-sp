@@ -314,6 +314,8 @@ When you try it, resize your window to see the grid adapt to the width of the pa
 
 <video src="videos/responsive-grid.mp4" autoplay loop muted></video>
 
+See the following Step 4.3 for setting margin, gap, and more details shown in this video.
+
 ### Step 4.3: Horizontal alignment with subgrid
 
 The grid layout is looking good, but the content is not aligned.
