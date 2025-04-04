@@ -7,6 +7,7 @@ days:
   - name: DISC 4
     type: disc
     title: Disc 4
+    # url: https://giorgianicolaou.github.io/discussion6/examples/classic-slides/index.html
 - date: '2025-04-29'
   events:
   - name: PROJ 2

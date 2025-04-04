@@ -28,7 +28,7 @@ Next, author constructive critiques for each visualization design. Consider the 
 - Is the overall display confusing or cluttered?
 - Is there important information missing that is needed to interpret the visualization approapriately?
 
-To share critique, we will use the ["I like / I wish / What if?"][link] format. This involves sharing positive feedback on effective aspects, critical (but respectful!) feedback on what might be improved, and more wild (even half-baked) ideas your fellow students could explore in subsequent design iterations or future work. For each visualization, you must provide at least two statements in each of the I like / I wish / What if? categories.
+To share critique, we will use the ["I like / I wish / What if?"][link] format. This involves sharing positive feedback on effective aspects, critical (but respectful!) feedback on what might be improved, and more wild (even half-baked) ideas your fellow students could explore in subsequent design iterations or future work. For each visualization, you must provide **at least two** statements in each of the I like / I wish / What if? categories for **each** of the three project 2 submissions you review. That means you will write a total of 6 sentences for each of the I like / I wish / What if? categories across all three peer reviews. 
 
 [link]: https://github.com/dsc-courses/dsc106-wi24/raw/gh-pages/resources/reading/I-Like-I-Wish-What-If.pdf
 
@@ -36,4 +36,4 @@ To share critique, we will use the ["I like / I wish / What if?"][link] format. 
 
 This is an individual assignment. You may not work in groups.
 
-Your peer reviews are due **Fri 02/14, 11:59pm**. The submissions that you are required to evaluate will be communicated to you via email. You must submit peer reviews for three Project 2 submissions. To submit your review, you must use gradescope. Please carefully respond to each of the questions raised.
+Your peer reviews are due **Tuesday 05/06, 11:59pm**. The submissions that you are required to evaluate will be communicated to you via email. You must submit peer reviews for three Project 2 submissions. To submit your review, you must use gradescope. Please carefully respond to each of the questions raised.
