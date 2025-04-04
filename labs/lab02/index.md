@@ -3,7 +3,7 @@ layout: assignment
 title: 'Lab 2: Styling with CSS'
 lab: 2
 parent: '👩‍🔬 Programming Labs'
-released: false
+released: False
 ---
 
 # Lab 2: Styling with CSS
@@ -50,7 +50,7 @@ make sure your video is 2 minutes or less.**
 
 ## Prerequisites
 
-This lab assumes you have already completed [Lab 1](../1/), as we will use this as a starting point.
+This lab assumes you have already completed [Lab 1](../lab01/), as we will use this as a starting point.
 
 {: .note }
 You do not need to create a new repository for Lab 2, simply work on the same repository you created for Lab 1.
@@ -210,10 +210,10 @@ All we need to make these use the same font as the rest of the page is `font: in
 
 ### Step 3.2: Top-down layout
 
-The easiest way for that is to lay it out top-to-bottom, with each text field occuping the whole width of the form,
+The easiest way for that is to lay it out top-to-bottom, with each text field occupying the whole width of the form,
 and its label is above it.
 
-This is exactly what the optional [Contact form styling step](../1/#styling-contact-form) did in the previous lab.
+This is exactly what the optional [Contact form styling step](../lab01/#styling-contact-form) did in the previous lab.
 The gist was:
 
 1. Apply `display: block` to the form controls and labels to make them behave like block elements (such as `<p>`), i.e. insert line breaks before and after
