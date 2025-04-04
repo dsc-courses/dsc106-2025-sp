@@ -38,14 +38,13 @@ released: false
 
 Below is your lab submission checklist, please read carefully.
 
-1. Submit a link to your github repo (not the page).
+1. Submit a link to your github repo and webpage.
 2. Please record a 2 minute `mp4` format video with the following components:
    1. Present your final webpage.
-   2. Show you interacting with your webpage from your javascript updates.
-   3. Show you switching between dark mode, light mode, and automatic (light dark) mode, along with a page refresh.
-   4. Share the most interesting thing you learned from this lab.
+   2. Show you interacting with your webpage javascript updates (e.g. switching between dark mode, light mode, and automatic mode, along with a page refresh).
+3. Share the most interesting thing you learned from this lab.
 
-Please note that the video has to be in **mp4 format only.** There may be point deductions for other video formats.
+Please note that the video has to be in **mp4 format only.** There will be point deductions for other video formats.
 
 **Videos longer than 2 minutes will be trimmed to 2 minutes before we grade, so
 make sure your video is 2 minutes or less.**
@@ -91,6 +90,33 @@ function $$(selector, context = document) {
 Visit all your pages, open the dev tools console, and make sure you see the message printed there.
 
 <img src="images/its-alive.png" alt="" class="browser" />
+
+## Step 1.1: Make Resource Paths Work on GitHub Pages and Locally
+
+If you're hosting your site on GitHub Pages and it's being served from a subfolder like `/portfolio/`, your links and resources (CSS, scripts, navigation, etc.) might break.
+
+You have two options:
+
+1. Manually update all `href`/`src` attributes to include the `/portfolio/` prefix.
+2. Better: Add this small script at the very top of your JavaScript file to set the base path dynamically. To do this in your JavaScript file (e.g. `main.js`), place this at the very top:
+
+```js
+// Dynamically set base URL depending on where you're hosting
+if (
+  window.location.hostname === "127.0.0.1" ||
+  window.location.hostname === "localhost"
+) {
+  document.write('<base href="/">'); // Development (local)
+} else {
+  document.write('<base href="/portfolio/">'); // Production (GitHub Pages)
+}
+
+// Optional: log the base path being used
+const baseElement = document.querySelector("base");
+console.log("Base URL:", baseElement?.href);
+```
+
+This way, your site will work locally and on GitHub with zero manual path editing.
 
 ## Step 2: Automatic current page link
 
