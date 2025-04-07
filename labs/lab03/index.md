@@ -91,33 +91,6 @@ Visit all your pages, open the dev tools console, and make sure you see the mess
 
 <img src="images/its-alive.png" alt="" class="browser" />
 
-## Step 1.1: Make Resource Paths Work on GitHub Pages and Locally
-
-If you're hosting your site on GitHub Pages and it's being served from a subfolder like `/portfolio/`, your links and resources (CSS, scripts, navigation, etc.) might break.
-
-You have two options:
-
-1. Manually update all `href`/`src` attributes to include the `/portfolio/` prefix.
-2. Better: Add this small script at the very top of your JavaScript file to set the base path dynamically. To do this in your JavaScript file (e.g. `main.js`), place this at the very top:
-
-```js
-// Dynamically set base URL depending on where you're hosting
-if (
-  window.location.hostname === "127.0.0.1" ||
-  window.location.hostname === "localhost"
-) {
-  document.write('<base href="/">'); // Development (local)
-} else {
-  document.write('<base href="/portfolio/">'); // Production (GitHub Pages)
-}
-
-// Optional: log the base path being used
-const baseElement = document.querySelector("base");
-console.log("Base URL:", baseElement?.href);
-```
-
-This way, your site will work locally and on GitHub with zero manual path editing.
-
 ## Step 2: Automatic current page link
 
 Remember how in [Lab 2](../2/) we added a class to the current page link?
@@ -234,7 +207,7 @@ It will look like this:
 for (let p of pages) {
   let url = p.url;
   let title = p.title;
-  // TODO create link and add it to nav
+  // next step: create link and add it to nav
 }
 ```
 
@@ -247,43 +220,50 @@ nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
 
 Save and preview: you should now have a navigation menu on every page that is added automatically!
 
-However, there is a bit of a wart. Try your menu on different pages.
-Oh noes, the links only work properly on the home page!
-That is because we had previously used different relative URls for different pages,
+However, there is a bit of a wart. Try your menu on different pages.  
+Oh no, the links only work properly on the home page!  
+That is because we had previously used different relative URLs for different pages,  
 but now we are trying to use the same one across the entire website.
 
-Let’s try to do with JS what we previously did manually (sensing a theme here?).
-What we previously did was that for any page that was not the home page, we added `../` to the URL, right?
-So what if we could detect if we’re not on the home page and add that `../` to the URL conditionally?
+Let’s try to do with JS what we previously did manually (sensing a theme here?).  
+Previously, for any page that was not the home page, we added `../` to the URL, right?  
+But this approach breaks when we deploy the site using GitHub Pages, which hosts the site under a subdirectory like `/portfolio/` (dependent on what you named your repo).
 
-But how could we possibly detect if we’re on the home page in a way that works both locally and on our `github.io` site?
-Sadly, there is no way (that will not bite us in the future) to tell entirely by looking at the URL.
-We can however help the JS along by adding a class of `home` to the root element of our home page,
-and then using JS to check if that class is present and storing it in a variable (well, actually a constant, since that is not likely to change):
+So instead of figuring out whether we’re on the home page,  
+let’s detect whether we are running the site locally (on `localhost`) or on GitHub Pages,  
+and use that to adjust the base URL for all links.
+
+We can do this by checking the current hostname and defining a constant `BASE_PATH` accordingly:
 
 ```js
-const ARE_WE_HOME = document.documentElement.classList.contains('home');
+const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+  ? "/"                  // Local server
+  : "/website/";         // GitHub Pages repo name
 ```
 
 {: .tip }
-The [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) keyword is similar to `let`,
-but it makes the variable immutable, i.e. it cannot be reassigned.
-Variables that should never change are called constants, and their names are UPPERCASE by convention.
+The [`location.hostname`](https://developer.mozilla.org/en-US/docs/Web/API/Location/hostname) property gives us the domain of the current page.  
+If we're working locally, it will be `"localhost"` or `"127.0.0.1"`.  
+If we're on GitHub Pages, it will be something like `"yourusername.github.io"`.
 
-Then, when creating the links, use a conditional to add a `../` to the URL if we’re not on the home page and the URL is not absolute.
-We can use an [if statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) for that:
+Then, when creating the links, we’ll check if the URL is relative (i.e. does not start with `"http"`),  
+and if so, we’ll prefix it with the `BASE_PATH`. This ensures that all internal links work properly both locally and when deployed.
 
 ```js
-if (!ARE_WE_HOME && !url.startsWith('http')) {
-  url = '../' + url;
+if (!url.startsWith('http')) {
+  url = BASE_PATH + url;
 }
 ```
 
-Alternatively, we can do it more concisely with a [ternary operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator):
+Alternatively, we can do it more concisely using a [ternary operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator):
 
 ```js
-url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
+url = !url.startsWith('http') ? BASE_PATH + url : url;
 ```
+
+Save and preview again. Now your navigation links should work on every page, both when running on a local development server and when hosted on GitHub Pages.
+
+No more worrying about `../` or checking whether we’re on the home page — the URLs just work 🎉
 
 ### Step 3.2: Highlighting the current page and opening external links in a new tab
 
