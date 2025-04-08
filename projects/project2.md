@@ -19,9 +19,9 @@ due: 'Tue Apr 29, 11:59pm PT'
 > question posed about a single dataset. Once this assignment is complete, we
 > will (anonymously) peer review each other's visualizations.
 >
-> **Checkpoint Due: {{page.checkpoint_due}}**
+> **Checkpoint Due: Tue 04/22, by 11:59pm**
 >
-> **Complete Project Due: {{page.due}}**
+> **Complete Project Due: Tue 04/29, by 11:59pm**
 
 <details open markdown="block">
   <summary>
@@ -122,6 +122,19 @@ by Christine Chan—was widely considered to be misleading.
 
 ## Submission Details
 
+This is an individual assignment. **You may not work in groups**. There is a checkpoint submission due on **Tue 04/22, by 11:59pm**. Your
+completed assignment is due on **Tue 04/29, by 11:59pm**.
+
+### Checkpoint Submission
+
+You must submit your assignment using Gradescope. Please upload a single PDF with the following:
+
+1. 2 persuasive visualizations
+2. In a **separate** page, 2 deceptive visualizations
+3. In a **separate** page, a writeup about which deceptive visualization you are leaning towards, and the deception techniques used.
+
+### Final Submission
+
 Your final submission should take the form of an **HTML web page** that states
 your proposition, includes both visualizations and their corresponding design
 decisions and rationale, as well as your final reflection write up. To help you
@@ -132,8 +145,7 @@ we recommend exporting image files to the same local directory as your HTML
 file).
 
 Please **deploy your HTML report to a publicly accessible URL**. We recommend
-GitHub Pages (as described in [Lab 1, Part
-2](../../labs/lab01/#part-2-creating-our-own-website-from-scratch-and-publishing-it-on-the-web)).
+GitHub Pages (as described in lab 1).
 Your Project 2 submission can be part of the portfolio website that you've made
 for the labs (e.g., a subdirectory). Once deployed, please **double check** that
 your web page is appearing and rendering correctly at the publicly-accessible
@@ -159,7 +171,7 @@ for especially creative or original submissions.
 | **Data Transformations**<br>_(per visualization)_ | More advanced transformations (e.g., groupings, binnings, calculated fields, etc.) extend or manipulate the dataset in interesting and/or unexpected ways.<br>_(0.5 points)_ | The raw dataset was mostly used directly, with perhaps some simple transforms (e.g., sorting, filtering) to facilitate communicating the visualization's message.<br>_(0 points)_ | - |
 | **Marks, Encodings, and Visual Design**<br>_(per visualization)_ | Visual design persuasively argues the visualization's stance (for/against the proposition), and facilitates effortless reading even when used deceptively. Any deceptive visual design choices are very subtle—even seasoned readers can only identify them on close study.<br>_(2.5 points)_ | Visual design is largely persuasive, but some issues hinder comprehension. Any deceptive visual design cannot be detected at first glance, but are identifiable on a second look.<br>_(2 points)_| Visual design is distracting or makes the visualization unnecessarily or unintentionally difficult to read. Any deceptive design can be immediately identified.<br>_(1.5 points)_ |
 | **Titles, Labels, and Annotations**<br>_(per visualization)_ | Titles, labels, and annotations persuasively describe, contextualize or frame the depicted data. Any slants that may be considered deceptive are imperceptible to the reader.<br>_(2 points)_ | Necessary titles and labels are present, but annotations could be better used to persuasively narrate the visualization's stance. Any deceptively slanted content is more easily detectable by readers.<br>_(1.5 points)_ | Several titles or labels are missing, or do not provide human-understandable information. Annotations are rarely used. Strong, charged, or colorful language makes it easy to detect deceptive content.<br>_(1 point)_ |
-| **Design Rationale and Reflection** | Well crafted write-up provides reasoned justification for all design choices with a thoughtful reflection on their ethical implications.<br>_(3.5 points)_ | Most design decisions are described, but rationale or ethical reflections could be explained at a greater level of detail.<br>_(3 points)_ | Missing or incomplete. Several design choices are left unexplained, and/or ethical reflection is relatively shallow.<br>_(2 points)_ |
+| **Design Rationale and Reflection** | Well crafted write-up provides reasoned justification for all design choices with a thoughtful reflection on their ethical implications.<br>_(4 points)_ | Most design decisions are described, but rationale or ethical reflections could be explained at a greater level of detail.<br>_(3 points)_ | Missing or incomplete. Several design choices are left unexplained, and/or ethical reflection is relatively shallow.<br>_(2 points)_ |
 | **Creativity and Originality** | You exceeded the parameters of the assignment, with creative, original or a particularly engaging designs.<br>_(up to +1 bonus point)_ | You met all the parameters of the assignment.<br>_(0 points)_ | – |
 
 ## Datasets
@@ -172,13 +184,12 @@ Please select one dataset from the options below. **You must use the same datase
 
 - [Civilian Complaints Against New York City Police Officers](https://www.propublica.org/datastore/dataset/civilian-complaints-against-new-york-city-police-officers). This is a dataset compiled by ProPublica, an independent, nonprofit investigative journalism newsroom. It contains more than 12,000 civilian complaints filed against the NYPD, with demographic information about the complainant and officer, the category of the alleged misconduct, and the result of the complaint.
 
-- [Abortion Data by U.S. State from the Guttmacher Institute](../../resources/data/GuttmacherInstituteAbortionDataByState.xlsx) The Guttmacher Institute is a research and policy organization committed to advancing sexual and reproductive health and rights. They maintain a variety of global data related to global reproductive rights. This data set contains data about abortion rates, abortion providers, and abortion seekers, aggregated to the state level.
+- [Abortion Data by U.S. State from the Guttmacher Institute](../resources/data/GuttmacherInstituteAbortionDataByState.xlsx) The Guttmacher Institute is a research and policy organization committed to advancing sexual and reproductive health and rights. They maintain a variety of global data related to global reproductive rights. This data set contains data about abortion rates, abortion providers, and abortion seekers, aggregated to the state level.
 
 ## Resources
 
 The following research papers help enumerate the ways different choices in data transformation, visual design, and textual content can impact the persuasiveness of visualizations and readers' perceived trust in them:
 
-- [Visualization Rhetoric: Framing Effects in Narrative Visualization](http://www-personal.umich.edu/~jhullman/vis_rhetoric.pdf), by Jessica Hullman and Nick Diakopolous. _IEEE InfoVis 2011._
 - [The Work that Visualization Conventions Do](https://eprints.whiterose.ac.uk/93521/3/repository20.pdf), by Helen Kennedy et al. _Information, Communication & Society._
 - [Frames and Slants in Titles of Visualizations on Controversial Topics](https://www.zcliu.org/vistitles/CHI18-VisTitles.pdf), by Ha-Kyung Kong et al. _ACM CHI 2018_
 - [From Invisible to Visible: Impacts of Metadata in Communicative Data Visualization](https://cyxiong.com/wp-content/uploads/2022/12/impactsMetadata.pdf), by Alyxander Burns et al. _IEEE TVCG 2022_
