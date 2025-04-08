@@ -1,171 +1,186 @@
 ---
 layout: assignment
-title: 'Project 2: Deceptive Visualization'
+title: 'Project 2: Persuasive/Deceptive Visualization'
 parent: '📝 Projects'
 released: false
 nav_order: 2
+checkpoint_due: 'Tue Apr 22, 11:59pm PT'
+due: 'Tue Apr 29, 11:59pm PT'
 ---
 
-# Project 2: Deceptive Visualization
+# Project 2: Persuasive or Deceptive Visualization?
 
-Data visualizations are becoming a key medium for the public to understand news and information. It's crucial to recognize how the design of a visualization can affect what people understand and remember from the data. In this task, you need to pick a dataset you find interesting and create two static visualizations using the same dataset. The first should be a **truthful** representation of the data. The second should be a **deceptive** visualization, designed to deceive the viewer. However, you should avoid clear distortions or leaving out information for this deceptive visualization.
+{: .no_toc}
 
-## Assignment
+{: .summary}
 
-Your objective is to create two static (single image) visualizations of a selected dataset. The first visualization should be designed to clearly and sincerely convey insights from the data. In contrast, the second should be crafted to intentionally mislead the viewer, causing them to make incorrect inferences. Additionally, you are required to write a brief explanation, limited to four paragraphs, outlining your design strategy for both visualizations.
+> In this assignment, you will grapple with how to design visualizations
+> ethically by crafting two different, opposing perspectives to the same
+> question posed about a single dataset. Once this assignment is complete, we
+> will (anonymously) peer review each other's visualizations.
+>
+> **Checkpoint Due: {{page.checkpoint_due}}**
+>
+> **Complete Project Due: {{page.due}}**
 
-In this task, an earnest visualization is defined as one that:
+<details open markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+- TOC
+{:toc}
+</details>
 
-- Is easily understandable and can be interpreted by the general public.
-- Uses visual encodings that are suitable and effective for the desired purpose.
-- Clearly and openly describes any transformations made to the data.
-- Transparently communicates the source of the data and any possible biases involved.
+---
 
-Conversely, a deceptive visualization typically displays these characteristics:
+It is tempting to think of data and visualization as a neutral actor, with a
+single "correct" set of design choices that "truthfully" _report_ the data.
+However, outside of egregious errors (e.g., when dates are [sorted
+incorrectly](https://www.atlantamagazine.com/great-reads/behind-georgias-covid-19-dashboard-disaster/)
+or the y-axis is not [scaled
+uniformly](https://twitter.com/whitehouse/status/1486709480351952901)), we see
+that "ground truth" in data is much more contextual and situated. Design choices
+we make give visualization a rhetorical power that influences what a reader
+concludes and remembers about the data, and blurs the line between persuasion
+and deception. For instance, contrast Simon Scarr's [Iraq's Bloody
+Toll](http://www.simonscarr.com/iraqs-bloody-toll) with a [more conventional
+representation](https://www.infoworld.com/article/3088166/why-how-to-lie-with-statistics-did-us-a-disservice.html)
+of the same data, and consider why Scarr's visualization won an award while
+another visualization that made similar design choices—[Gun deaths in
+Florida](https://www.businessinsider.com/gun-deaths-in-florida-increased-with-stand-your-ground-2014-2)
+by Christine Chan—was widely considered to be misleading.
 
-- The graphical depiction is deliberately unsuitable or deceptive.
-- Headings are crafted to influence the viewer's understanding in a biased manner.
-- There is intentional manipulation or selective filtering of data to deceive.
-- It's not transparent about possible bias present in the data.
+## Your Tasks
 
-For the earnest visualization, your goal is to be as clear and transparent as possible to help viewers answer your intended question. For the deceptive visualization, your goal is to trick the viewer (including the course staff!) into believing that the visualization is legitimate and earnest. **It should not be immediately obvious which visualization is trying to be deceptive.** Subtle ineffective choices in the design should require close and careful reading to be identified.
+1. Select one dataset from [the list provided below](#datasets). These datasets
+   are intentionally chosen to cover politically charged topics, as ethical
+   analysis and visualization is especially critical in such situations.
 
-For the deceptive visualization, misleading strategies are fine but outright lying is not. For example, sketchy, unreliable or untrustworthy input datasets are discouraged, but misleading omission, filtering, or transformation of trustworthy data records is fine. **Deliberate lies in the title, axes, labels, or annotations is discouraged**, but technically true/relevant but otherwise misleading text in the visualization is fine.
+2. Spend time exploring and familiarizing yourself with the dataset (e.g.,
+   through exploratory visual analysis). Once you feel like you've developed an
+   understanding of the data, **devise a proposition** about it: a statement
+   that asserts a judgement or opinion about the trends you might have
+   uncovered. An example of a proposition might be _"Gun deaths spiked after
+   Florida enacted its 'Stand Your Ground' law."_
 
+   When devising your proposition, please keep in mind our goal of fostering a
+   respectful and inclusive environment. In particular, while you are welcome to
+   formulate controversial propositions, **propositions that demean or
+   dehumanize people** (e.g., based on their race, gender expression, sexual
+   orientation, disability, or other aspects of their identity) **are not
+   acceptable**. If you are unsure whether your proposition is suitable or not,
+   please make a private forum post or ask a course staff during office hours.
 
-It’s important to remember that *deceptive* does not mean *bad*. A deceptive visualization should still be well-designed, engaging, and polished—it just leads the viewer to a misleading or biased conclusion through subtle visual choices. Poorly executed visuals, like a randomly stretched y-axis or inconsistent labeling, may be misleading, but they’re also just ineffective and easily spotted as bad design. The best deceptive visualizations are those that feel persuasive and credible at first glance, compelling viewers toward a dubious or biased interpretation while maintaining the appearance of legitimacy. Aim for sophistication, not sloppiness.
+3. **Design two visualizations** to persuade a reader about each side of the
+   proposition (i.e., one visualization should persuade the reader that the
+   proposition is true while the other should persuade the reader that the
+   proposition is _not_ true).
 
-Try to go for more subtle deceptions in order to confuse your viewers. As a brief example of subtle vs obvious deception, consider the images below:
+   We encourage you to use whatever design choices you find produces **the most
+   persuasive** visualization _for each side_ of your proposition. You are
+   welcome to not only use techniques we would usually consider to be _earnest_
+   (e.g., effective and expressive encodings, transparently communicating data
+   transformations, citing sources, etc.) but also those we might sometimes
+   consider to be _deceptive_ (e.g., violating conventions, skewed or slanted
+   titles and labels, truncated scales and axes, filtering outliers, etc.). In
+   doing so, you are likely to discover that there is not always a clear
+   distinction between the two categories.
 
-<figure markdown="1">
+   Note, however, that this goal of persuasion also means that, **if you use any
+   deception techniques, they should not be immediately obvious** (including to
+   the course staff!) as they might otherwise backfire and dissuade your reader.
 
-![](project2_images/obvious.png)
+   As with prior assignments, you are free to use any visualization tools, and
+   should carefully consider data transformation, visual encoding, textual
+   content (i.e., titles, axes, labels), and annotations. Moreover, in this
+   assignment, we construe "visualization" broadly (i.e., a single visualization
+   can include several concatenated or inset charts).
 
-<figcaption>
-An obvious deception: The "wrong"/deceptive image makes use of a truncated axis to exaggerate the result of the data in comparison to the "right"/earnest image.
-</figcaption>
+4. **Bullet point your design decisions and rationale.** For each visualization,
+   enumerate 3–5 design decisions you think are central to making the
+   visualization persuasive (note, a "design" decision can also refer to
+   decisions you made about data transformation or textual content). For each
+   decision:
 
-</figure>
+   1. Score, on a diverging scale from `-2` to `2`, how deceptive or earnest
+      your decision is (where `-2` is fully deceptive, `0` is neutral, and `2`
+      is fully earnest). Only use a score of `0` if you are really unable to
+      decide one way or another. You may use `0.5` steps as needed.
 
-<figure markdown="1">
+   2. Write a couple of sentences documenting your decision, with corresponding
+      rationale/justification. How does this decision help make your
+      visualization persuasive? What worked well, and what didn't? What other
+      alternatives did you consider, and why did you settle on this one?
 
-![](project2_images/subtle.png)
-
-<figcaption>
-A subtle deception: The tweet author suggests that since there are more vaccinated cases, the vaccinated are ‘super-spreaders.’ This interpretation, however, fails to account for the high proportion of vaccinated in the general population—likely as high as 95% at the time of data collection.
-</figcaption>
-
-</figure>
-
-For both visualization designs, start by choosing a question you would like to answer. Design your visualization to answer that question either correctly (for the earnest visualization) or incorrectly (for the deceptive visualization). You may choose to address a different question with each visualization. Be sure to document the question as part of the visualization design (e.g., title, subtitle, or caption) and in your assignment write-up.
-
-Your write-up should contain the following information:
-
-- The specific question(s) each visualization aims to answer.
-- A description of your design rationale and important considerations for each visualization.
-- A clear mention of which of the two visualizations is deceptive and which one is earnest.
-
-## Data Sources
-
-For this assignment, we’ve provided four datasets / dataset collections for you to use. **You must use the same dataset for both visualizations**, but you may transform the data differently, use additional data variables, or choose to address a different question for each design.
-
-{: .note }
-
-You **must** pick a dataset from the list below. No other datasets will be deemed acceptable.
-
-All datasets contain time series data relevant to health, but from different cohort (and species), different time scales, and different modalities. Time series analyses in themselves are not critical to exploring the data, but allow for forecasting and windowing of classifier data alongside unsupervised and statistical approaches.
-
-### BIG IDEAs Lab Glycemic Variability and Wearable Device Data v1.0.0
-
-Prof. Jessilynn Dunn at Duke released glucose measurements and wrist-worn multimodal wearable sensor data from high-normoglycemic participants. 2 weeks each to identify spikes and/or hypoglycemic events.
-
-Address: [BIG IDEAs Lab Glycemic Variability and Wearable Device Data][link1]
-
-Generated by the Empatica 4 wearable device paired with a DexCom 6 continuous glucose monitor, 16 people aged 35-65 are represented by 8-10 days each of continuous, multimodal wearable data. This is paired with meal logs and medical histories about metabolic and cardiac conditions. Data is downloadable as .csv files.
-
-[link1]: https://physionet.org/content/big-ideas-glycemic-wearable/1.1.2/
-
-### Physionet
-
-Physionet, an online repository of physiological data sets from many sources, has an Open Datasets section. These contain abstracts and descriptions per project.
-
-Address: [PhysioNet Databases][link2]
-
-The largest of the data sources on this list, provided for those seeking more open exploration. This Database is comprised of dozens of data sets. Open Access data sets can be reached by the “Open databases” link at the top left of the landing page.
-
-[link2]: https://physionet.org/about/database/
-
-### Mouse data
-
-Mouse data covering 2 weeks of minute level activity and core body temperature in males and females. Light is on a 12-on : 12-off controlled square wave so that daily rhythms are aligned. Every 4 days females display “estrus” which is associated with ovulation, and a longer/hotter active period.
-
-Address: [Mouse Data.xlsx][link3] (Note: Use UCSD email ID to access the link.)
-
-Columns are unique IDs (so, e.g., F1 is the same in all tabs). Rows are minutes, in order, across 14 days (there are 1440 minutes in a day). Lights turn on and off every 12 h (mice are nocturnal, so most active when it is dark). Lights Off is t=0, then every 720 it switches. Estrus (the day of ovulation) for all females starts day 2, repeating every 4 days. Activity and body temperature for each individual in each minute are recorded. Data is available as a .xlsx file.
-
-[link3]: https://docs.google.com/spreadsheets/d/1RXL_oUa1IYxnqfCW-9duz3M83wPlki4y/edit?gid=1872476945#gid=1872476945
-
-### Korean Surgery Dataset (Demographics, Clinical, and Waveform of physiology from surgeries): “VitalDB”
-
-Address: [VitalDB][link4]
-
-Korean hospital data (inter-operative, meaning during the operation) from 6,388 individual surgeries. High frequency biosensor data captures biosigns throughout the procedures, and these are paired with outcomes and related medical records. Data are downloadable zipped .csv files.
-
-[link4]: https://vitaldb.net/dataset/
-
-## Grading
-
-The assignment score is out of a maximum of 10 points. We will determine scores by judging the soundness of your visualization designs, the duplicity of your deceptive visualization, and the quality of the write-up. Here are examples of aspects that may lead to point deductions:
-
-- Obvious identification of the earnest and deceptive visualizations.
-- Ineffective visual encodings for your stated goal.
-- Missing indication of the main analysis question.
-- Missing or incomplete design rationale in write-up.
-
-We will reward entries that go above and beyond the assignment requirements to produce effective (and deceptive) graphics. Examples may include outstanding visual design, effective annotations and other narrative devices, exceptional creativity, or deceptive designs that require the write-up in order to properly identify the misleading design components.
-
-### Rubric
-
-The assignment is out of 10 points possible – 4 points for each visualization, and 2 points for the writeup. Submissions that squarely meet the project requirements (Satisfactory column) will get 8/10 points. Note that there are up to 2 possible bonus points available on this assignment.
-
-| Component                                               | Excellent                                                                                                                                                                                                                                                 | Satisfactory                                                                                                                                                                                                          | Poor                                                                                                                                                                                                               |
-| ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Marks, Encodings, and Visual Design (per visualization) | Visual design persuasively argues the visualization’s stance, and facilitates effortless reading even when used deceptively. Any deceptive visual design choices are very subtle—even seasoned readers can only identify them on close study. (+2 points) | Visual design is largely persuasive, but some issues hinder comprehension. Any deceptive visual design cannot be detected at first glance, but are identifiable on a second look. (+1.5 points)                       | Visual design is distracting or makes the visualization unnecessarily or unintentionally difficult to read. Any deceptive design can be immediately identified. (+1 point)                                         |
-| Titles, Labels, and Annotations (per visualization)     | Titles, labels, and annotations persuasively describe, contextualize or frame the depicted data. Any slants that may be considered deceptive are imperceptible to the reader. (+2 points)                                                                 | Necessary titles and labels are present, but annotations could be better used to persuasively narrate the visualization’s stance. Any deceptively slanted content is more easily detectable by readers. (+1.5 points) | Several titles or labels are missing, or do not provide human-understandable information. Annotations are rarely used. Strong, charged, or colorful language makes it easy to detect deceptive content. (+1 point) |
-| Data Transformations (per visualization)                | More advanced transformations (e.g., groupings, binnings, calculated fields, etc.) extend or manipulate the dataset in interesting and/or unexpected ways. (+1 bonus point)                                                                               | At least 1 transformation was implemented on the dataset to facilitate communicating the visualization’s message. (+.5 bonus point)                                          |  The raw dataset was used directly in the visualization. (0 points)                                          |                                                                                                                                                                                                                    |
-| Writeup                                                 |                                                                                                                                                                                                                                                           | Well-crafted write-up provides reasoned justification for all design choices with a thoughtful reflection on their ethical implications. (+2 points)                                                                  | Most design decisions are described, but rationale or ethical reflections could be explained at a greater level of detail. (+1 point)                                                                              |
-| Creativity and Originality                              | The submission exceeds the assignment requirements, with original insights or particularly engaging visualizations. (+1 bonus point)                                                                                                                      | The submission meets the assignment requirements. (+0 points)                                                                                                                                                         |                                                                                                                                                                                                                    |
+5. After documenting these decisions, write a 2–3 paragraph **final reflection**
+   on your overall design process across both visualizations. What was
+   straightforward or difficult? What surprised you? How do you now define
+   "ethical analysis and visualization"? What bounds (if any) can you draw to
+   distinguish "acceptable" persuasive choices vs. "misleading" ones (and if
+   none, why not)?
 
 ## Submission Details
 
-This is an individual assignment. **You may not work in groups**. There is a checkpoint submission due on **Tue 04/22, by 11:59pm**. Your
-completed assignment is due on **Tue 04/29, by 11:59pm**.
+Your final submission should take the form of an **HTML web page** that states
+your proposition, includes both visualizations and their corresponding design
+decisions and rationale, as well as your final reflection write up. To help you
+put this page together, we're providing a <a href="project2_report.html"
+download>basic HTML template</a> for you to fill in. You will need to edit the
+HTML page to add your captions and correctly link your images (for simplicity,
+we recommend exporting image files to the same local directory as your HTML
+file).
 
-### Checkpoint Submission
+Please **deploy your HTML report to a publicly accessible URL**. We recommend
+GitHub Pages (as described in [Lab 1, Part
+2](../../labs/lab01/#part-2-creating-our-own-website-from-scratch-and-publishing-it-on-the-web)).
+Your Project 2 submission can be part of the portfolio website that you've made
+for the labs (e.g., a subdirectory). Once deployed, please **double check** that
+your web page is appearing and rendering correctly at the publicly-accessible
+URL (e.g. that there are no broken images or links).
 
-You must submit your assignment using Gradescope. Please upload a single PDF with the following:
+## Grading
 
-1. 2 deceptive visualizations
-2. In a **separate** page, 2 earnest visualizations
-3. In a **separate** page, a writeup about which deceptive visualization you are leaning towards, and the deception techniques used.
+The assignment score is out of a maximum of 14 points: 5 points for each
+visualization, and 4 points for your write-up. Submissions that squarely meet
+the requirements (i.e., the "Satisfactory" column in the rubric below) will
+receive a score of 10. We will use the following rubric to grade your
+assignment. _Note:_ unlike Project 1, most rubric cells do not map
+exactly to specific point scores because we anticipate a diversity in how you
+choose to apply earnest and deceptive techniques. As a result, **the staff will
+rely heavily on your write-up for grading this assignment** (in particular, to
+identify _which_ techniques you used and whether you consider them an earnest or
+deceptive application). _Note also:_ there is up to +1 bonus point available
+for especially creative or original submissions.
 
-### Final Submission
+{:#rubric.rubric}
+| Component | Excellent | Satisfactory | Poor |
+| --------- | --------- | -------------| -----|
+| **Data Transformations**<br>_(per visualization)_ | More advanced transformations (e.g., groupings, binnings, calculated fields, etc.) extend or manipulate the dataset in interesting and/or unexpected ways.<br>_(0.5 points)_ | The raw dataset was mostly used directly, with perhaps some simple transforms (e.g., sorting, filtering) to facilitate communicating the visualization's message.<br>_(0 points)_ | - |
+| **Marks, Encodings, and Visual Design**<br>_(per visualization)_ | Visual design persuasively argues the visualization's stance (for/against the proposition), and facilitates effortless reading even when used deceptively. Any deceptive visual design choices are very subtle—even seasoned readers can only identify them on close study.<br>_(2.5 points)_ | Visual design is largely persuasive, but some issues hinder comprehension. Any deceptive visual design cannot be detected at first glance, but are identifiable on a second look.<br>_(2 points)_| Visual design is distracting or makes the visualization unnecessarily or unintentionally difficult to read. Any deceptive design can be immediately identified.<br>_(1.5 points)_ |
+| **Titles, Labels, and Annotations**<br>_(per visualization)_ | Titles, labels, and annotations persuasively describe, contextualize or frame the depicted data. Any slants that may be considered deceptive are imperceptible to the reader.<br>_(2 points)_ | Necessary titles and labels are present, but annotations could be better used to persuasively narrate the visualization's stance. Any deceptively slanted content is more easily detectable by readers.<br>_(1.5 points)_ | Several titles or labels are missing, or do not provide human-understandable information. Annotations are rarely used. Strong, charged, or colorful language makes it easy to detect deceptive content.<br>_(1 point)_ |
+| **Design Rationale and Reflection** | Well crafted write-up provides reasoned justification for all design choices with a thoughtful reflection on their ethical implications.<br>_(3.5 points)_ | Most design decisions are described, but rationale or ethical reflections could be explained at a greater level of detail.<br>_(3 points)_ | Missing or incomplete. Several design choices are left unexplained, and/or ethical reflection is relatively shallow.<br>_(2 points)_ |
+| **Creativity and Originality** | You exceeded the parameters of the assignment, with creative, original or a particularly engaging designs.<br>_(up to +1 bonus point)_ | You met all the parameters of the assignment.<br>_(0 points)_ | – |
 
-You must submit your assignment using Gradescope. Please upload a PDF containing the following:
+## Datasets
 
-1. A single image of your earnest visualization
-2. In a **separate** page, a single image of your deceptive visualization
-3. In a **separate** page, a writeup conforming to the aforementioned rules.
+Please select one dataset from the options below. **You must use the same dataset for both visualizations**, but you are free to transform the data differently for each design.
 
-{: .note }
+- [Human Development Indicators, 1960–2020](https://github.com/light-and-salt/World-Bank-Data-by-Indicators). The World Bank has tracked global human development by indicators such as economy, education, environment, gender equality, health, and science and technology since 1960. The linked repository contains indicators that have been cleaned and formatted to simplify visual analysis and visualization design. However, you're also welcome to browse and use the original data [by indicator](https://data.worldbank.org/indicator) or [by country](https://data.worldbank.org/country). Click on a category to download the CSV file on the right-hand sidebar.
 
-Below are the submission guidelines, please read carefully.
+- [Climate Change Indicators](https://climatedata.imf.org/). Similar to the previous dataset, the International Monetary Fund (IMF) tracks a number of metrics related to climate change including greenhouse gas emissions, strategies for mitigating or adapting to the impacts of climate change, transitioning to a low-carbon economy, climate finance, and the impact on weather. The data is structured as "crosstabs" (also known as "wide" data) where every time period (e.g., quarter or year) is given its own column. To facilitate visualization and visual analysis, you might wish to [pivot the data](https://help.tableau.com/current/pro/desktop/en-us/pivot.htm) into a "long" format.
 
-1. Name the file `project2.pdf`. There should be **NO IDENTIFIERS** in the file name (PID, Student name, etc). This is essential for peer grading. Failure to comply will lead to point deductions.
-2. Do **not** label the images as "earnest" or "deceptive". **Remember, the visualization itself should not give away which design is earnest and which is deceptive**. Failure to comply may result in point deductions as it hinders the peer review process!
-3. Ensure that the writeup is in a separate page, as the write-up contains information about which image is deceptive. Failure to have the write-up in a separate page may result in point deductions.
-4. Ensure the earnest visualization and the deceptive visualization are also in **seperate** pages.
-5. Do not forget to clearly mention which visualization in deceptive **in the write-up**.
-6. Be sure your image is sized for a reasonable viewing experience! Viewers should not have to zoom in order to effectively view your submission.
+- [Civilian Complaints Against New York City Police Officers](https://www.propublica.org/datastore/dataset/civilian-complaints-against-new-york-city-police-officers). This is a dataset compiled by ProPublica, an independent, nonprofit investigative journalism newsroom. It contains more than 12,000 civilian complaints filed against the NYPD, with demographic information about the complainant and officer, the category of the alleged misconduct, and the result of the complaint.
 
-Do not worry about resubmissions, feel free to resubmit as needed prior to the deadline (if you are using late days to do a resubmission, please notify the course staff).
+- [Abortion Data by U.S. State from the Guttmacher Institute](../../resources/data/GuttmacherInstituteAbortionDataByState.xlsx) The Guttmacher Institute is a research and policy organization committed to advancing sexual and reproductive health and rights. They maintain a variety of global data related to global reproductive rights. This data set contains data about abortion rates, abortion providers, and abortion seekers, aggregated to the state level.
+
+## Resources
+
+The following research papers help enumerate the ways different choices in data transformation, visual design, and textual content can impact the persuasiveness of visualizations and readers' perceived trust in them:
+
+- [Visualization Rhetoric: Framing Effects in Narrative Visualization](http://www-personal.umich.edu/~jhullman/vis_rhetoric.pdf), by Jessica Hullman and Nick Diakopolous. _IEEE InfoVis 2011._
+- [The Work that Visualization Conventions Do](https://eprints.whiterose.ac.uk/93521/3/repository20.pdf), by Helen Kennedy et al. _Information, Communication & Society._
+- [Frames and Slants in Titles of Visualizations on Controversial Topics](https://www.zcliu.org/vistitles/CHI18-VisTitles.pdf), by Ha-Kyung Kong et al. _ACM CHI 2018_
+- [From Invisible to Visible: Impacts of Metadata in Communicative Data Visualization](https://cyxiong.com/wp-content/uploads/2022/12/impactsMetadata.pdf), by Alyxander Burns et al. _IEEE TVCG 2022_
+- [Affective Learning Objectives for Communicative Visualizations](https://arxiv.org/abs/2208.04078), by Elsie Lee-Robbins and Eytan Adar. _IEEE TVCG 2023_
+- [Affective Visualization Design: Leveraging the Emotional Impact of Data](https://arxiv.org/abs/2308.02831) by Xingyu Lan, Yanqiu Wu, and Nan Cao. _IEEE TVCG 2024_
