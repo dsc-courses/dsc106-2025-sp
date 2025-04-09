@@ -122,8 +122,9 @@ by Christine Chan—was widely considered to be misleading.
 
 ## Submission Details
 
-This is an individual assignment. **You may not work in groups**. There is a checkpoint submission due on **Tue 04/22, by 11:59pm**. Your
-completed assignment is due on **Tue 04/29, by 11:59pm**.
+This is an individual assignment. **You may not work in groups**. There is a
+checkpoint submission due on **Tue 04/22, by 11:59pm**. Your completed
+assignment is due on **Tue 04/29, by 11:59pm**.
 
 ### Checkpoint Submission
 
@@ -131,7 +132,9 @@ You must submit your assignment using Gradescope. Please upload a single PDF wit
 
 1. 2 persuasive visualizations for one side of a proposition
 2. In a **separate** page, 2 persuasive visualizations for the other side of a proposition
-3. In a **separate** page, a writeup about what proposition you are trying persuade on both sides, which set of visualizations you are leaning towards, and the deceptive techniques used.
+3. In a **separate** page, a writeup about what proposition you are trying
+   persuade on both sides, which set of visualizations you are leaning towards,
+   and the deceptive techniques used.
 
 ### Final Submission
 
@@ -145,11 +148,11 @@ we recommend exporting image files to the same local directory as your HTML
 file).
 
 Please **deploy your HTML report to a publicly accessible URL**. We recommend
-GitHub Pages (as described in lab 1).
-Your Project 2 submission can be part of the portfolio website that you've made
-for the labs (e.g., a subdirectory). Once deployed, please **double check** that
-your web page is appearing and rendering correctly at the publicly-accessible
-URL (e.g. that there are no broken images or links).
+GitHub Pages (as described in lab 1). Your Project 2 submission can be part of
+the portfolio website that you've made for the labs (e.g., a subdirectory). Once
+deployed, please **double check** that your web page is appearing and rendering
+correctly at the publicly-accessible URL (e.g. that there are no broken images
+or links).
 
 ## Grading
 
