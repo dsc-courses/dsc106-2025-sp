@@ -130,11 +130,11 @@ assignment is due on **Tue 04/29, by 11:59pm**.
 
 You must submit your assignment using Gradescope. Please upload a single PDF with the following:
 
-1. 2 persuasive visualizations for one side of a proposition
-2. In a **separate** page, 2 persuasive visualizations for the other side of a proposition
-3. In a **separate** page, a writeup about what proposition you are trying
+1. One the first page, 2 persuasive visualizations for one side of a proposition.
+2. In a **separate** page, 2 persuasive visualizations for the other side of a proposition.
+3. In a **separate** page, a writeup that states what proposition you are trying
    persuade on both sides, which set of visualizations you are leaning towards,
-   and the deceptive techniques used.
+   and the deceptive techniques used. Bullet points are fine.
 
 ### Final Submission
 
