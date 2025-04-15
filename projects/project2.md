@@ -2,7 +2,7 @@
 layout: assignment
 title: 'Project 2: Persuasive/Deceptive Visualization'
 parent: '📝 Projects'
-released: false
+released: true
 nav_order: 2
 checkpoint_due: 'Tue Apr 22, 11:59pm PT'
 due: 'Tue Apr 29, 11:59pm PT'
