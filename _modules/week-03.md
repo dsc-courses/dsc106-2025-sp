@@ -7,11 +7,13 @@ days:
       - name: DISC 2
         type: disc
         title: Disc 2
+        url: labs/lab03/slides
   - date: '2025-04-15'
     events:
       - name: PROJ 1
         type: proj
         title: 'Project 1: Expository Visualization'
+        url: projects/project1
   - date: '2025-04-16'
     events:
       - name: LEC 4
@@ -26,4 +28,5 @@ days:
       - name: LAB 3
         type: lab
         title: Lab 3
+        url: labs/lab03
 ---
