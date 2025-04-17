@@ -3,7 +3,7 @@ layout: assignment
 title: 'Lab 5: Visualizing categorical data with D3'
 lab: 5
 parent: '👩‍🔬 Programming Labs'
-released: false
+released: true
 ---
 
 # Lab 5: Visualizing categorical data with D3

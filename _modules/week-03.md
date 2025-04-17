@@ -25,6 +25,7 @@ days:
       - name: LEC 5
         type: lecture
         title: Color
+        url: lectures/05-DSC106-Color.pdf
       - name: LAB 3
         type: lab
         title: Lab 3
