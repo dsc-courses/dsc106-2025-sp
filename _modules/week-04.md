@@ -22,6 +22,7 @@ days:
   - name: LAB 4
     type: lab
     title: Lab 4
+    url: labs/lab04
   - name: LEC 7
     type: lecture
     title: D3.js Part 1
