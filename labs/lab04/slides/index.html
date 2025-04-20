@@ -155,6 +155,414 @@
 	<h1 class="md">HTML: `&lt;h1>` `&lt;ul>` `&lt;p>`</h1>
 </article> -->
 
+<article class="slide" id="dogfood">
+	<h1 class="balance-lines">These labs dogfood</h1>
+
+	<p>All slides and lab materials using open web technologies.</p>
+	<ul>
+		<li>Slides posted right after lab</li>
+		<li>Explore both content and implementation!</li>
+	</ul>
+	<details class="notes">
+		We are using inspire.js for these slides!
+	</details>
+</article>
+
+<section id="web">
+	<header class="slide">
+		<h1>How does the Web work?</h1>
+	</header>
+
+	<article class="slide">
+		<header>
+			<h1>The URL</h1>
+			<p>The Web’s primary innovation</p>
+		</header>
+		<code class="syntax-breakdown language-url target-width-80" data-tooltip="bottom" style="--line-length: 3em">
+			<span title="Protocol">https:</span>//
+			<span title="Host">dsc106.com</span>
+			<span title="Path to resource">/labs/1/hello.html</span>
+		</code>
+		<details class="notes">
+			What many people don’t realize is that the Web was primarily a usability innovation, and the URL was the centerpiece of that.
+			Before the Web, we still had computers connected to the internet, that we could access remotely.
+			However, accessing resources involved several steps: connecting to the remote computer, navigating to the directory where the resource was, and then downloading it.
+			The URL encoded all information to retrieve a resource into a single string that could be copied, pasted, and even clicked.
+
+			Let’s take a look at an example URL to a file on our course website.
+			It starts with the protocol, which is the language that the client and server will use to communicate.
+			This is usually `https` nowadays, which is a secure version of the `http` protocol.
+
+			Then, we have the host or authority, which is the computer that hosts the resource we want to access.
+			Finally, we have the path to the resource, which is the location of the resource on the host.
+		</details>
+	</article>
+
+	<article class="slide" id="relative-paths">
+		<h1>Understanding Relative Paths</h1>
+	
+		<form>
+			<label>
+				Current File:
+				<input type="text" name="current" value="/labs/lab04/slides/index.html" readonly>
+			</label>
+	
+			<label>
+				🔹 Path: <code>./hello.html</code><br>
+				<strong>Resolves to:</strong>
+				<input type="text" name="dot-path" value="/labs/lab04/slides/hello.html" readonly>
+			</label>
+	
+			<label>
+				🔹 Path: <code>../hello.html</code><br>
+				<strong>Resolves to:</strong>
+				<input type="text" name="dotdot-path" value="/labs/lab04/hello.html" readonly>
+			</label>
+	
+			<label>
+				🔹 Path: <code>../../hello.html</code><br>
+				<strong>Resolves to:</strong>
+				<input type="text" name="up-two-path" value="/labs/hello.html" readonly>
+			</label>
+	
+			<label>
+				🔹 Path: <code>/hello.html</code><br>
+				<strong>Resolves to:</strong>
+				<input type="text" name="root-path" value="https://dsc106.com/hello.html" readonly>
+			</label>
+		</form>
+	
+		<details class="notes">
+			This slide shows how different relative path syntaxes work:
+			- `./` → current directory
+			- `../` → up one directory
+			- `/` → root of the website
+	
+			These are interpreted relative to the **location of the current file**, not the server.
+		</details>
+	</article>
+	
+
+	<article class="slide dont-resize" id="local-urls" style="--line-length: 3em; --tooltip-orientation: vertical;" data-type="Activity">
+		<header>
+			<h1>Local URLs <span class="chip">Part 1</span></h1>
+			<p>The <code>file:</code> protocol</p>
+		</header>
+		<code class="syntax-breakdown language-url target-width-80" style="--char-aspect-ratio: 2.215">
+			<span title="Protocol">file:</span>//
+			<span title="Path to resource from filesystem root">/Users/giorgianicolaou/Documents/dsc106/labs/1/hello.html</span>
+		</code>
+		<details class="notes">
+			Let’s look at a different example.
+
+			Download the file `hello.html` from the course website and double click it to get it to open in your browser.
+			You will probably see something similar to this.
+			This allows you to open files from your local filesystem and view them in a browser.
+			Note that there is no host (since `file:` protocol URLs always refer to your own computer)
+			and that the path starts from the root of your filesystem.
+			This means that opening a malicious website this way could potentially access any file on your computer,
+			which is why the `file:` protocol is very locked down today as it’s considered unsafe.
+
+			We will use the `file:` protocol for now,
+			but in future labs, we will learn how to run a _local server_ to view our files, which is a lot more flexible.
+
+			<!-- Instead of the `file:` protocol, when developing websites locally, we usually run one or more *local servers*, which we can access via the special domain name `localhost`.
+			To allow the same domain name to be used as the host for multiple websites, we have the concept of *ports*.
+			Every URL has a port, but it’s usually omitted when it’s the default port for the protocol (80 for HTTP and 443 for HTTPS).
+
+			Note that now the path starts from the root of the website, not the root of the filesystem.
+			This is because I’m running the local server at the root of the website.
+			This also means that files outside the root of the website are not accessible, which is a security feature. -->
+
+			Read more:
+			- ["What is a URL?" on MDN](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL)
+		</details>
+	</article>
+
+	<article class="slide">
+		<h1>The Web: Open by design</h1>
+
+		<video src="videos/devtools.mp4" class="max-size browser" data-url="https://en.wikipedia.org/wiki/Massachusetts_Institute_of_Technology" loop autoplay muted></video>
+
+		<details class="notes">
+			The Web was designed to be open: you can view the code of any website, and even modify it on the fly!
+
+			There are two browser features for this:
+			- _View Source_ shows you the HTML code of the page, as it was sent by the server.
+			To use this you can right click on the page and select _View Source_, or press `Ctrl+Shift+U` or `Cmd+Shift+U`.
+			- _Dev Tools_ allow you to inspect the current status of all code being used to create the page, and even modify it on the fly.
+			You can also view all HTTP requests and responses, and even simulate different network conditions.
+			Note that this requires reloading the page.
+
+			To open dev tools:
+			- On Mac: Press `Cmd+Shift+I`
+			- On Windows: `F12` or `Ctrl+Shift+I` on Windows
+			- From the menu bar: View → Developer → Developer Tools
+			- In many browsers you can also right click anywhere on the page and select _Inspect Element_
+
+			Note that this can be a double edged sword: while it can be very educational to look at how existing websites are built,
+			there are many, *many* websites that are not following best practices, or do things in a suboptimal way.
+			Often this is a result of their age, or the tradeoffs they had to make (e.g. performance or browser support over maintainability).
+		</details>
+	</article>
+</section>
+
+<section id="web-platform">
+	<article class="slide columns code-labels">
+		<h1>The Web Platform</h1>
+
+		<section class="language-html">
+			<h2>HTML</h2>
+			<p>Structure</p>
+			<pre><code>
+				&lt;h1>Hello world!&lt;/h1>
+				&lt;p>This is my
+					&lt;em>first&lt;/em> web page! 🤯
+				&lt;/p>
+			</code></pre>
+		</section>
+		<section class="language-css">
+			<h2>CSS</h2>
+			<p>Presentation</p>
+			<pre><code>
+				body {
+					font: 100%/1.5 system-ui;
+				}
+
+				h1 {
+					color: deeppink;
+					font-size: 300%;
+				}
+			</code></pre>
+		</section>
+		<section class="language-js">
+			<h2>JS</h2>
+			<p>Behavior</p>
+			<pre><code>
+				document.onclick = event => {
+					alert(`You clicked at
+					${event.x}, ${event.y}`);
+				};
+			</code></pre>
+		</section>
+		<details class="notes">
+			The collection of technologies that we use to create websites and web applications is called [The Web Platform](https://en.wikipedia.org/wiki/Web_platform#:~:text=The%20Web%20platform%20is%20a,Task%20Force%2C%20and%20Ecma%20International).
+			It consists of three main technologies: HTML, CSS, and JavaScript.
+
+			- HTML is used to specify the structure of the content, for example headings, paragraphs, lists, etc.
+			- CSS is used to specify how content *looks*, for example colors, fonts, spacing, layout, etc.
+			CSS will be the focus of the next lab, so we will learn a lot more about it then.
+			- Finally, JavaScript is used to specify how content *behaves*, for example what happens when you click a button, or when you scroll the page, as well as for automation.
+			- Ideally, these should be designed to be as independent as possible (separation of concerns).
+			[CSS Zen Garden](https://csszengarden.com/) was built to demonstrate this point by showing how the same HTML can be styled in completely different ways by different CSS files,
+			and significantly contributed to CSS’s adoption at the time.
+
+			You can view a web page with the HTML, CSS, and JS from this slide at [`labs/1/first.html`](../first.html)
+		</details>
+	</article>
+
+	<article class="plain slide">
+		<h1>Similarties & differences</h1>
+		<ul>
+			<li>HTML and CSS have simple <em>syntax</em> and large <em>vocabulary</em>, JS the opposite</li>
+			<li>Error handling: HTML and CSS are <em>forgiving</em>, JS is <em>strict</em></li>
+			<li>HTML and CSS are <a href="https://en.wikipedia.org/wiki/Declarative_programming">declarative</a>, JS is <a href="https://en.wikipedia.org/wiki/Imperative_programming">imperative</a></li>
+		</ul>
+	</article>
+
+	<article class="slide columns code-labels">
+		<h1>HTML at the root of it all</h1>
+		<section class="language-html">
+			<h2>CSS</h2>
+			<pre class="no-code-label"><code>
+				&lt;link rel="stylesheet" href="style.css" />
+			</code></pre>
+			<pre><code>
+				&lt;style>
+					h1 {
+						color: deeppink;
+					}
+				&lt;/style>
+			</code></pre>
+		</section>
+		<section class="language-html">
+			<h2>JS</h2>
+			<pre class="no-code-label"><code>
+				&lt;script type="module" src="hello.js">&lt;/script>
+			</code></pre>
+			<pre><code>
+				&lt;script type="module">
+					alert("Hello world!");
+				&lt;/script>
+			</code></pre>
+		</section>
+		<details class="notes">
+			- Every webpage consists of HTML. It is the HTML that includes all other langagues.
+			- CSS and JS can be either linked from separate files or embedded in the HTML file itself.
+			- Embedding them can be useful for prototyping, but it’s generally better to keep them separate so they can be used by multiple pages and cached separately.
+			- Note that it is possible to have `&lt;script>` elements without `type="module"`, but we recommend you always use `type="module"` as it enables a few modern JS features and prevents certain errors.
+		</details>
+	</article>
+
+	<article class="slide columns code-labels" id="subresources" data-steps="1">
+		<h1>Each language imports subresources</h1>
+
+		<section class="language-css">
+			<h2>CSS</h2>
+			<pre><code>
+				@import url("colors.css");
+			</code></pre>
+			<div class="arrow-down"></div>
+			<pre class="language-html"><code>
+				&lt;style>
+					@import url("style.css");
+				&lt;/style>
+			</code></pre>
+		</section>
+		<section class="language-js">
+			<h2>JS</h2>
+			<pre><code>
+				import * as util from "utils.js";
+			</code></pre>
+			<div class="arrow-down"></div>
+			<pre class="language-html"><code>
+				&lt;script type="module">
+					import "hello.js";
+				&lt;/script>
+			</code></pre>
+		</section>
+	</article>
+
+	<article class="slide columns code-labels" id="error-handling">
+		<h1>Error handling</h1>
+
+		<section class="language-html delayed">
+			<header>
+				<h2>HTML is <span class="chip good">forgiving</span></h2>
+				<p>It tries to <em>fix</em> your mistakes</p>
+			</header>
+			<pre><code>
+				&lt;em>Emphasized
+					&lt;strong>Both
+				&lt;/em> Important&lt;/strong>
+			</code></pre>
+			<div class="arrow-down"></div>
+			<pre><code>
+				&lt;em>Emphasized
+					&lt;strong>Both&lt;/strong>
+				&lt;/em>
+				&lt;strong>Important&lt;/strong>
+			</code></pre>
+		</section>
+		<section class="language-css delayed">
+			<header>
+				<h2>CSS is <span class="chip good">forgiving</span></h2>
+				<p>It <em>ignores</em> your mistakes</p>
+			</header>
+			<pre><code>
+				h1 {
+					color: slategray;
+					foobar: yolo;
+				}
+			</code></pre>
+			<div class="arrow-down"></div>
+			<pre><code>
+				h1 {
+					color: slategray;
+				}
+			</code></pre>
+		</section>
+		<section class="language-js delayed">
+			<header>
+				<h2>JS is <span class="chip bad">strict</span></h2>
+				<p>It <em>stops</em> at the first mistake</p>
+			</header>
+			<pre><code>
+				alert("Hello world!"
+			</code></pre>
+			<div class="arrow-down"></div>
+			<pre class="error no-code-label"><code>Uncaught SyntaxError: missing ) after argument list</code></pre>
+		</section>
+
+		<details class="notes">
+			In fact, this forgiving nature of HTML and CSS is core to the Web’s success.
+			Attepmpts to define a stricter version of HTML (XHTML) failed miserably.
+
+			This is also one reason why it’s generally a bad idea if your webpage depends on JS for essential content.
+		</details>
+	</article>
+
+	<article class="slide">
+		<h1>Dev Tools & Errors</h1>
+		<video src="videos/devtools-errors.mp4" class="max-size browser" data-url="https://vis-society.github.io/labs/1/errors.html" loop autoplay muted></video>
+	</article>
+
+	<article class="slide language-html" id="emmet-html-skeleton">
+		<h1>Emmet’s HTML skeleton <kbd>!</kbd> <kbd>Tab</kbd></h1>
+		<pre><code class="syntax-breakdown">
+			<span title="HTML5+ Doctype = “This is modern HTML”">&lt;!DOCTYPE html></span>
+			<span title="Root element" data-tooltip="top">&lt;html <span title="Content language" data-tooltip="right">lang="en"</span>>
+			<span title="Metadata about the page (not displayed)" style="--line-length: 3em; --offset: 1em;">&lt;head>
+				<span xtitle="Character encoding" data-tooltip="right">&lt;meta charset="UTF-8"></span>
+				<span xtitle="How to render on mobile" style="--line-length: 2em; offset: 1em;">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"></span>
+				<span title="Page title shown in browser tab" data-tooltip="right">&lt;title>Document&lt;/title></span>
+			&lt;/head></span>
+			<span title="Visible page content goes here" data-tooltip="right">&lt;body>
+
+			&lt;/body></span>
+			&lt;/html></span>
+		</code></pre>
+		<details class="notes">
+			You have seen in the lab 0 that Emmet creates a basic HTML page skeleton for you when you press `!` and then `Tab`.
+			But what do all these elements do? Do we need them?
+
+			- `&lt;!DOCTYPE html>` is the *document type declaration*, which tells the browser that this is a modern HTML document. It is not actually an HTML element.
+			- `&lt;html>` is the root element of the document, and contains all other elements.
+			- The `lang` attribute specifies the language of the content, which is useful for screen readers and other accessibility tools, as well as several web platform features (e.g. hyphenation).
+			It’s available on every element, not just the root.
+			- [`&lt;head>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head) contains metadata about the page, such as the character encoding, the page title, and more. It is not displayed on the page.
+			- The [viewport meta tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag) controls parameters for mobile rendering
+			and also tells the browser not to apply the kinds of heuristics it uses for pages not optimized for mobile.
+			- `&lt;title>` is the title of the page, which is shown in the browser tab. It is the only element that is actually required
+			(corollary: `&lt;DOCTYPE html>&lt;title>Hey&lt;/title>` is a [valid](https://validator.w3.org/nu/#textarea) HTML document).
+			- `&lt;body>` contains the visible content of the page.
+			- While technically `&lt;html>`, `&lt;head>`, and `&lt;body>` are optional, they are automatically inserted by the browser if not specified
+			(as you can verify yourself by inspecting [`hello.html`](../hello.html)).
+		</details>
+	</article>
+
+	<article class="slide columns language-html elements" id="html-elements" data-type="Cheatsheet">
+		<h1>HTML elements</h1>
+		<section class="md">
+			## Markup / Content
+			- Headings (`&lt;h1>`, `&lt;h2>`, `&lt;h3>`, `&lt;h4>`, `&lt;h5>`, `&lt;h6>`)
+			- Paragraphs (`&lt;p>`)
+			- Lists (`&lt;ul>`, `&lt;ol>`, `&lt;li>`, etc.)
+			- Tables (`&lt;table>`, `&lt;thead>`, `&lt;tr>`, `&lt;td>`, etc.)
+			- Sectioning (`&lt;header>`, `&lt;footer>`, `&lt;main>`, `&lt;section>`, `&lt;article>`, `&lt;nav>` etc.)
+			- Inline markup (`&lt;em>`, `&lt;strong>`, `&lt;code>` etc.)
+			- Figures (`&lt;figure>`, `&lt;figcaption>`)
+		</section>
+		<section class="md">
+			## Interactive
+			- Forms (`&lt;form>`, `&lt;input>`, `&lt;textarea>`, `&lt;button>`, etc.)
+			- Links (`&lt;a>`)
+			- Progressive disclosure (`&lt;details>`, `&lt;dialog>`)
+
+			## Resources / Embedding
+			- Multimedia (`&lt;img>`, `&lt;video>`, `&lt;audio>`, `&lt;svg>`, etc.)
+			- External resources (`&lt;link>`, `&lt;script>`, etc.)
+			- Embeds (`&lt;iframe>`, `&lt;object>`, etc.)
+		</section>
+		<details class="notes">
+			- The purpose of markup elements is to mark up content, usually by assigning semantics.
+			- Interactive elements on the other hand provide functionality.
+
+			[Full list of HTML elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+		</details>
+	</article>
+</section>
+
 <article class="slide columns force" data-credits="https://www.componentdriven.org/" id="cdd">
 	<h1>Component-driven development</h1>
 	<img src="images/cdd.png" alt="">
@@ -264,7 +672,6 @@
     </code></pre>
 
     <details class="notes">
-        This slide explains the basic modular file structure of a JavaScript project. 
         - `canvas.js` handles canvas setup and creates report lists.
         - `square.js` handles drawing squares and calculating their area/perimeter.
         - `main.js` brings it all together by importing functions and executing them.
@@ -272,7 +679,7 @@
     </details>
 </article>
 
-<article class="slide columns force-2 dont-resize language-js code-labels">
+<!-- <article class="slide columns force-2 dont-resize language-js code-labels">
     <h1>Exporting Module Features in JavaScript</h1>
     
     <pre><code>
@@ -313,7 +720,7 @@
         - You can **export multiple features at once** using `{}` at the end of a file.
         - Exports must be **top-level** (not inside functions).
     </details>
-</article>
+</article> -->
 
 <article class="slide columns force-2 dont-resize language-js code-labels">
     <h1>Python vs JavaScript: Syntax Comparison</h1>
@@ -402,7 +809,7 @@
 </article>
 
 
-<article class="slide columns force-2 dont-resize language-js code-labels">
+<!-- <article class="slide columns force-2 dont-resize language-js code-labels">
     <h1>Creating a Module Object in JavaScript</h1>
 
     <pre><code>
@@ -435,10 +842,10 @@
         - Instead of calling `draw()`, we now use `Square.draw()`—this **prevents name conflicts**.
         - This approach is useful when handling **multiple related modules** in a project.
     </details>
-</article>
+</article> -->
 
 
-<article class="slide columns force-2 dont-resize language-js code-labels">
+<!-- <article class="slide columns force-2 dont-resize language-js code-labels">
     <h1>Modules and Classes in JavaScript</h1>
 
     <pre><code>
@@ -533,9 +940,9 @@
         - This keeps our **imports cleaner** and **reduces complexity**.
         - The exports in `shapes.js` are **redirects** and cannot contain additional logic.
     </details>
-</article>
+</article> -->
 
-<article class="slide columns force-2 dont-resize language-js code-labels">
+<!-- <article class="slide columns force-2 dont-resize language-js code-labels">
     <h1>Dynamic Module Loading in JavaScript</h1>
 
     <pre><code>
@@ -578,7 +985,7 @@
         - Dynamic imports **work even in non-module scripts**, unlike static `import` statements.
         - This technique is useful for **lazy loading features**, **reducing network requests**, and **keeping code modular**.
     </details>
-</article>
+</article> -->
 
 
 <!-- <article class="slide columns force dont-resize code-labels delayed-last" id="component-io">
