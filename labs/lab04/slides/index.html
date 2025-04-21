@@ -198,6 +198,42 @@
 		</details>
 	</article>
 
+	<article class="slide dont-resize" id="local-urls" style="--line-length: 3em; --tooltip-orientation: vertical;" data-type="Activity">
+		<header>
+			<h1>Local URLs <span class="chip">Part 1</span></h1>
+			<p>The <code>file:</code> protocol</p>
+		</header>
+		<code class="syntax-breakdown language-url target-width-80" style="--char-aspect-ratio: 2.215">
+			<span title="Protocol">file:</span>//
+			<span title="Path to resource from filesystem root">/Users/giorgianicolaou/Documents/dsc106/labs/1/hello.html</span>
+		</code>
+		<details class="notes">
+			Let’s look at a different example.
+
+			Download the file `hello.html` from the course website and double click it to get it to open in your browser.
+			You will probably see something similar to this.
+			This allows you to open files from your local filesystem and view them in a browser.
+			Note that there is no host (since `file:` protocol URLs always refer to your own computer)
+			and that the path starts from the root of your filesystem.
+			This means that opening a malicious website this way could potentially access any file on your computer,
+			which is why the `file:` protocol is very locked down today as it’s considered unsafe.
+
+			We will use the `file:` protocol for now,
+			but in future labs, we will learn how to run a _local server_ to view our files, which is a lot more flexible.
+
+			<!-- Instead of the `file:` protocol, when developing websites locally, we usually run one or more *local servers*, which we can access via the special domain name `localhost`.
+			To allow the same domain name to be used as the host for multiple websites, we have the concept of *ports*.
+			Every URL has a port, but it’s usually omitted when it’s the default port for the protocol (80 for HTTP and 443 for HTTPS).
+
+			Note that now the path starts from the root of the website, not the root of the filesystem.
+			This is because I’m running the local server at the root of the website.
+			This also means that files outside the root of the website are not accessible, which is a security feature. -->
+
+			Read more:
+			- ["What is a URL?" on MDN](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL)
+		</details>
+	</article>
+
 	<article class="slide" id="relative-paths">
 		<h1>Understanding Relative Paths</h1>
 	
@@ -242,42 +278,6 @@
 		</details>
 	</article>
 	
-
-	<article class="slide dont-resize" id="local-urls" style="--line-length: 3em; --tooltip-orientation: vertical;" data-type="Activity">
-		<header>
-			<h1>Local URLs <span class="chip">Part 1</span></h1>
-			<p>The <code>file:</code> protocol</p>
-		</header>
-		<code class="syntax-breakdown language-url target-width-80" style="--char-aspect-ratio: 2.215">
-			<span title="Protocol">file:</span>//
-			<span title="Path to resource from filesystem root">/Users/giorgianicolaou/Documents/dsc106/labs/1/hello.html</span>
-		</code>
-		<details class="notes">
-			Let’s look at a different example.
-
-			Download the file `hello.html` from the course website and double click it to get it to open in your browser.
-			You will probably see something similar to this.
-			This allows you to open files from your local filesystem and view them in a browser.
-			Note that there is no host (since `file:` protocol URLs always refer to your own computer)
-			and that the path starts from the root of your filesystem.
-			This means that opening a malicious website this way could potentially access any file on your computer,
-			which is why the `file:` protocol is very locked down today as it’s considered unsafe.
-
-			We will use the `file:` protocol for now,
-			but in future labs, we will learn how to run a _local server_ to view our files, which is a lot more flexible.
-
-			<!-- Instead of the `file:` protocol, when developing websites locally, we usually run one or more *local servers*, which we can access via the special domain name `localhost`.
-			To allow the same domain name to be used as the host for multiple websites, we have the concept of *ports*.
-			Every URL has a port, but it’s usually omitted when it’s the default port for the protocol (80 for HTTP and 443 for HTTPS).
-
-			Note that now the path starts from the root of the website, not the root of the filesystem.
-			This is because I’m running the local server at the root of the website.
-			This also means that files outside the root of the website are not accessible, which is a security feature. -->
-
-			Read more:
-			- ["What is a URL?" on MDN](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL)
-		</details>
-	</article>
 
 	<article class="slide">
 		<h1>The Web: Open by design</h1>
