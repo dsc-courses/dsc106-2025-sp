@@ -139,7 +139,7 @@ You must submit your assignment using Gradescope. Please upload a single PDF wit
 Your final submission should take the form of an **HTML web page** that states
 your proposition, includes both visualizations and their corresponding design
 decisions and rationale, as well as your final reflection write up. To help you
-put this page together, we're providing a <a href="project2_report.html"
+put this page together, we're providing a <a href="projects/project2_report.html"
 download>basic HTML template</a> for you to fill in. You will need to edit the
 HTML page to add your captions and correctly link your images (for simplicity,
 we recommend exporting image files to the same local directory as your HTML
