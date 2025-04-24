@@ -27,5 +27,6 @@ days:
         url: labs/lab04
       - name: LEC 7
         type: lecture
-        title: D3.js Part 1
+        title: Using GenAI, JS part 2, D3.js
+        url: lectures/07-DSC106-D3.pdf
 ---
