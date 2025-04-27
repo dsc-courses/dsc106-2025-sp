@@ -52,7 +52,7 @@ make sure your video is 2 minutes or less.**
 - You should have completed all the steps in [Lab 0](../lab00/), i.e. that you have Node.js and npm installed.
 - This lab assumes you have already completed [Lab 1](../lab01/), [Lab 2](../lab02/), [Lab 3](../lab03/), and [Lab 4](../lab04/), as we will use the same website as a starting point.
 
-## [Slides]()
+## [Slides](https://docs.google.com/presentation/d/1DtrU_gfY993ubJ5coNHKXDCW8VEkZl8bZEfnquxGdH4/edit?usp=sharing)
 
 {: .note }
 This lab is a little more involved than some of the previous labs,
