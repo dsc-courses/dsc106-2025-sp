@@ -26,11 +26,11 @@ One challenge is to **scope the assignment so that you can finish it within two 
 
 For this assignment, you should work in teams of **3-4 students**. You might want to find project partners that you will continue to work with for the final project.
 
-As soon as you have formed a team and chosen a dataset, submit the [team registration form][link5]. Your form must include **the names, UCSD email addresses, and PIDs** of each team member, along with a **concise title for your interactive visualization**. The visualization title need not be exact, **just a rough title should be a good start**. If you are looking for project partners, please post to Ed to find classmates with similar interests! **You should submit your team registration by Mon 02/10, 11:55 pm.** Please ensure that the team has been finalized before filling the form, and that the details are correct.
+As soon as you have formed a team and chosen a dataset, submit the [team registration form][link5]. Your form must include **the names, UCSD email addresses, and PIDs** of each team member, along with a **concise title for your interactive visualization**. The visualization title need not be exact, **just a rough title should be a good start**. If you are looking for project partners, please post to Piazza to find classmates with similar interests! **You should submit your team registration by Mon 05/05, 11:59 pm.** Please ensure that the team has been finalized before filling the form, and that the details are correct.
 
 You will submit your interactive prototype as a webpage hosted on [GitHub Pages][link6].
 
-[link5]: https://forms.gle/Hbdj233sjR6BVRxY9
+[link5]: https://forms.gle/AULh3m7XUMdXEAzD6
 [link6]: https://pages.github.com/
 
 ## Deliverables
@@ -39,7 +39,7 @@ Design an interactive graphic aimed at enabling understanding of a compelling qu
 
 Your graphic must include interactions that enable exploration. Possible techniques include panning, zooming, brushing, details-on-demand (e.g., tooltips), dynamic query filters, and selecting different measures to display. You are free to also consider highlights, annotations, or other narrative features intended to draw attention to particular items of interest and provide additional context.
 
-Implement your interactive graphic and deploy it to the web. You may **only use only D3.js** for this project. **Vega-lite/Plotly/Altair/any other high-level plotting library or tool** are **strictly not allowed** for this project. You can use other non-plotting related JavaScript libraries, e.g. Lodash, Svelte, Moment, etc. Your graphic should not require customized server-side support; you should simply load data from a static data file or public web API.
+Implement your interactive graphic and deploy it to the web. You may **use only D3.js** for this project. **Vega-lite/Plotly/Altair/any other high-level plotting library or tool** are **strictly not allowed** for this project. You can use other non-plotting related JavaScript libraries, e.g. Lodash, Svelte, Moment, etc. Your graphic should not require customized server-side support; you should simply load data from a static data file or public web API.
 
 You will use [GitHub pages to host your visualization][link7] from your project repository. **Make sure that you make your repository "Public"**. We recommend keeping everything (development files and website) in your master branch: either serve your website from the root folder or the "/docs" folder. Your repo must also contain the (unobfuscated) source code for your visualization.
 
@@ -89,11 +89,11 @@ The assignment is out of 10 points possible. Submissions that squarely meet the 
 
 ### Team Registration
 
-Submit your [team registration form][link5] by **Mon 02/10, 11:59 PM**.
+Submit your [team registration form][link5] by **Mon 05/05, 11:59 PM**.
 
 ### Checkpoint Submission
 
-The submission must be made on gradescope by **Tue 02/11, 11:59 PM**. For this submission, submit an **mp4** video no longer than 2 minutes with the following details:
+The submission must be made on gradescope by **Tue 05/06, 11:59 PM**. For this submission, submit an **mp4** video no longer than 2 minutes with the following details:
 
 1. Name of your team and team members
 2. Dataset chosen. Explain the aspects of the datasets you plan to use.
@@ -109,7 +109,7 @@ Please ensure that the video has an associated audio/voiceover rather than just 
 
 ### Final Submission
 
-You must have a working prototype online by **Tue 02/18, 11:59 pm**. Your prototype should be accessible on GitHub pages using a publicly viewable URL.
+You must have a working prototype online by **Tue 05/13, 11:59 pm**. Your prototype should be accessible on GitHub pages using a publicly viewable URL.
 
 In addition, **you must submit the URL on Gradescope**. **One submission per team is sufficient**.
 
@@ -117,7 +117,7 @@ Submissions will be reviewed as part of a subsequent peer review assignment, so 
 
 ## Data Sources
 
-We’ve provided four datasets for you to use. **You must only pick a dataset from the list below**. Note that these datasets are the same as the ones from Project 2. Feel free to reuse the dataset you used in Project 2 to speed up your development process.
+We’ve provided four datasets for you to use. **You must only pick a dataset from the list below**.
 
 All datasets contain time series data relevant to health, but from different cohort (and species), different time scales, and different modalities. Time series analyses in themselves are not critical to exploring the data, but allow for forecasting and windowing of classifier data alongside unsupervised and statistical approaches.
 
@@ -125,36 +125,36 @@ All datasets contain time series data relevant to health, but from different coh
 
 Prof. Jessilynn Dunn at Duke released glucose measurements and wrist-worn multimodal wearable sensor data from high-normoglycemic participants. 2 weeks each to identify spikes and/or hypoglycemic events.
 
-Address: [BIG IDEAs Lab Glycemic Variability and Wearable Device Data][link6]
+Address: [BIG IDEAs Lab Glycemic Variability and Wearable Device Data][link8]
 
 Generated by the Empatica 4 wearable device paired with a DexCom 6 continuous glucose monitor, 16 people aged 35-65 are represented by 8-10 days each of continuous, multimodal wearable data. This is paired with meal logs and medical histories about metabolic and cardiac conditions. Data is downloadable as .csv files.
 
-[link6]: https://physionet.org/content/big-ideas-glycemic-wearable/1.1.2/
+[link8]: https://physionet.org/content/big-ideas-glycemic-wearable/1.1.2/
 
 ### Physionet
 
 Physionet, an online repository of physiological data sets from many sources, has an Open Datasets section. These contain abstracts and descriptions per project.
 
-Address: [PhysioNet Databases][link7]
+Address: [PhysioNet Databases][link9]
 
 The largest of the data sources on this list, provided for those seeking more open exploration. This Database is comprised of dozens of data sets. Open Access data sets can be reached by the “Open databases” link at the top left of the landing page.
 
-[link7]: https://physionet.org/about/database/
+[link9]: https://physionet.org/about/database/
 
 ### Mouse data
 
 Mouse data covering 2 weeks of minute level activity and core body temperature in males and females. Light is on a 12-on : 12-off controlled square wave so that daily rhythms are aligned. Every 4 days females display “estrus” which is associated with ovulation, and a longer/hotter active period.
 
-Address: [Mouse Data.xlsx][link8] (Note: Use UCSD email ID to access the link.)
+Address: [Mouse Data.xlsx][link10] (Note: Use UCSD email ID to access the link.)
 
 Columns are unique IDs (so, e.g., F1 is the same in all tabs). Rows are minutes, in order, across 14 days (there are 1440 minutes in a day). Lights turn on and off every 12 h (mice are nocturnal, so most active when it is dark). Lights Off is t=0, then every 720 it switches. Estrus (the day of ovulation) for all females starts day 2, repeating every 4 days. Activity and body temperature for each individual in each minute are recorded. Data is available as a .xlsx file.
 
-[link8]: https://docs.google.com/spreadsheets/d/1RXL_oUa1IYxnqfCW-9duz3M83wPlki4y/edit?gid=1872476945#gid=1872476945
+[link10]: https://docs.google.com/spreadsheets/d/1RXL_oUa1IYxnqfCW-9duz3M83wPlki4y/edit?gid=1872476945#gid=1872476945
 
 ### Korean Surgery Dataset (Demographics, Clinical, and Waveform of physiology from surgeries): “VitalDB”
 
-Address: [VitalDB][link9]
+Address: [VitalDB][link11]
 
 Korean hospital data (inter-operative, meaning during the operation) from 6,388 individual surgeries. High frequency biosensor data captures biosigns throughout the procedures, and these are paired with outcomes and related medical records. Data are downloadable zipped .csv files.
 
-[link9]: https://vitaldb.net/dataset/
+[link11]: https://vitaldb.net/dataset/
