@@ -22,7 +22,7 @@ days:
     events:
       - name: LEC 9
         type: lecture
-        title: D3.js Part 2
+        title: Best Project 1 Awards, D3.js Part 2
         url: lectures/08-DSC106-D3-part2.pdf
       - name: LAB 5
         type: lab
