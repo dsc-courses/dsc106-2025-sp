@@ -12,6 +12,7 @@ days:
   - name: PROJ 3
     type: proj
     title: 'Project 3: Interactive Visualization'
+    url: projects/project3
 - date: '2025-05-14'
   events:
   - name: LEC 12

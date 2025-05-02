@@ -7,12 +7,13 @@ days:
   - name: DISC 4
     type: disc
     title: Disc 4
-    # url: https://giorgianicolaou.github.io/discussion6/examples/classic-slides/index.html
+    url: https://docs.google.com/presentation/d/1DtrU_gfY993ubJ5coNHKXDCW8VEkZl8bZEfnquxGdH4/edit?usp=sharing
 - date: '2025-04-29'
   events:
   - name: PROJ 2
     type: proj
     title: 'Project 2: Deceptive Visualization'
+    url: projects/project2
 - date: '2025-04-30'
   events:
   - name: LEC 8
@@ -26,4 +27,5 @@ days:
   - name: LAB 5
     type: lab
     title: Lab 5
+    url: labs/lab05
 ---

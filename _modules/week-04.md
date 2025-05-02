@@ -13,6 +13,7 @@ days:
       - name: PROJ 2
         type: proj
         title: Project 2 Checkpoint
+        url: projects/project2
   - date: '2025-04-23'
     events:
       - name: LEC 6
