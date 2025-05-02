@@ -13,7 +13,7 @@ days:
       - name: PROJ 2
         type: proj
         title: 'Project 2: Deceptive Visualization'
-      url: projects/project2
+        url: projects/project2
   - date: '2025-04-30'
     events:
       - name: LEC 8
