@@ -3,7 +3,7 @@ layout: assignment
 title: 'Lab 6: Visualizing quantitative data with D3'
 lab: 6
 parent: '👩‍🔬 Programming Labs'
-released: true
+released: false
 ---
 
 # Lab 6: Visualizing quantitative data with D3
@@ -209,13 +209,13 @@ and only after that re-run the script to re-generate it.
 
 In your `meta/index.html` file, we will now read the CSV file. Thankfully, we don't have to reinvent the wheel and parse CSV files ourselves, D3 has a built-in function for that.
 
-First, create a javascript file named `main.js` in your meta folder and import it in your `meta/index.html`. Then, import D3 into `main.js`:
+First, create a javascript file named `main.js` in your meta folder and import it in your `meta/index.html`. Then, set up your HTML file with D3 imported:
 
-```javascript
-import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
+```html
+<script src="https://d3js.org/d3.v7.min.js"></script>
 ```
 
-In your html file, add a placeholder in the body tag as follows:
+In your html file, also add a placeholder in the body tag as follows:
 
 ```html
 <div id="stats"></div>
@@ -226,13 +226,16 @@ We'll be using the `d3.csv()` function from the [`d3-fetch`](https://d3js.org/d3
 Now let's read the CSV file:
 
 ```javascript
+let data = [];
+
 async function loadData() {
-  const data = await d3.csv('loc.csv');
+  data = await d3.csv('loc.csv');
   console.log(data);
-  return data;
 }
 
-let data = await loadData();
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadData();
+});
 ```
 
 To see the structure of these objects, check your console. You should be seeing something like this:
@@ -243,7 +246,7 @@ Note that everything is a string, including the numbers and dates. That can be q
 
 ```javascript
 async function loadData() {
-  const data = await d3.csv('loc.csv', (row) => ({
+  data = await d3.csv('loc.csv', (row) => ({
     ...row,
     line: Number(row.line), // or just +row.line
     depth: Number(row.depth),
@@ -251,8 +254,6 @@ async function loadData() {
     date: new Date(row.date + 'T00:00' + row.timezone),
     datetime: new Date(row.datetime),
   }));
-
-  return data;
 }
 ```
 
@@ -287,8 +288,8 @@ To transform this into an array of objects about each commit, with a `lines` pro
 Here's how we can start:
 
 ```javascript
-function processCommits(data) {
-  return d3
+function processCommits() {
+  commits = d3
     .groups(data, (d) => d.commit)
     .map(([commit, lines]) => {
       // Each 'lines' array contains all lines modified in this commit
@@ -303,18 +304,18 @@ function processCommits(data) {
       };
     });
 }
-
-let data = await loadData();
-let commits = processCommits(data);
 ```
 
-1. Look at the first line object (`first`). What properties does it contain that are relevant to the commit as a whole? (Hint: author, timestamps, etc.)
+{: .tip }
+We will be using `commits` extensively throughout the lab, so it would be helpful to declare it as a global variable (`let commits = [];`)
+
+2. Look at the first line object (`first`). What properties does it contain that are relevant to the commit as a whole? (Hint: author, timestamps, etc.)
 
 Let's add these basic properties:
 
 ```javascript
-function processCommits(data) {
-  return d3
+function processCommits() {
+  commits = d3
     .groups(data, (d) => d.commit)
     .map(([commit, lines]) => {
       let first = lines[0];
@@ -344,8 +345,8 @@ What's the GitHub URL for viewing this commit?
 Try adding some of these:
 
 ```javascript
-function processCommits(data) {
-  return d3
+function processCommits() {
+  commits = d3
     .groups(data, (d) => d.commit)
     .map(([commit, lines]) => {
       let first = lines[0];
@@ -376,8 +377,8 @@ JavaScript provides a way to add properties that don't show up when you print an
 Here's the structure:
 
 ```javascript
-function processCommits(data) {
-  return d3
+function processCommits() {
+  commits = d3
     .groups(data, (d) => d.commit)
     .map(([commit, lines]) => {
       let first = lines[0];
@@ -414,9 +415,12 @@ Put it all together, and you should have a commits array where each object conta
 Now, we need to call this function to test it out.
 
 ```js
-let data = await loadData();
-let commits = processCommits(data);
-console.log(commits);
+async function loadData() {
+  // original function as before
+
+  processCommits();
+  console.log(commits);
+}
 ```
 
 Try printing out your commits array.
@@ -434,10 +438,13 @@ Let's get our feet wet with this data by displaying a few stats using D3's DOM m
 {: .note }
 Add the CSS for the stats display to your style.css file. You can create a class `.stats` and style the `dl`, `dt`, and `dd` elements appropriately.
 
-Let's display the total lines of code and commits with `renderCommitInfo()` function:
+First, remove the `processCommits` function call from the function `loadData`. Let's display the total lines of code and commits:
 
 ```javascript
-function renderCommitInfo(data, commits) {
+function displayStats() {
+  // Process commits first
+  processCommits();
+
   // Create the dl element
   const dl = d3.select('#stats').append('dl').attr('class', 'stats');
 
@@ -451,12 +458,9 @@ function renderCommitInfo(data, commits) {
 
   // Add more stats as needed...
 }
-
-let data = await loadData();
-let commits = processCommits(data);
-
-renderCommitInfo(data, commits);
 ```
+
+Note: The function needs to be called in order to be executed! Ensure that you call this function inside `loadData`.
 
 What other aggregate stats can you calculate about the whole codebase? Here are a few ideas (pick 3-4 from the list below, or come up with your own):
 
@@ -586,36 +590,19 @@ Now let's visualize our edits in a scatterplot with the time of day as the Y axi
 
 ### Step 2.1: Drawing the dots
 
-First, in your HTML file, add an SVG element to hold our chart:
-
-```html
-<h2>Commits by time of day</h2>
-<div id="chart"></div>
-```
-
-In `main.js`, define a `renderScatterPlot()` function:
-
-```js
-function renderScatterPlot(data, commits) {
- // Put all the JS code of Steps inside this function
-}
-
-let data = await loadData();
-let commits = processCommits(data);
-
-renderScatterPlot(data, commits);
-```
-
-**Note that all the code in the following steps of Step 2 is put inside this `renderScatterPlot()` function.** 
-
-Let's define our dimensions within `renderScatterPlot()`:
+First, let's define our dimensions in `main.js`:
 
 ```js
 const width = 1000;
 const height = 600;
 ```
 
+Then, in your HTML file, add an SVG element to hold our chart:
 
+```html
+<h2>Commits by time of day</h2>
+<div id="chart"></div>
+```
 
 In your JavaScript, create the SVG using D3:
 
@@ -670,6 +657,8 @@ If we preview at this point, you'd expect to see an image with the dots. But oh 
 
 Try to print `commits` in your console. Is the data populated? Why is this happening?
 
+**Put all the code from step 2 into a function, say `createScatterplot`.** Now call this function after `loadData()`, inside the DOMContentLoaded event listener.
+
 If we preview at this point, we'll get something like this:
 
 ![](images/dots.png)
@@ -681,7 +670,7 @@ Indeed, without axes, a scatterplot does not even look like a chart. Let's add t
 ### Step 2.2: Adding axes
 
 {: .note }
-Again, for the rest of the instructions in Step 2, note that the code goes inside `renderScatterPlot()`.
+For the rest of the instructions in step 2, note that the code goes inside `createScatterplot`.
 
 The first step to add axes is to create space for them. Define margins in your JavaScript:
 
@@ -821,10 +810,10 @@ Add an element to display data about the hovered commit. Create this HTML struct
 </dl>
 ```
 
-Create a function in `main.js` to update the tooltip content:
+Create a function to update the tooltip content:
 
 ```js
-function renderTooltipContent(commit) {
+function updateTooltipContent(commit) {
   const link = document.getElementById('commit-link');
   const date = document.getElementById('commit-date');
 
@@ -861,22 +850,15 @@ circle:hover {
 
 The `transform-origin` and `transform-box` properties are crucial here - without them, the dots would scale from their top-left corner rather than their center.
 
-Now, in our D3 selection (in `renderScatterPlot` function), we add mouseenter and mouseleave event listeners on each dot:
+Now, in our D3 selection (from `createScatterplot` function), we add mouseenter and mouseleave event listeners on each dot:
 
 ```javascript
 dots
-  .selectAll('circle')
-  .data(commits)
-  .join('circle')
-  .attr('cx', (d) => xScale(d.datetime))
-  .attr('cy', (d) => yScale(d.hourFrac))
-  .attr('r', 5)
-  .attr('fill', 'steelblue')
   .on('mouseenter', (event, commit) => {
-    renderTooltipContent(commit);
+    updateTooltipContent(commit);
   })
   .on('mouseleave', () => {
-    // TODO: Hide the tooltip
+    updateTooltipContent({}); // Clear tooltip content
   });
 ```
 
@@ -902,7 +884,7 @@ Experiment with these properties to achieve a polished look.
 
 ### Step 3.3: Making it only appear when hovering over a dot
 
-We'll use the HTML `hidden` attribute and CSS to control visibility. Create a function in `main.js`:
+We'll use the HTML `hidden` attribute and CSS to control visibility:
 
 ```js
 function updateTooltipVisibility(isVisible) {
@@ -926,27 +908,16 @@ dl.info[hidden]:not(:hover, :focus-within) {
 }
 ```
 
-Also update `<dl>` in HTML to hide it by default:
-```html
-<dl id="commit-tooltip" class="info tooltip" hidden>
-```
-
-Update your event listeners from `renderScatterPlot` function:
+Update your event listeners from `createScatterplot` function:
 
 ```js
 dots
-  .selectAll('circle')
-  .data(commits)
-  .join('circle')
-  .attr('cx', (d) => xScale(d.datetime))
-  .attr('cy', (d) => yScale(d.hourFrac))
-  .attr('r', 5)
-  .attr('fill', 'steelblue')
   .on('mouseenter', (event, commit) => {
-    renderTooltipContent(commit);
+    updateTooltipContent(commit);
     updateTooltipVisibility(true);
   })
   .on('mouseleave', () => {
+    updateTooltipContent({});
     updateTooltipVisibility(false);
   });
 ```
@@ -963,25 +934,14 @@ function updateTooltipPosition(event) {
 }
 ```
 
-Update your mouseenter event listener in the `renderScatterPlot` function:
+Update your mouseenter event listener in the `createScatterplot` function:
 
 ```js
-dots
-  .selectAll('circle')
-  .data(commits)
-  .join('circle')
-  .attr('cx', (d) => xScale(d.datetime))
-  .attr('cy', (d) => yScale(d.hourFrac))
-  .attr('r', 5)
-  .attr('fill', 'steelblue')
-  .on('mouseenter', (event, commit) => {
-    renderTooltipContent(commit);
-    updateTooltipVisibility(true);
-    updateTooltipPosition(event);
-  })
-  .on('mouseleave', () => {
-    updateTooltipVisibility(false);
-  });
+dots.on('mouseenter', (event, commit) => {
+  updateTooltipContent(commit);
+  updateTooltipVisibility(true);
+  updateTooltipPosition(event);
+});
 ```
 
 ## Step 4: Communicating lines edited via dot size
@@ -994,7 +954,7 @@ First, let's implement a scale to map the number of edited lines to dot sizes:
 
 1. Experiment with different dot sizes by modifying the circle `r` attribute. Try values between 2 and 30 pixels to find appropriate minimum and maximum radii.
 
-2. Calculate the range of edited lines across all commits. This needs to be done inside the `renderScatterPlot` function, before adding the `r` attribute to dots:
+2. Calculate the range of edited lines across all commits. This needs to be done inside the `createScatterPlots` function, before adding the `r` attribute to dots:
 
 ```javascript
 const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
@@ -1013,15 +973,13 @@ dots
   // ... existing properties
   .attr('r', (d) => rScale(d.totalLines))
   .style('fill-opacity', 0.7) // Add transparency for overlapping dots
-  .on('mouseenter', (event, commit) => {
-      d3.select(event.currentTarget).style('fill-opacity', 1); // Full opacity on hover
-      renderTooltipContent(commit);
-      updateTooltipVisibility(true);
-      updateTooltipPosition(event);
+  .on('mouseenter', function (event, d, i) {
+    d3.select(event.currentTarget).style('fill-opacity', 1); // Full opacity on hover
+    // ... existing hover handlers
   })
-    .on('mouseleave', (event) => {
-      d3.select(event.currentTarget).style('fill-opacity', 0.7);
-      updateTooltipVisibility(false);
+  .on('mouseleave', function () {
+    d3.select(event.currentTarget).style('fill-opacity', 0.7); // Restore transparency
+    // ... existing leave handlers
   });
 ```
 
@@ -1045,16 +1003,13 @@ This ensures the circle areas are proportional to the number of lines edited, ma
 When dots overlap, smaller ones can be hard to interact with if they're underneath larger ones. Fix this by sorting commits by size before rendering:
 
 ```javascript
-function renderScatterPlot() {
+function createScatterplot() {
   // Sort commits by total lines in descending order
   const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
 
   // Use sortedCommits in your selection instead of commits
-  dots
-    .selectAll('circle')
-    .data(sortedCommits)
-    .join('circle');
-    // ... rest of your circle attributes
+  dots.selectAll('circle').data(sortedCommits).join('circle');
+  // ... rest of your circle attributes
 }
 ```
 
@@ -1097,8 +1052,9 @@ Exactly because brushing is so fundamental to interactive charts, D3 provides a 
 To use it, we need a reference to our SVG element:
 
 ```js
-function createBrushSelector(svg) {
-  svg.call(d3.brush());
+function brushSelector() {
+  const svg = document.querySelector('svg');
+  d3.select(svg).call(d3.brush());
 }
 ```
 
@@ -1120,10 +1076,10 @@ Update your brush initialization:
 
 ```js
 // Create brush
-svg.call(d3.brush());
+d3.select(svg).call(d3.brush());
 
 // Raise dots and everything after overlay
-svg.selectAll('.dots, .overlay ~ *').raise();
+d3.select(svg).selectAll('.dots, .overlay ~ *').raise();
 ```
 
 > That's a funny looking selector, isn't it? The `~` is the CSS [_subsequent sibling combinator_](https://developer.mozilla.org/en-US/docs/Web/CSS/Subsequent-sibling_combinator) and it selects elements that come _after_ the selector that precedes it (and share the same parent).
@@ -1172,19 +1128,24 @@ Open your browser console and try brushing. You'll see that the event object con
 Let's track this selection:
 
 ```js
+let brushSelection = null;
+
 function brushed(event) {
-  const selection = event.selection;
-  d3.selectAll('circle').classed('selected', (d) =>
-    isCommitSelected(selection, d),
-  );
+  brushSelection = event.selection;
+  updateSelection();
 }
 
-function isCommitSelected(selection, commit) {
-  if (!selection) {
+function isCommitSelected(commit) {
+  if (!brushSelection) {
     return false;
   }
   // TODO: return true if commit is within brushSelection
   // and false if not
+}
+
+function updateSelection() {
+  // Update visual state of dots based on selection
+  d3.selectAll('circle').classed('selected', (d) => isCommitSelected(d));
 }
 ```
 
@@ -1199,27 +1160,24 @@ Can you figure out how to implement `isCommitSelected`?
 
 ```js
 function isCommitSelected(commit) {
-  if (!selection) {
-    return false;
-  }
+  if (!brushSelection) return false;
 
-  const [x0, x1] = selection.map((d) => d[0]);
-  const [y0, y1] = selection.map((d) => d[1]);
-
-  const x = xScale(commit.datetime);
+  const min = { x: brushSelection[0][0], y: brushSelection[0][1] };
+  const max = { x: brushSelection[1][0], y: brushSelection[1][1] };
+  const x = xScale(commit.date);
   const y = yScale(commit.hourFrac);
 
-  return x >= x0 && x <= x1 && y >= y0 && y <= y1;
+  return x >= min.x && x <= max.x && y >= min.y && y <= max.y;
 }
 ```
 
 </details>
 
-Uh oh! `xScale` and `yScale` are undefined, as their scope was limited to the `renderScatterPlot` function. How would you fix it?
+Uh oh! `xscale` and `yscale` are undefined, as their scope was limited to the `createScatterplot` function. How would you fix it?
 
 <details markdown="1">
 <summary>Show solution</summary>
-To change this, declare global variables <i>let xScale</i> and <i>let yScale</i> and update these values inside <i>renderScatterPlot</i>,instead of initializing const xScale and const yScale inside <i>renderScatterPlot</i>.
+To change this, declare global variables <i>let xScale</i> and <i>let yScale</i> and update these values inside <i>createScatterplot</i>,instead of initializing const xScale and const yScale inside <i>createScatterplot</i>.
 </details>
 
 Add some CSS to make selected dots stand out:
@@ -1241,12 +1199,12 @@ Let's display the number of selected commits. First, create a paragraph element:
 Then update it in our brushed function:
 
 ```js
-function renderSelectionCount(selection) {
-  const selectedCommits = selection
-    ? commits.filter((d) => isCommitSelected(selection, d))
+function updateSelectionCount() {
+  const selectedCommits = brushSelection
+    ? commits.filter(isCommitSelected)
     : [];
 
-  const countElement = document.querySelector('#selection-count');
+  const countElement = document.getElementById('selection-count');
   countElement.textContent = `${
     selectedCommits.length || 'No'
   } commits selected`;
@@ -1262,9 +1220,9 @@ Be sure to call the function inside `brushed`! Test it out. You should be able t
 Let's display stats about languages in the selected commits:
 
 ```js
-function renderLanguageBreakdown(selection) {
-  const selectedCommits = selection
-    ? commits.filter((d) => isCommitSelected(selection, d))
+function updateLanguageBreakdown() {
+  const selectedCommits = brushSelection
+    ? commits.filter(isCommitSelected)
     : [];
   const container = document.getElementById('language-breakdown');
 
@@ -1305,18 +1263,7 @@ Add this to your HTML:
 <dl id="language-breakdown" class="stats"></dl>
 ```
 
-Remember to call this function inside `brushed`! Now your `brushed` function should look like this:
-
-```js
-function brushed(event) {
-  const selection = event.selection;
-  d3.selectAll('circle').classed('selected', (d) =>
-    isCommitSelected(selection, d),
-  );
-  renderSelectionCount(selection);
-  renderLanguageBreakdown(selection);
-}
-```
+Remember to call this function inside `brushed`!
 
 At this point, your graph should look like this:
 
