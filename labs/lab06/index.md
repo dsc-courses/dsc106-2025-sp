@@ -53,6 +53,27 @@ will be time well spent.
 
 This step takes you through several prepratory steps before we can work on the main part of the lab.
 
+### Step 0.0: Node.js and npm
+
+For this lab, we need to use `node.js` and `npm`. Node.js is a program that allows us to use JS outside of the browser, in the same way as any other programming language, e.g. Python. The Node Package Manager, npm for short, is a package manager for JS, which allows us to install and use libraries (also called packages) written in JS. If you are familiar with Python, `npm` serves the same purpose as `pip`.
+
+You may already have Node.js installed. To find out, open the terminal and type:
+
+```
+node --version
+```
+
+If you get an error, or if the version is way behind what you see on the [official website](https://nodejs.org/en), you need to [install or update Node.js](https://nodejs.org/en/download/).
+
+[npm](https://www.npmjs.com/) is included with every Node.js installation. You can verify that you have it installed by typing:
+```
+npm --version
+```
+
+{: .note }
+If you update Node and npm, you may need to restart your terminal for these commands to show the correct version.
+
+
 ### Step 0.1: Adding a new page with meta-analysis of the code in our project
 
 In this lab, we will be computing and visualizing different stats about our codebase.
@@ -1294,8 +1315,6 @@ function renderLanguageBreakdown(selection) {
             <dd>${count} lines (${formatted})</dd>
         `;
   }
-
-  return breakdown;
 }
 ```
 
