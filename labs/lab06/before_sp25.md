@@ -1,3 +1,7 @@
+---
+nav_exclude: true
+---
+
 
 # Lab 6: Visualizing quantitative data with D3
 
