@@ -7,6 +7,7 @@ days:
   - name: DISC 5
     type: disc
     title: Disc 5
+    url: https://docs.google.com/presentation/d/1S0plWCewNw6Zd21S_-CFka1ufdIBv72teswA1QXzOYY/edit?usp=sharing
 - date: '2025-05-06'
   events:
   - name: PROJ 3
@@ -23,6 +24,7 @@ days:
   - name: LAB 6
     type: lab
     title: Lab 6
+    url: labs/lab06
   - name: LEC 11
     type: lecture
     title: Interaction
