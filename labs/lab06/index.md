@@ -40,7 +40,7 @@ To get checked off for the lab, please record a 2 minute mp4 video with the foll
 **Videos longer than 2 minutes will be trimmed to 2 minutes before we grade, so
 make sure your video is 2 minutes or less.**
 
-## Slides
+## [Slides](https://docs.google.com/presentation/d/1S0plWCewNw6Zd21S_-CFka1ufdIBv72teswA1QXzOYY/edit?usp=sharing)
 
 {: .note }
 This lab is a little more involved than most of the previous labs,
