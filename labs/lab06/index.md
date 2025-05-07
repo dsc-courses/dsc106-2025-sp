@@ -169,54 +169,15 @@ CSV is more efficient for data that has many rows, since we don’t need to repe
 
 Do periodically re-run the script as you work through the lab to see the data update!
 
-### Step 0.3: Setting it up so that the CSV file is generated on every build
+{: .note} We directly commit `meta/loc.csv` to github so you do not need to add it to `.gitignore` now. Note that it is not up-to-date since you generate it locally and commit it to github.
 
-We want the CSV file to be generated every time we build our app, so that it’s always up-to-date.
+### Step 0.3: Exclude node_modules from committed files.
 
-We need make sure that our build environment (which we specify in `deploy.yml`) has access to all of our Git history.
-To do this, open `.github/workflows/deploy.yml` and modify the `Checkout` step so that it looks like this:
+You may have noticed that a lot of new files got generated when you installed elocuent using npm install. We do not need to commit all these files to our repository!
 
-```yaml
-- name: Checkout
-  uses: actions/checkout@v4
-  with:
-    fetch-depth: '0'
+There's a really neat way to ensure that these files are not committed to your repository. It's called a .gitignore. Create a file named `.gitignore` in the root folder. Add `node_modules/` to your `.gitignore` file.
 
-- name: Run Elocuent
-  run: |
-    npx elocuent -d . -o meta/loc.csv
-
-- name: Commit and Push
-  run: |
-    git config --local user.email "action@github.com"
-    git config --local user.name "GitHub Action"
-    mkdir -p meta
-    git pull
-    git add -f meta/loc.csv
-    git commit -m "Update code statistics" || echo "No changes to commit"
-    git push
-```
-
-Ensure that GITHUB_TOKEN has write permissions:
-
-```yaml
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-```
-
-{: .fyi}
-`fetch-depth: '0'` tells GitHub actions to [fetch _all_ history for all branches and tags](https://github.com/actions/checkout?tab=readme-ov-file#fetch-all-history-for-all-tags-and-branches).
-By default, the action will only fetch the latest commit, so your deployed scatterplot will only have one dot!
-
-Now, on each deployment, `elocuent` will be run first.
-
-### Step 0.4: Exclude CSV from committed files.
-
-You may have noticed that a lot of new files got generated when you installed elocuent using npm install. We do not need to commit all these files to our repository! Since we are now generating the script on the server as well, there is no reason to include meta/loc.csv in our commits as well.
-
-There's a really neat way to ensure that these files are not committed to your repository. It's called a .gitignore. Create a file named `.gitignore` in the root folder. Add `meta/loc.csv` and `node_modules/` to your `.gitignore` file.
+Note that now do not add `meta/loc.csv` to `.gitignore`. We commit it to github.
 
 Check out [this resource](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files) to get an in-depth understanding of a `.gitignore` file.
 
