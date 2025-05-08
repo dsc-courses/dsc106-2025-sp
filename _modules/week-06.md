@@ -12,7 +12,7 @@ days:
     events:
       - name: PROJ 3
         type: proj
-        title: Project 3 Checkpoint, Project 2 Peer Review
+        title: Project 3 Checkpoint
         url: projects/project3
   - date: '2025-05-07'
     events:
