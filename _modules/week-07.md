@@ -11,7 +11,7 @@ days:
   events:
   - name: PROJ 3
     type: proj
-    title: 'Project 3: Interactive Visualization'
+    title: 'Project 3: Interactive Visualization, Project 2 Peer Review'
     url: projects/project3
 - date: '2025-05-14'
   events:
