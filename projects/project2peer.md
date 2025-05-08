@@ -2,7 +2,7 @@
 layout: assignment
 title: 'Project 2: Deceptive Visualization - Peer Grading'
 parent: '📝 Projects'
-released: false
+released: true
 nav_order: 3
 ---
 
@@ -14,7 +14,7 @@ An important goal for this assignment is to understand how visualization designs
 
 ## Assignment
 
-For each peer review, begin by critically reading the visualizations and try to determine which is the earnest design and which is the deceptive design. Note what you discover and learn about the data set, and what properties lead you to a particular conclusion. You must identify which visualization you believe to be intentionally deceptive, along with a rationale indicating which design elements led you to this conclusion.
+For each peer review, begin by critically reading the visualizations and try to determine what earnest and deceptive techniques were use to support/oppose the proposition stated (without reading the write-up). Note what you discover and learn about the data set, and what properties lead you to a particular conclusion. You must identify which visualization you believe to be (more)intentionally deceptive, along with a rationale indicating which design elements led you to this conclusion.
 
 Next, author constructive critiques for each visualization design. Consider the following concerns:
 
@@ -26,9 +26,9 @@ Next, author constructive critiques for each visualization design. Consider the 
 - Are elements appropriately titled or labeled?
 - Is there appropriate spacing, layout, legible type, and other forms of design styling?
 - Is the overall display confusing or cluttered?
-- Is there important information missing that is needed to interpret the visualization approapriately?
+- Is there important information missing that is needed to interpret the visualization appropriately?
 
-To share critique, we will use the ["I like / I wish / What if?"][link] format. This involves sharing positive feedback on effective aspects, critical (but respectful!) feedback on what might be improved, and more wild (even half-baked) ideas your fellow students could explore in subsequent design iterations or future work. For each visualization, you must provide **at least two** statements in each of the I like / I wish / What if? categories for **each** of the three project 2 submissions you review. That means you will write a total of 6 sentences for each of the I like / I wish / What if? categories across all three peer reviews. 
+To share critique, we will use the ["I like / I wish / What if?"][link] format. This involves sharing positive feedback on effective aspects, critical (but respectful!) feedback on what might be improved, and more wild (even half-baked) ideas your fellow students could explore in subsequent design iterations or future work. For each visualization, you must provide **at least two** statements in **each** of the I like / I wish / What if? categories for **each** of the three project 2 submissions you review. That means you will write a total of at least 6 sentences for the I like / I wish / What if? categories for each of three peer reviews and at least 18 sentences total. 
 
 [link]: https://github.com/dsc-courses/dsc106-wi24/raw/gh-pages/resources/reading/I-Like-I-Wish-What-If.pdf
 
@@ -36,4 +36,4 @@ To share critique, we will use the ["I like / I wish / What if?"][link] format. 
 
 This is an individual assignment. You may not work in groups.
 
-Your peer reviews are due **Tuesday 05/06, 11:59pm**. The submissions that you are required to evaluate will be communicated to you via email. You must submit peer reviews for three Project 2 submissions. To submit your review, you must use gradescope. Please carefully respond to each of the questions raised.
+Your peer reviews are due **Tuesday 05/13, 11:59pm**. The submissions that you are required to evaluate will be communicated to you via email. You must submit peer reviews for three Project 2 submissions. To submit your review, you must use gradescope. Please carefully respond to each of the questions raised.
