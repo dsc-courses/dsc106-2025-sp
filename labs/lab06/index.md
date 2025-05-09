@@ -31,7 +31,7 @@ released: true
 
 ## Check-off
 
-To get checked off for the lab, please record a 2 minute mp4 video with the following components **in the following order**:
+To get checked off for the lab, please record a 1 minute mp4 video with the following components **in the following order**:
 
 1. Present your quantitative D3 visualizations
 2. Show you interacting with your D3 visualizations.
