@@ -23,6 +23,7 @@ days:
   - name: LAB 7
     type: lab
     title: Lab 7
+    url: labs/lab07
   - name: LEC 13
     type: lecture
     title: Narrative
