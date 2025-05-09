@@ -37,8 +37,8 @@ To get checked off for the lab, please record a 1 minute mp4 video with the foll
 2. Show you interacting with your D3 visualizations.
 3. Share the most interesting thing you learned from this lab.
 
-**Videos longer than 1 minutes will be trimmed to 1 minutes before we grade, so
-make sure your video is 1 minutes or less.**
+**Videos longer than 1 minute will be trimmed to 1 minute before we grade, so
+make sure your video is 1 minute or less.**
 
 ## [Slides](https://docs.google.com/presentation/d/1S0plWCewNw6Zd21S_-CFka1ufdIBv72teswA1QXzOYY/edit?usp=sharing)
 
