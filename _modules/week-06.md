@@ -29,4 +29,5 @@ days:
       - name: LEC 11
         type: lecture
         title: Interaction
+        url: lectures/10-DSC106-Interaction.pdf
 ---
