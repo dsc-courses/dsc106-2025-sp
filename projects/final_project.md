@@ -33,7 +33,7 @@ Prior to diving in, it is helpful to gain a sense of what goes into formulating 
 
 ## Theme: Explorable Explanations
 
-Your task is to create an Explorable Explanation: an interactive article that explains a complex subject to the reader. The dataset needs to be picked from the same list as Project 2 / Project 3. Focus on creating one or more interactive diagrams interlinked with explanatory text or annotations. We urge you to focus on a highly visual and/or interactive experience, as opposed to expecting a viewer to read large amounts of article text.
+Your task is to create an Explorable Explanation: an interactive article that explains a complex subject to the reader. The dataset needs to be picked from the same list as Project 3. Focus on creating one or more interactive diagrams interlinked with explanatory text or annotations. We urge you to focus on a highly visual and/or interactive experience, as opposed to expecting a viewer to read large amounts of article text.
 
 Some useful references are:
 
@@ -55,7 +55,7 @@ Some useful references are:
 
 The final project consists of the following milestones:
 
-- **Proposal (Tue 02/25, 11:59pm, Can Use Slip Days)**. Propose your chosen topic, dataset(s), and team members. Complete the registration form (one per team, [Registration Link][link8]). We need the following information in the project proposal:
+- **Proposal (Tue 05/20, 11:59pm, Can Use Slip Days)**. Propose your chosen topic, dataset(s), and team members. Complete the registration form (one per team, [Registration Link][link8]). We need the following information in the project proposal:
 
   - Project Title
   - Dataset
@@ -64,22 +64,20 @@ The final project consists of the following milestones:
 
 Apart from the team registration form, please also submit the gradescope assignmemt for the proposal.
 
-- **Initial Prototype (Tue 03/04, 11:59pm, Can Use Slip Days)**. Develop an initial prototype of your project and, similar to Project 3, publish it using GitHub pages. This prototype will be used by the course staff to provide feedback on your designs. It is expected that your project will not yet be in a "complete" state; however, by this point you should have the structure of your project laid out, rough prototypes of your main visualization(s) and interactions, and at least basic descriptive text. Each team should submit the URL for their project on Gradescope.
+- **Initial Prototype (Tues 05/27, 11:59pm, Can Use Slip Days)**. Develop an initial prototype of your project and, similar to Project 3, publish it using GitHub pages. This prototype will be used by the course staff to provide feedback on your designs. It is expected that your project will not yet be in a "complete" state; however, by this point you should have the structure of your project laid out, rough prototypes of your main visualization(s) and interactions, and at least basic descriptive text. Each team should submit the URL for their project on Gradescope.
 
-- **Demo Video (Tue 03/11, 11:59pm, Can Use Slip Days)**. You must produce a demo video (not to exceed 2 minutes in length) that introduces and explains your project. Your video can take the form of a narrated demo of your project, and may include additional content as you see fit. More information about preparing the video is available in the project deliverables section.
+- **Demo Video (Tues 06/03, 11:59pm, Can Use Slip Days)**. You must produce a demo video (not to exceed 2 minutes in length) that introduces and explains your project. Your video can take the form of a narrated demo of your project, and may include additional content as you see fit. More information about preparing the video is available in the project deliverables section.
 
-- **Deliverables (Mon 03/17, 11:59pm)**. Publish your final project web page. You may make final touches to your page after any feedback from our video session. More information about preparing the final deliverables is available in the project deliverables section.
+- **Deliverables (Mon 06/09, 11:59pm)**. Publish your final project web page. You may make final touches to your page after any feedback from our video session. More information about preparing the final deliverables is available in the project deliverables section.
 
-Your video should be posted to YouTube, and a URL to your video must be submitted via Gradescope by Tue 03/11. The links for the complete version of your final project webpage should be submitted on Gradescope by Mon 03/17.
-
-[link8]: https://forms.gle/6XsetkFSGeDYz6NS7
+[link8]: https://forms.gle/YQnBTNushjU2drFP7
 
 ## Project Deliverables
 
 To complete your final project, you must provide two primary deliverables:
 
-- A demonstration video (<= 2 minutes in length) that communicates your project goals and visualizations. YouTube URL due on Gradescope by 11:59pm, Tue 03/11.
-- An interactive visualization web page for your chosen topic. Code and website due on Gradescope by 11:59pm, Mon 03/17.
+- A demonstration video (<= 2 minutes in length) that communicates your project goals and visualizations. This video can either be the same as your demo video that you previously submitted or an updated version in the cawe a group wanted to update their video to reflect the latest changes to their website for the final project showcase page. The YouTube URL is due on Gradescope by 06/09 (Monday) at 11:59pm.
+- An interactive visualizastion web page for your chosen topic. Code and website due on Gradescope by 06/09 (Monday) at 11:59pm.
 
 ### Online Visualization
 
@@ -93,7 +91,7 @@ Be sure that your video communicates how your visualization designs enable a bet
 
 Please carefully read the [video production guide][link9] for details on how to design and record your video. Your videos should be in MPEG4 (.mp4, .m4v) format. Use appropriate compression to ensure your video file is not unnecessarily large. You will post videos online, so we encourage you to put your best face forward to the world!
 
-Your demo video must be published on YouTube. In addition you must submit a URL linking to your video via Gradescope by Tue 03/11, 11:59pm. We will have a video showcase during our last lecture session on Fri 03/14.
+Your demo video must be published on YouTube. In addition you must submit a URL linking to your video via Gradescope by Tues 06/03, 11:59pm. We will have a video showcase during our last lecture session on Frid 06/06.
 
 {: .note}
 Please do not enable the option for YouTube Kids while uploading the video as it can't be added to playlists.
@@ -148,7 +146,9 @@ The assignment is out of 15 points possible. Submissions that squarely meet the 
 
 ### Project Showcase
 
-The assignment is out of 10 points possible. Presentations that squarely meet the project requirements (Satisfactory column) will get 9/10 points.
+TBD!
+
+<!-- The assignment is out of 10 points possible. Presentations that squarely meet the project requirements (Satisfactory column) will get 9/10 points.
 
 | Component                            | Excellent                                                                                                                                                                                                                                                                                   | Satisfactory                                                                                                                                                                                                                                                                                    | Poor                                                                                                                                                                                                                                  |
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -157,4 +157,4 @@ The assignment is out of 10 points possible. Presentations that squarely meet th
 | **Explanation of the visualization** | The presentation clearly demonstrates the most relevant features of the visualization, including its interactions and design choices. The presentation explains the most interesting features, surprising results, or most challenging features to implement. (+2.5 points)                 | The presentation clearly demonstrates the most relevant features of the visualization, including its interactions and design choices, but doesn’t mention its most interesting or surprising features. (+2 points)                                                                              | The presentation of the visualization does not sufficiently demonstrate its features. (+1 point)                                                                                                                                      |
 | **Takeaway**                         | The presentation ends with an interesting takeaway and explains why your visualization demonstrates this takeaway effectively. What is the one surprising thing that everyone should learn from your visualization? And why does your visualization succeed at explaining it? (+2.5 points) | The presentation ends with a takeaway message but the presentation could be improved (e.g. the takeaway isn’t surprising, or focuses too much on the implementation of the visualization). (+2 points)                                                                                          | The presentation does not end with a takeaway message. (+1 point)                                                                                                                                                                     |
 | **Response to Followups**            |                                                                                                                                                                                                                                                                                             | The presenter has clearly prepared for many kinds of followup questions, responds with information and personal opinions beyond simply what is shown in the visualization, and states speculations when they do not know the answer (e.g. “I’m not sure, but this is my best guess). (+1 point) | The presenter has not clearly prepared for common followup questions, or fails to engage questions that they do not know the answer to (e.g. only stating “I’m not sure.” without deeper engagement with the question). (+0.5 points) |
-| **Creativity and Originality**       | The presentation exceeds the assignment requirements, with particularly engaging, clear, and memorable parts. (up to +1 bonus point)                                                                                                                                                        | The presentation meets the assignment requirements.                                                                                                                                                                                                                                             |                                                                                                                                                                                                                                       |
+| **Creativity and Originality**       | The presentation exceeds the assignment requirements, with particularly engaging, clear, and memorable parts. (up to +1 bonus point)                                                                                                                                                        | The presentation meets the assignment requirements.                                                                                                                                                                                                                                             |                                                                                                                                                                                                                                       | -->
