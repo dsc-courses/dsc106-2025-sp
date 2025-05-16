@@ -28,10 +28,10 @@ For each of the concerns listed above – visual encodings, interaction techniqu
 
 This is an individual assignment. You may not work in groups.
 
-Your peer reviews are due **Fri 02/28, 11:59pm**. The links to the submissions that you are required to evaluate will be emailed to you. You must submit peer reviews for 3 Project 3 submissions. To submit your review, you must use gradescope. Please carefully respond to each of the questions raised.
+Your peer reviews are due **Fri 05/23, 11:59pm**. The links to the submissions that you are required to evaluate will be emailed to you. You must submit peer reviews for 3 Project 3 submissions. To submit your review, you must use gradescope. Please carefully respond to each of the questions raised.
 
 **Some important instructions**:
 
-1. Ensure that you only submit the sumbission ID in the submission ID field (e.g. 123456). **Do not** enter any text such as "Submission ID: 123456".
+1. Copy and paste the submission link sent to you for every peer review.
 2. It would be helpful if you could write the 4 comments per section in separate paragraphs or bullet points.
 3. Submit your reviews in the same order as emailed to you.
