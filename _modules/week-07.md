@@ -29,4 +29,5 @@ days:
       - name: LEC 13
         type: lecture
         title: Narrative
+        url: lectures/12-DSC106-Narrative.pdf
 ---
