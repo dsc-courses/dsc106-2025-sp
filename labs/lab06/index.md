@@ -37,8 +37,8 @@ To get checked off for the lab, please record a 1 minute mp4 video with the foll
 2. Show you interacting with your D3 visualizations.
 3. Share the most interesting thing you learned from this lab.
 
-**Videos longer than 1 minutes will be trimmed to 1 minutes before we grade, so
-make sure your video is 1 minutes or less.**
+**Videos longer than 1 minute will be trimmed to 1 minute before we grade, so
+make sure your video is 1 minute or less.**
 
 ## [Slides](https://docs.google.com/presentation/d/1S0plWCewNw6Zd21S_-CFka1ufdIBv72teswA1QXzOYY/edit?usp=sharing)
 
@@ -66,13 +66,13 @@ node --version
 If you get an error, or if the version is way behind what you see on the [official website](https://nodejs.org/en), you need to [install or update Node.js](https://nodejs.org/en/download/).
 
 [npm](https://www.npmjs.com/) is included with every Node.js installation. You can verify that you have it installed by typing:
+
 ```
 npm --version
 ```
 
 {: .note }
 If you update Node and npm, you may need to restart your terminal for these commands to show the correct version.
-
 
 ### Step 0.1: Adding a new page with meta-analysis of the code in our project
 
@@ -579,7 +579,7 @@ In `main.js`, define a `renderScatterPlot()` function:
 
 ```js
 function renderScatterPlot(data, commits) {
- // Put all the JS code of Steps inside this function
+  // Put all the JS code of Steps inside this function
 }
 
 let data = await loadData();
@@ -588,7 +588,7 @@ let commits = processCommits(data);
 renderScatterPlot(data, commits);
 ```
 
-**Note that all the code in the following steps of Step 2 is put inside this `renderScatterPlot()` function.** 
+**Note that all the code in the following steps of Step 2 is put inside this `renderScatterPlot()` function.**
 
 Let's define our dimensions within `renderScatterPlot()`:
 
@@ -596,8 +596,6 @@ Let's define our dimensions within `renderScatterPlot()`:
 const width = 1000;
 const height = 600;
 ```
-
-
 
 In your JavaScript, create the SVG using D3:
 
@@ -909,6 +907,7 @@ dl.info[hidden]:not(:hover, :focus-within) {
 ```
 
 Also update `<dl>` in HTML to hide it by default:
+
 ```html
 <dl id="commit-tooltip" class="info tooltip" hidden>
 ```
@@ -996,14 +995,14 @@ dots
   .attr('r', (d) => rScale(d.totalLines))
   .style('fill-opacity', 0.7) // Add transparency for overlapping dots
   .on('mouseenter', (event, commit) => {
-      d3.select(event.currentTarget).style('fill-opacity', 1); // Full opacity on hover
-      renderTooltipContent(commit);
-      updateTooltipVisibility(true);
-      updateTooltipPosition(event);
+    d3.select(event.currentTarget).style('fill-opacity', 1); // Full opacity on hover
+    renderTooltipContent(commit);
+    updateTooltipVisibility(true);
+    updateTooltipPosition(event);
   })
-    .on('mouseleave', (event) => {
-      d3.select(event.currentTarget).style('fill-opacity', 0.7);
-      updateTooltipVisibility(false);
+  .on('mouseleave', (event) => {
+    d3.select(event.currentTarget).style('fill-opacity', 0.7);
+    updateTooltipVisibility(false);
   });
 ```
 
@@ -1036,7 +1035,7 @@ function renderScatterPlot() {
     .selectAll('circle')
     .data(sortedCommits)
     .join('circle');
-    // ... rest of your circle attributes
+  // ... rest of your circle attributes
 }
 ```
 
@@ -1146,7 +1145,7 @@ function brushed(event) {
 
 ```js
 // Update brush initialization to listen for events
-d3.select(svg).call(d3.brush().on('start brush end', brushed));
+svg.call(d3.brush().on('start brush end', brushed));
 ```
 
 Open your browser console and try brushing. You'll see that the event object contains a `selection` property - an array of two points representing the top-left and bottom-right corners of the brush rectangle.

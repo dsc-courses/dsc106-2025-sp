@@ -3,7 +3,7 @@ layout: assignment
 title: 'Lab 7: Geospatial Visualizations'
 lab: 7
 parent: '👩‍🔬 Programming Labs'
-released: false
+released: true
 ---
 
 # Lab {{ page.lab }}: Geospatial visualizations
@@ -40,6 +40,8 @@ To get checked off for the lab, please record a 1 minute video in mp4 format wit
 
 **Videos longer than 1 minute will be trimmed to 1 minute before we grade, so
 make sure your video is 1 minute or less.**
+
+## [Slides](https://docs.google.com/presentation/d/1HeZKw57KJIhK0__-hOw4it8cnWcoGmFd5YL-wVDsr2Y/edit?usp=sharing)
 
 ## What will we make?
 
