@@ -3,7 +3,7 @@ layout: assignment
 title: 'Lab 8: Animation & Scrollytelling'
 lab: 8
 parent: '👩‍🔬 Programming Labs'
-released: false
+released: true
 ---
 
 # Lab {{ page.lab }}: Animation
@@ -30,16 +30,18 @@ released: false
 
 ## Submission
 
-To get checked off for the lab, please record a 2 minute video with the following components:
+To get checked off for the lab, please record a 1 minute video in the following order:
 
 1. Present your interactive narrative visualization
 2. Show you interacting with your visualization.
 3. Share the most interesting thing you learned from this lab.
 
-**Videos longer than 2 minutes will be trimmed to 2 minutes before we grade, so
-make sure your video is 2 minutes or less.**
+**Videos longer than 1 minute will be trimmed to 1 minute before we grade, so
+make sure your video is 1 minute or less.**
 
-## [Slides](https://docs.google.com/presentation/d/1u3yjhpcHGN9J84xQpmqao7Q-5rxZE6Xy2jgOf6rzruo/edit?usp=sharing)
+## [Slides]()
+
+<!-- (https://docs.google.com/presentation/d/1u3yjhpcHGN9J84xQpmqao7Q-5rxZE6Xy2jgOf6rzruo/edit?usp=sharing) -->
 
 <!-- - [Relevant technologies (summary slide)](./slides/#technologies) -->
 
@@ -52,7 +54,7 @@ and convert it to an interactive narrative visualization that shows the progress
 
 <video src="videos/final.mp4" loading=lazy muted autoplay loop class="browser"></video>
 
-## Step 0: Clean Up
+<!-- ## Step 0: Clean Up
 
 To make your code structure a little nicer, we will first complete the following refactoring steps.
 
@@ -124,7 +126,7 @@ Also, we can now make the colors of individual commits on mouse events consisten
 
 ```js
 d3.select(event.currentTarget).classed('selected', ...); // give it a corresponding boolean value
-```
+``` -->
 
 ## Step 1: Evolution visualization
 
@@ -193,10 +195,10 @@ We can now replace `commits` with `filteredCommits` in several places (these var
 - The `brushed()` function that updates the `selectedCommits` variable
 - Your summary stats
 
-Just to demonstrate, let's take the `createScatterplot()` method that you may have created:
+Just to demonstrate, let's take the `renderScatterPlot()` method that you may have created:
 
 ```js
-function createScatterplot() {
+function renderScatterPlot(data, commits) {
     // you may have wrote the following lines
     const width = 1000;
     const height = 600;
@@ -209,7 +211,7 @@ function createScatterplot() {
 You should update it to the following:
 
 ```js
-function updateScatterplot(filteredCommits) {
+function updateScatterPlot(data, filteredCommits) {
   // same as before
 
   d3.select('svg').remove(); // first clear the svg
@@ -236,7 +238,7 @@ function updateScatterplot(filteredCommits) {
 }
 ```
 
-Then, you can replace your previous `createScatterplot()` function with `updateScatterplot(commits)` to retain the scattor plot of commits on page load up. Next you can update the scatter plot by calling `updateScatterplot(filteredCommits)` once you finish filtering `commits` by `commitMaxTime`.
+Then, you can replace your previous `renderScatterPlot()` function with `updateScatterPlot()` to retain the scattor plot of commits on page load up. Next you can update the scatter plot by calling `updateScatterPlot()` once you finish filtering `commits` by `commitMaxTime`.
 
 You may consider adding this function call to the `updateTimeDisplay()` method:
 
@@ -246,7 +248,7 @@ function updateTimeDisplay() {
   // what ever you have previously
   ...
   filterCommitsByTime(); // filters by time and assign to some top-level variable.
-  updateScatterplot(filteredCommits);
+  updateScatterPlot(data, filteredCommits);
 }
 ```
 
