@@ -177,7 +177,7 @@ If everything went well, your slider should now be working!
 >
 > ```js
 > const selectedTime = d3.select('#selectedTime');
-> selectedTime.textContent = timeScale.invert(commitProgress).toLocaleString();
+> selectedTime.text(timeScale.invert(commitProgress).toLocaleString());
 > ```
 >
 > Figure out where's the most appropriate position to place these.
