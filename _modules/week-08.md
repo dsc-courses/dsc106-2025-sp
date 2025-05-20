@@ -16,7 +16,7 @@ days:
     events:
       - name: LEC 14
         type: lecture
-        title: Past Final Project Critiques
+        title: Project 2 Awards, Past Final Project Critiques
         url: lectures/13-DSC106-Project-Critiques.pdf
   - date: '2025-05-23'
     events:
