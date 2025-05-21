@@ -20,7 +20,7 @@ Next, author a constructive critique of the visualization covering at least the 
 - Interaction Techniques. Do the supported interaction techniques enable more effective discovery of interesting trends, patterns or outliers? Do they engage the viewer in a process of meaningful exploration or learning? Are the interactions well-implemented, without notable performance issues or usability problems?
 - Design Quality. Assess the overall design quality in terms of organization and presentation. Are elements appropriately titled or labeled? Is there appropriate spacing, layout, legible type, and other forms of design styling? Is it clear where to begin viewing/interacting with the design? Is the overall display confusing or cluttered? How successful is the prototype in meeting the intended goals?
 
-For each of the concerns listed above – visual encodings, interaction techniques, and overall design quality – we recommend using the ["I like / I wish / What if?"][link] format. Be sure to share positive feedback on effective aspects, critical (but respectful!) feedback on what might be improved, and more wild (even half-baked) ideas a team might explore in subsequent design iterations. Your peer review for each of your 3 submissions should contain **at least a dozen such comments (a minimum of 4 comments for each section (I Like/I wish/What if?))**, often much more! 
+For each of the concerns listed above – visual encodings, interaction techniques, and overall design quality – we recommend using the ["I like / I wish / What if?"][link] format. Be sure to share positive feedback on effective aspects, critical (but respectful!) feedback on what might be improved, and more wild (even half-baked) ideas a team might explore in subsequent design iterations. Your peer review for each of your 3 submissions should contain **at least a dozen such comments (a minimum of 3 comments for each section (I Like/I wish/What if?))**, often much more!
 
 [link]: https://github.com/dsc-courses/dsc106-wi24/raw/gh-pages/resources/reading/I-Like-I-Wish-What-If.pdf
 
@@ -33,5 +33,24 @@ Your peer reviews are due **Fri 05/23, 11:59pm**. The links to the submissions t
 **Some important instructions**:
 
 1. Copy and paste the submission link sent to you for every peer review in the "Webpage Link" section on Gradescope.
-2. Please write the 4 comments/sentences per section in separate paragraphs or bullet points.
+2. Please write the 3 comments/sentences per section. Use this template for **each** text box:
+
+```
+1. [your statement here]
+
+2. [your statement here]
+
+3. [your statement here]
+
+4. [optional, but feel free to include more feedback!]
+```
+
 3. Submit your reviews in the same order as emailed to you.
+
+Here's an example of a high-quality peer review:
+
+I like:
+
+```
+
+```
