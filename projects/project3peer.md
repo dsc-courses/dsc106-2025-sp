@@ -52,5 +52,35 @@ Here's an example of a high-quality peer review:
 I like:
 
 ```
+1. [your statement here]
 
+2. [your statement here]
+
+3. [your statement here]
+
+4. [optional, but feel free to include more feedback!]
+```
+
+I wish:
+
+```
+1. [your statement here]
+
+2. [your statement here]
+
+3. [your statement here]
+
+4. [optional, but feel free to include more feedback!]
+```
+
+What if?
+
+```
+1. [your statement here]
+
+2. [your statement here]
+
+3. [your statement here]
+
+4. [optional, but feel free to include more feedback!]
 ```
