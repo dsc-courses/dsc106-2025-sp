@@ -890,7 +890,7 @@ function renderItems(startIndex) {
 }
 ```
 
-### Step 4.2: Creating a dummy narrative
+### Step 3.2: Creating a dummy narrative
 
 **As you may have guessed, the whole point of implementing a scrolly is to represent something meaningful for the narrative.**
 Don’t spend long on it; you can even generate it with ChatGPT as long as you check that the result is coherent, relevant, and tells a story that complements to the visualization next to it without simply repeating information in a less digestible format.
@@ -917,7 +917,7 @@ Now given this structure, hink about how you can set it as an attribute or furth
 {: .caveat}
 If your narrative overflows, it's because we pre-set a really small item height `height: 30px;`. Play around with bigger values until it gives enough space for each of your narratives. And make sure to update the height in both the CSS rule and the `ITEM_HEIGHT` variable.
 
-### Step 4.3: Creating a scroller for our commits over time
+### Step 3.3: Creating a scroller for our commits over time
 
 Integrate the story you just generated into commit items slicing and rendering.
 
