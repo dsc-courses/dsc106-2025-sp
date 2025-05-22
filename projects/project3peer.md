@@ -52,35 +52,32 @@ Here's an example of a high-quality peer review:
 I like:
 
 ```
-1. [your statement here]
+1. I like that the visualization effectively distinguishes between estrus and non-estrus periods using different colors. The colors make the differentiation easier as the reader doesn't need to strain their eyes trying to match it to values on the x-axis.
 
-2. [your statement here]
+2. I like the implementation of tooltips because it adds another layer of detail that a static visualization would not be able to provide and enables the reader to partake in the data exploration process.
 
-3. [your statement here]
+3. I like how the author provided visualization context to convey what the visualization is exactly about so the reader understands the relevant metrics and technical terms before exploring the visualization.
 
-4. [optional, but feel free to include more feedback!]
 ```
 
 I wish:
 
 ```
-1. [your statement here]
+1. I wish that when the reader enters an invalid time, where the minutes exceed the normal range, the system would prompt the user to enter a valid time instead of proceeding. Because the visualization still renders despite the incorrent input, it is unclear what the time represents.
 
-2. [your statement here]
+2. I wish the author had simply left out the option to choose between genders with the dropdown menu. From the title and subtitle, it seems like the focus is on how estrus affects the core body temperature of female mice. This change would make the visualization less cluttered.
 
-3. [your statement here]
+3. I wish there was more of a compelling story. When comparing estrus and non-estrus, the author could annotate points of the visualization where the difference is very large and very small so that the reader's attention is immediately drawn to the interesting pattern.
 
-4. [optional, but feel free to include more feedback!]
 ```
 
 What if?
 
 ```
-1. [your statement here]
+1. What if instead of entering a time, there is a slider that allows the reader to simultaneously select valid start and end times?
 
-2. [your statement here]
+2. What if the author emphasized the color encoded interactive button by adding an annotation or solid border? It wasn't immediately obvious at first, and it took me quite some time to find out this was even possible.
 
-3. [your statement here]
+3. What if the author implemented a dynamic y axis? Right now, the standardization allows the y-axis to be static but this makes the visualization less intuitive for the readers to interpret. I wonder if including the true data values will make it easier for the readers to draw conclusions.
 
-4. [optional, but feel free to include more feedback!]
 ```
