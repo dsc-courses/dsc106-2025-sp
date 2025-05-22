@@ -4,9 +4,9 @@ weekNumber: 10
 days:
   - date: '2025-06-02'
     events:
-      - name: DISC 9
-        type: disc
-        title: Disc 9
+      - name: CANCELED
+        type: canceled
+        title: No Discussion
   - date: '2025-06-03'
     events:
       - name: FINAL PROJ

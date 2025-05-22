@@ -4,9 +4,9 @@ weekNumber: 9
 days:
   - date: '2025-05-26'
     events:
-      - name: DISC 8
-        type: disc
-        title: Disc 8
+      - name: CANCELED
+        type: canceled
+        title: NO Discussion - Memorial Day
   - date: '2025-05-27'
     events:
       - name: FINAL PROJ
