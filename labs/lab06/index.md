@@ -98,19 +98,14 @@ First, open the terminal and run this, to install [the package](https://www.npmj
 npm install elocuent -D
 ```
 
-Now in your terminal, run this command:
-
-```bash
-npx elocuent -d . -o meta/loc.csv
-```
-
-Or this, if you’ve used spaces for indentation (replace `2` with the number of spaces):
+Now, in your terminal, run this command:
 
 ```bash
 npx elocuent -d . -o meta/loc.csv --spaces 2
 ```
 
-Make sure your indentation is consistent across your code!
+Note: if you didn't use 2 spaces to indent your code, you can change the
+`--spaces` parameter above.
 
 {: .tip }
 Two very popular tools to ensure a consistent code style are [ESLint](https://eslint.org/) (JS only)
@@ -169,7 +164,7 @@ CSV is more efficient for data that has many rows, since we don’t need to repe
 
 Do periodically re-run the script as you work through the lab to see the data update!
 
-{: .note} We directly commit `meta/loc.csv` to github so you do not need to add it to `.gitignore` now. Note that it is not up-to-date since you generate it locally and commit it to github.
+{: .note} Each time you make a new commit, you will need to rerun the `npx` command again to update your csv file.
 
 ### Step 0.3: Exclude node_modules from committed files.
 
@@ -909,7 +904,7 @@ dl.info[hidden]:not(:hover, :focus-within) {
 Also update `<dl>` in HTML to hide it by default:
 
 ```html
-<dl id="commit-tooltip" class="info tooltip" hidden>
+<dl id="commit-tooltip" class="info tooltip" hidden></dl>
 ```
 
 Update your event listeners from `renderScatterPlot` function:
@@ -1031,10 +1026,7 @@ function renderScatterPlot() {
   const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
 
   // Use sortedCommits in your selection instead of commits
-  dots
-    .selectAll('circle')
-    .data(sortedCommits)
-    .join('circle');
+  dots.selectAll('circle').data(sortedCommits).join('circle');
   // ... rest of your circle attributes
 }
 ```

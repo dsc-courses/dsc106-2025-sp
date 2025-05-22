@@ -128,12 +128,12 @@ d3.select(event.currentTarget).classed('selected', ...); // give it a correspond
 
 ## Step 1: Evolution visualization
 
-{: .files }
-`src/meta/main.js` and `src/meta/index.html`
-
 In this step, we will create an interactive timeline visualization that shows the evolution of our repo by allowing us to move a slider to change the date range of the commits we are looking at.
 
 ### Step 1.1: Creating the filtering UI
+
+{: .files }
+`meta/meta.js` and `meta/index.html`
 
 In this step we will create a slider, bind its value to a variable, and display the date and time it corresponds to.
 It’s very familiar to what we did in [the previous lab](../lab07/).
@@ -148,107 +148,227 @@ let commitProgress = 100;
 To map this percentage to a date, we will need a new [time scale](https://d3js.org/d3-scale/time). Once we have our scale, we can easily get from the 0-100 number to a date:
 
 ```js
-let timeScale = d3.scaleTime(
-  [d3.min(commits, (d) => d.datetime), d3.max(commits, (d) => d.datetime)],
-  [0, 100],
-);
+let timeScale = d3
+  .scaleTime()
+  .domain([
+    d3.min(commits, (d) => d.datetime),
+    d3.max(commits, (d) => d.datetime),
+  ])
+  .range([0, 100]);
 let commitMaxTime = timeScale.invert(commitProgress);
 ```
 
-We are now ready to add our filtering UI in `index.html`. This is largely a repeat of what we did in [Lab 7](../lab07/):
+We are now ready to add our filtering UI in `meta/index.html`. This is largely a repeat of what we did in [Lab 7](../lab07/). Create the following HTML elements:
 
-- A slider (`<input type=range>`) with a min of 0 and max of 100 and bind the slider value to `commitProgress`.
-- A `<time>` element to display the commit time using `commitMaxTime.toLocaleString()`.
+- A slider (`<input type="range">`) with a min of 0 and max of 100. Give it the id `"commit-progress"`
+- A `<time>` element to display the commit time. Give it the id `"commit-time"`
 - A `<label>` _around_ the slider and `<time>` element with some explanatory text (e.g. "Show commits until:").
 
-Where you put it on the page is up to you. I placed it on top of my scatter plot (the `<div>` element with id `chart`). I wrapped the `<label>` inside of `<div>`, to which I applied a `flex: 1` and `align-items: baseline` to align them horizontally. Then I gave `<time>` a `margin-left: auto` to push it all the way to the right. **Note you should apply these style rules as specifically as possible (use ID selectors)!**
+Where you put it on the page is up to you. I placed it above my commit stats (the `<div>` element with id `stats`). I wrapped the `<label>` inside of `<div>`, to which I applied a `flex: 1` and `align-items: baseline` to align them horizontally. Then I gave `<time>` a `margin-left: auto` to push it all the way to the right.
+
+Now, add an event listener to the slider. When the user changes the slider, the event handler should:
+
+1. Update the `commitProgress` variable to the slider value.
+2. Update the `commitMaxTime` variable to the date corresponding to the slider value using `d3.invert()`.
+3. Update the `<time>` element to display the commit time using `commitMaxTime.toLocaleString()`.
+
+I defined my event handler as a function called `onTimeSliderChange()` so I could
+attach it to the slider and also call it once on page load to initialize the
+time.
 
 {: .tip }
-Feel free to use any settings you like.
+Feel free to use any settings for `toLocaleString()` that you like.
 In the screencasts below, I used `dateStyle: "long"` and `timeStyle: "short"`. You may pass these options into `toLocaleString()` method as an object.
 
 If everything went well, your slider should now be working!
 
 ![](videos/slider.gif)
 
-{: .note }
-
-> To make the time string present, you should have the following lines:
->
-> ```js
-> const selectedTime = d3.select('#selectedTime');
-> selectedTime.text(timeScale.invert(commitProgress).toLocaleString());
-> ```
->
-> Figure out where's the most appropriate position to place these.
-
 ### Step 1.2: Filtering by `commitMaxTime`
 
-Let’s now ceate a new `filteredCommits` variable that will reactively [filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) `commits` by comparing `commit.datetime` with `commitMaxTime` and only keep those that are **less than** `commitMaxTime`.
+{: .files }
+`meta/meta.js`
 
-We can now replace `commits` with `filteredCommits` in several places (these varies depending on the exact implementation you did for Lab 6 so please be mindful):
+Let’s now create a new `filteredCommits` variable that will
+[filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+`commits` by comparing `commit.datetime` with `commitMaxTime` and only keep
+those that are **less than** `commitMaxTime`.
 
-- The `xScale` domain for commit time
-- The `rScale` domain for each scatter's radius
-- The `brushed()` function that updates the `selectedCommits` variable
-- Your summary stats
+```js
+// Will get updated as user changes slider
+const filteredCommits = commits;
 
-Just to demonstrate, let's take the `renderScatterPlot()` method that you may have created:
+function onTimeSliderChange() {
+  // ...previous code
+  filteredCommits = commits.filter((d) => d.datetime <= commitMaxTime);
+}
+```
+
+Now, we would like to update the scatter plot of commits to only plot
+`filteredCommits` rather than all of the commits. One approach is to call
+`renderScatterPlot` with `filteredCommits` instead of `commits` in the
+`onTimeSliderChange()` event handler. But this has a major bug! Go ahead and try
+this now by making this edit:
+
+```js
+function onTimeSliderChange() {
+  // ...previous code
+
+  // What goes wrong here?
+  renderScatterPlot(data, filteredCommits);
+}
+```
+
+When you move the slider now, you'll see that the page produces LOTS of separate
+scatter plots rather than updating the existing one. This is because
+`renderScatterPlot` assumes that the `#chart` element is completely empty and
+thus creates a brand-new `svg` element each time it's called by using
+`.append('svg')`. Instead, we should just update the x-axis and points on the
+existing scatter plot. The simplest to do this is to create a new method called
+`updateScatterPlot()`. We can copy over the code from `renderScatterPlot`,
+remove parts of the code that we don't need, and add new code when needed. [Here
+is my first version of `updateScatterPlot()`][updatev1] that is a verbatim copy of
+`renderScatterPlot`, but I've marked the parts of the code that we need to
+change, remove, or keep.
+
+[updatev1]: https://gist.github.com/SamLau95/20725ea12ef08f2471116fa48f69877f
+
+Now, we can implement the changes to create the first version of
+`updateScatterPlot()`:
+
+```js
+function updateScatterPlot(data, commits) {
+  const width = 1000;
+  const height = 600;
+  const margin = { top: 10, right: 10, bottom: 30, left: 20 };
+  const usableArea = {
+    top: margin.top,
+    right: width - margin.right,
+    bottom: height - margin.bottom,
+    left: margin.left,
+    width: width - margin.left - margin.right,
+    height: height - margin.top - margin.bottom,
+  };
+
+  const svg = d3.select('#chart').select('svg');
+
+  xScale = xScale.domain(d3.extent(commits, (d) => d.datetime));
+
+  const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
+  const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([2, 30]);
+
+  const xAxis = d3.axisBottom(xScale);
+
+  // CHANGE: we should clear out the existing xAxis and then create a new one.
+  svg
+    .append('g')
+    .attr('transform', `translate(0, ${usableArea.bottom})`)
+    .call(xAxis);
+
+  const dots = svg.select('g.dots');
+
+  const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
+  dots
+    .selectAll('circle')
+    .data(sortedCommits)
+    .join('circle')
+    .attr('cx', (d) => xScale(d.datetime))
+    .attr('cy', (d) => yScale(d.hourFrac))
+    .attr('r', (d) => rScale(d.totalLines))
+    .attr('fill', 'steelblue')
+    .style('fill-opacity', 0.7) // Add transparency for overlapping dots
+    .on('mouseenter', (event, commit) => {
+      d3.select(event.currentTarget).style('fill-opacity', 1); // Full opacity on hover
+      renderTooltipContent(commit);
+      updateTooltipVisibility(true);
+      updateTooltipPosition(event);
+    })
+    .on('mouseleave', (event) => {
+      d3.select(event.currentTarget).style('fill-opacity', 0.7);
+      updateTooltipVisibility(false);
+    });
+}
+```
+
+This function has a small bug: it can't clear out the existing x-axis because
+the initial `renderScatterPlot` doesn't mark the x-axis `g` tag with a class or
+id, so let's do that:
 
 ```js
 function renderScatterPlot(data, commits) {
-    // you may have wrote the following lines
-    const width = 1000;
-    const height = 600;
-    const svg = d3.select('#chart').append('svg')...
-    xScale = d3.scaleTime()...
-    yScale = d3.scaleLinear()...
+  // ...existing code
+  svg
+    .append('g')
+    .attr('transform', `translate(0, ${usableArea.bottom})`)
+    .attr('class', 'x-axis') // new line to mark the g tag
+    .call(xAxis);
+
+  svg
+    .append('g')
+    .attr('transform', `translate(${usableArea.left}, 0)`)
+    .attr('class', 'y-axis') // just for consistency
+    .call(yAxis);
+  // ...existing code
 }
 ```
 
-You should update it to the following:
+Now, we can use this class in `updateScatterPlot()`:
 
 ```js
-function updateScatterPlot(data, filteredCommits) {
-  // same as before
-
-  d3.select('svg').remove(); // first clear the svg
-  const svg = d3.select('#chart').append('svg')...
-
-  xScale = d3.scaleTime().domain(d3.extent(filteredCommits, (d) => d.datetime))...
-
-  /// same as before
-
-  svg.selectAll('g').remove(); // clear the scatters in order to re-draw the filtered ones
-  const dots = svg.append('g').attr('class', 'dots');
-
-  // same as before
-
-  const [minLines, maxLines] = d3.extent(filteredCommits, (d) => d.totalLines);
-  const rScale = d3.scaleSqrt().domain([minLines, maxLines])...;
-
-  // same as before
-
-  dots.selectAll('circle').remove();
-  dots.selectAll('circle').data(filteredCommits).join('circle')...
-
-  // same as before
+function updateScatterPlot(data, commits) {
+  // ...existing code
+  // remove the old x-axis code, then replace with:
+  const xAxisGroup = svg.select('g.x-axis');
+  xAxisGroup.selectAll('*').remove();
+  xAxisGroup.call(xAxis);
 }
 ```
 
-Then, you can replace your previous `renderScatterPlot()` function with `updateScatterPlot()` to retain the scattor plot of commits on page load up. Next you can update the scatter plot by calling `updateScatterPlot()` once you finish filtering `commits` by `commitMaxTime`.
+After this, change `onTimeSliderChange()` to use `updateScatterPlot` instead of
+`renderScatterPlot()`. Now, your scatter plot should update properly when you
+interact with the slider! As an exercise, you can apply a similar logic to
+`renderCommitInfo()` to update the commit statistics with the filtered commits
+as well. In any case, try moving the slider and see what happens!
 
-You may consider adding this function call to the `updateTimeDisplay()` method:
+<video src="videos/filtering-unstable.mp4" loading=lazy muted autoplay loop class="outline"></video>
+
+### Step 1.3: Making the circles stable
+
+CSS transitions are already applied to our circles since Lab 6. However, you
+might notice that when we move the slider, circles jump around a lot. This is
+because D3 doesn't know which data items correspond to which previous data
+items, so it does not necessarily reuse the right `<circle>` element for the
+same commit. To tell D3 which data items correspond to which previous data
+items, we can give each `circle` a _key_ that uniquely identifies the data item.
+A good candidate for that in this case would be the commit id:
 
 ```js
-function updateTimeDisplay() {
-  commitProgress = Number(timeSlider.value);
-  // what ever you have previously
-  ...
-  filterCommitsByTime(); // filters by time and assign to some top-level variable.
-  updateScatterPlot(data, filteredCommits);
+function renderScatterPlot(data, commits) {
+  // ...
+  dots
+    .selectAll('circle')
+    .data(sortedCommits, (d) => d.id) // new
+    .join('circle')
+    .attr('cx', (d) => xScale(d.datetime))
+    .attr('cy', (d) => yScale(d.hourFrac));
+  // ...
+}
+
+function updateScatterPlot(data, commits) {
+  // ...
+  dots
+    .selectAll('circle')
+    .data(sortedCommits, (d) => d.id) // new
+    .join('circle')
+    .attr('cx', (d) => xScale(d.datetime))
+    .attr('cy', (d) => yScale(d.hourFrac));
+  // ...
 }
 ```
+
+Just this small addition fixes the issue completely!
+
+<video src="videos/filtering-stable.mp4" loading=lazy muted autoplay loop class="browser"></video>
 
 ### Step 1.3: Entry transitions with CSS
 
