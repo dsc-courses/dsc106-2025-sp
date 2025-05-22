@@ -67,7 +67,7 @@ I wish:
 
 2. I wish the author had simply left out the option to choose between genders with the dropdown menu. From the title and subtitle, it seems like the focus is on how estrus affects the core body temperature of female mice. This change would make the visualization less cluttered.
 
-3. I wish there was more of a compelling story. When comparing estrus and non-estrus, the author could annotate points of the visualization where the difference is very large and very small so that the reader's attention is immediately drawn to the interesting pattern.
+3. I wish there was more of a compelling story. When comparing estrus and non-estrus, the author could annotate points of the visualization where the difference is very large and very small, so that the reader's attention is immediately drawn to the interesting pattern.
 
 ```
 
@@ -76,8 +76,8 @@ What if?
 ```
 1. What if instead of entering a time, there is a slider that allows the reader to simultaneously select valid start and end times?
 
-2. What if the author emphasized the color encoded interactive button by adding an annotation or solid border? It wasn't immediately obvious at first, and it took me quite some time to find out this was even possible.
+2. What if the author emphasized the color encoded interactive button by adding an annotation or solid border? The interaction wasn't immediately obvious at first, and it took me quite some time to find out this was even possible.
 
-3. What if the author implemented a dynamic y axis? Right now, the standardization allows the y-axis to be static but this makes the visualization less intuitive for the readers to interpret. I wonder if including the true data values will make it easier for the readers to draw conclusions.
+3. What if the author implemented a dynamic y axis? Right now, the standardization allows the y-axis to be fixed but this makes the visualization less intuitive for the readers to interpret. I wonder if including the true data values will make it easier for the readers to draw conclusions.
 
 ```
