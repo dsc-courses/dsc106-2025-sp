@@ -771,7 +771,13 @@ descriptions, the scatter plot also goes off-screen.
 Now, let's use Scrollama to automatically update our scatter plot as we scroll
 past commits!
 
-Add this to the bottom of your JS file:
+Add this to the bottom of top of your JS file to import Scrollama:
+
+```js
+import scrollama from 'https://cdn.jsdelivr.net/npm/scrollama@3.2.0/+esm';
+```
+
+Now, add this to the bottom of your JS file to use the library:
 
 ```js
 function onStepEnter(response) {
