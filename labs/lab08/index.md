@@ -233,8 +233,9 @@ change, remove, or keep.
 
 [updatev1]: https://gist.github.com/SamLau95/20725ea12ef08f2471116fa48f69877f
 
-Now, we can implement the changes to create the first version of
-`updateScatterPlot()`:
+Now, we can implement the marked changes to create the first version of
+`updateScatterPlot()`. Feel free to copy this function into `meta.js`, but you
+should understand what was changed and why.
 
 ```js
 function updateScatterPlot(data, commits) {
@@ -340,14 +341,14 @@ because D3 doesn't know which data items correspond to which previous data
 items, so it does not necessarily reuse the right `<circle>` element for the
 same commit. To tell D3 which data items correspond to which previous data
 items, we can give each `circle` a _key_ that uniquely identifies the data item.
-A good candidate for that in this case would be the commit id:
+A good candidate for that in this case would be the commit id.
 
 ```js
 function renderScatterPlot(data, commits) {
   // ...
   dots
     .selectAll('circle')
-    .data(sortedCommits, (d) => d.id) // new
+    .data(sortedCommits, (d) => d.id) // change this line
     .join('circle')
     .attr('cx', (d) => xScale(d.datetime))
     .attr('cy', (d) => yScale(d.hourFrac));
@@ -358,7 +359,7 @@ function updateScatterPlot(data, commits) {
   // ...
   dots
     .selectAll('circle')
-    .data(sortedCommits, (d) => d.id) // new
+    .data(sortedCommits, (d) => d.id) // change this line
     .join('circle')
     .attr('cx', (d) => xScale(d.datetime))
     .attr('cy', (d) => yScale(d.hourFrac));
@@ -366,11 +367,14 @@ function updateScatterPlot(data, commits) {
 }
 ```
 
-Just this small addition fixes the issue completely!
+Just this small addition fixes the issue completely! [Take a look at the d3
+documentation for more details.][d3-key]
+
+[d3-key]: https://d3js.org/d3-selection/joining
 
 <video src="videos/filtering-stable.mp4" loading=lazy muted autoplay loop class="browser"></video>
 
-### Step 1.3: Entry transitions with CSS
+### Step 1.4: Entry transitions with CSS
 
 Notice that even though we are now getting a nice transition when an existing commit changes radius,
 there is no transition when a new commit appears.
@@ -409,50 +413,70 @@ If you preview again, you should notice that that’s all it took, new circles a
 
 ## Step 2: The race for the biggest file!
 
-In this step we will create a unit visualization that shows the relative size of each file in the codebase in lines of code, as well as the type and age of each line.
+In this step we will create a unit visualization that shows the relative size of
+each file in the codebase in lines of code, as well as the type and age of each
+line.
 
 ### Step 2.1: Adding unit visualization for files
 
 {: .files }
-`src/meta/main.js` and `src/style.css`
+`meta/meta.js` and `style.css`
 
-We want to display the file details for the commits we filtered. We want this section to go after the scatter plot, but for now let's add it right after our filtering slider as that makes development faster.
+We want to display the file details for the commits we filtered. We'll
+eventually want this section to go after the scatter plot, but for now let's add
+it right after our filtering slider as that makes development faster.
 
-First, let's obtain the file names and lines associated with each file.
+First, let's obtain the file names and lines associated with each file. In
+`meta.js`:
 
 ```js
+// after initializing filteredCommits
 let lines = filteredCommits.flatMap((d) => d.lines);
-let files = [];
-files = d3
+let files = d3
   .groups(lines, (d) => d.file)
   .map(([name, lines]) => {
     return { name, lines };
   });
 ```
 
-Now that we have our files, let's output them (filenames and number of lines). We will use a `<dl>` element (but feel free to make different choices, there are many structures that would be appropriate here) to give it a simple structure.
+Now that we have our files, let's output them (filenames and number of lines).
+We will use a `<dl>` element (but feel free to make different choices, there are
+many structures that would be appropriate here) to give it a simple structure.
+Add this HTML under the slider in `meta/index.html`:
 
 ```html
-<dl class="files">
-  <!-- we want the following structure for each file-->
+<dl id="files">
+  <!-- we want the following structure for each file:
   <div>
     <dt>
       <code>{file.name}</code>
     </dt>
     <dd>{file.lines.length} lines</dd>
   </div>
-  <div>...</div>
+  -->
 </dl>
 ```
 
-It should be clear by now what we need from D3 to achieve this:
+Remember that we can use D3 to manipulate any HTML element, not just SVG
+elements! So we can ask D3 to create the HTML we want:
 
 ```js
-d3.select('.files').selectAll('div').remove(); // don't forget to clear everything first so we can re-render
-let filesContainer = d3.select('.files').selectAll('div').data(files).enter().append('div');
+let filesContainer = d3
+  .select('#files')
+  .selectAll('div')
+  .data(files, (d) => d.name)
+  .join(
+    // This code only runs when the div is initially rendered
+    (enter) =>
+      enter.append('div').call((div) => {
+        div.append('dt').append('code');
+        div.append('dd');
+      }),
+  );
 
-filesContainer.append('dt').append('code').text(d => ...); // TODO
-filesContainer.append('dd').text(d => ...); // TODO
+// This code updates the div info
+filesContainer.select('dt > code').text((d) => d.name);
+filesContainer.select('dd').text((d) => `${d.lines.length} lines`);
 ```
 
 We should style the `<dl>` as a grid so that the filenames and line counts are aligned.
@@ -460,17 +484,33 @@ The only thing that is a bit different now is that we have a `<div>` around each
 To prevent that from interfering with the grid we should use [Subgrid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Subgrid):
 
 ```css
-.files > div {
-  grid-column: 1 / -1;
+#files {
   display: grid;
-  grid-template-columns: subgrid;
+  grid-template-columns: 1fr 4fr;
+
+  > div {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+
+  dt {
+    grid-column: 1;
+  }
+
+  dd {
+    grid-column: 2;
+  }
 }
 ```
 
-Then we can just apply `grid-column: 1` to the `<dt>`s and `grid-column: 2` to the `<dd>` as usual.
+Now, you should see the file "visualization" appear on page load, but it won't
+update when you interact with the slider. Go ahead and put the JS code we wrote
+into a function called `updateFileDisplay(filteredCommits)` so that we can call
+this function from `onTimeSliderChange`.
 
-At this point, our "visualization" is rather spartan,
-but if you move the slider, you should already see the number of lines changing!
+At this point, our "visualization" is rather spartan, but if you move the
+slider, you should already see the number of lines changing!
 
 <video src="videos/file-lines-basic.mp4" loading=lazy muted autoplay loop class="outline"></video>
 
@@ -489,24 +529,29 @@ All we need to do is replace the contents of the `<dd>` element with more `<div>
 </dd>
 ```
 
-To do so, simply add to where we were appending `<dd>` using D3 selections previous:
+To do so, simply add to where we were appending `<dd>` using D3 selections previously:
 
 ```js
-// TODO, append divs and set each's class attribute
-filesContainer.append('dd')
-              .selectAll('div')
-              .data(d => d.lines)
-              ...
+// append one div for each line
+filesContainer
+  .select('dd')
+  .selectAll('div')
+  .data((d) => d.lines)
+  .join('div')
+  .attr('class', 'loc');
 ```
 
 {: .tip }
-Seeing the total number of lines per file is still useful, so you may want to add it in the `<dt>`.
-I used a `<small>` element, gave it `display: block` so that it's on its own line, and styled it smaller and less opaque. You can set both `<code>` and `<small>` tags' contents using `.html()` method. You can revisit it in [Lab 5 Step 2.2](../lab05/#step-22-adding-a-legend)
+Seeing the total number of lines per file is still useful, so you may want to
+add it in the `<dt>`. I used a `<small>` element, gave it `display: block` so
+that it's on its own line, and styled it smaller and less opaque. You can set
+both `<code>` and `<small>` tags' contents using the `.html()` method. You can
+revisit it in [Lab 5 Step 2.2](../lab05/#step-22-adding-a-legend)
 
 And then add some CSS to make it look like a unit visualization:
 
 ```css
-.line {
+.loc {
   display: flex;
   width: 0.5em;
   aspect-ratio: 1;
@@ -540,16 +585,18 @@ It should look something like this:
 
 Our visualization is not really much of a race right now, since the order of files seems random.
 We need to sort the files by the number of lines they contain in descending order.
-We can do that in the same reactive block where we calculate `files`:
+We can do that in the same place where we calculate `files`:
 
 ```js
-files = d3.sort(files, (d) => -d.lines.length);
+let files = d3
+  .groups(lines, (d) => d.file)
+  .map(([name, lines]) => {
+    return { name, lines };
+  })
+  .sort((a, b) => b.lines.length - a.lines.length);
 ```
 
 ### Step 2.4: Varying the color of the dots by technology
-
-{: .caveat}
-Let's first remove the CSS rule on `.line`'s background in order for us to render different lines of code with distinctive colors.
 
 Our visualization shows us the size of the files, but not all files are created equal.
 We can use color to differentiate the lines withn each file by technology.
@@ -557,18 +604,19 @@ We can use color to differentiate the lines withn each file by technology.
 Let’s create an ordinal scale that maps technology ids to colors:
 
 ```js
-let fileTypeColors = d3.scaleOrdinal(d3.schemeTableau10);
+let colors = d3.scaleOrdinal(d3.schemeTableau10);
 ```
 
 Then, we can use this scale to color the dots:
 
 ```js
-filesContainer.append('dd')
-              .selectAll('div')
-              .data(d => d.lines)
-              ... // same as before
-              .style('background', ...); // TODO, apply the color scale based on line type
+filesContainer
+  // ...existing lines
+  .attr('style', (d) => `--color: ${colors(d.type)}`);
 ```
+
+Lastly, you should edit the `background` CSS for the `.loc` elements to use the
+new color.
 
 <!--
 If you preview at this point, you will notice that the colors seem somewhat random.
