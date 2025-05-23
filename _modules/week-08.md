@@ -31,5 +31,6 @@ days:
       - name: LEC 15
         type: lecture
         title: Animation
+        url: lectures/14-DSC106-Animation.pdf
         # title: Uncertainty & Review
 ---
