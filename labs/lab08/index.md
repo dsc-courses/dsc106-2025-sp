@@ -32,8 +32,10 @@ released: true
 
 To get checked off for the lab, please record a 1 minute video in the following order:
 
-1. Present your interactive narrative visualization
-2. Show you interacting with your visualization.
+1. Present your interactive narrative visualization, showing that your scatter
+   plot updates as you scroll down the page.
+2. Present your unit visualization (you do not need to implement scrollytelling
+   for the unit visualization).
 3. Share the most interesting thing you learned from this lab.
 
 **Videos longer than 1 minute will be trimmed to 1 minute before we grade, so
@@ -47,8 +49,10 @@ make sure your video is 1 minute or less.**
 
 ## What will we make?
 
-In this lab, we will go back to the Meta page of our portfolio,
-and convert it to an interactive narrative visualization that shows the progress of our codebase over time (you may **ignore the pie chart part** in the demo since we did not explicitly implement it for our meta tab).
+In this lab, we will go back to the Meta page of our portfolio, and convert it
+to an interactive narrative visualization that shows the progress of our
+codebase over time (you may **ignore the pie chart part** in the demo since we
+did not explicitly implement it for our meta tab).
 
 <video src="videos/final.mp4" loading=lazy muted autoplay loop class="browser"></video>
 
@@ -420,7 +424,7 @@ line.
 ### Step 2.1: Adding unit visualization for files
 
 {: .files }
-`meta/meta.js` and `style.css`
+`meta/meta.js`, `meta/index.html`, and `style.css`
 
 We want to display the file details for the commits we filtered. We'll
 eventually want this section to go after the scatter plot, but for now let's add
@@ -519,6 +523,9 @@ You may see different summary stat changes depending on which you implemented fr
 
 ### Step 2.2: Making it look like an actual unit visualization
 
+{: .files }
+`meta/meta.js`, `meta/index.html`, and `style.css`
+
 For a unit visualization, we want to draw an element per data point (in this case, per line committed), so let's do that.
 All we need to do is replace the contents of the `<dd>` element with more `<div>`, each corresponding to one line:
 
@@ -583,6 +590,9 @@ It should look something like this:
 
 ### Step 2.3: Sorting files by number of lines
 
+{: .files }
+`meta/meta.js`
+
 Our visualization is not really much of a race right now, since the order of files seems random.
 We need to sort the files by the number of lines they contain in descending order.
 We can do that in the same place where we calculate `files`:
@@ -597,6 +607,9 @@ let files = d3
 ```
 
 ### Step 2.4: Varying the color of the dots by technology
+
+{: .files }
+`meta/meta.js` and `style.css`
 
 Our visualization shows us the size of the files, but not all files are created equal.
 We can use color to differentiate the lines withn each file by technology.
@@ -618,565 +631,192 @@ filesContainer
 Lastly, you should edit the `background` CSS for the `.loc` elements to use the
 new color.
 
-<!--
-If you preview at this point, you will notice that the colors seem somewhat random.
-This is because the lines within each file are not actually in the order they appear.
-To do that, we need to sort them by their `line` property.
-Back in the reactive block where we calculate `files`:
-
-```js
-files = files.map(file => {
-	file.lines = d3.sort(file.lines, d => d.line);
-	return file;
-});
-```
--->
-
 Much better now!
 
 <video src="videos/file-lines-colored.mp4" loading=lazy muted autoplay loop class="outline"></video>
 
-<!-- ### Step 2.5: Dot transitions
-
-Notice that it's a little hard to compare which lines of each file have been added as we move the slider.
-If we make new elements appear with a transition, it will be much easier to see what is happening.
-We can use one of the [Svelte predefined transitions](https://svelte.dev/docs/svelte-transition) for this.
-I picked `scale` as that makes dots appear to grow from a single point.
-
-If you don’t need to customize the duration etc, all it takes is adding `in:scale` to the `<div>` element!
-
-<video src="videos/file-lines-dottransitions.mp4" loading=lazy muted autoplay loop class="outline"></video> -->
-
-<!-- ### Step 2.6: Consistent colors across visualizations
-
-Notice that we have two visualizations that use colors to represent technologies,
-but they use different colors for the same technologies!
-
-To fix this, we need to allow our components (`Pie.svelte` and `FileLines.svelte`) to accept a color scale as a prop, by prepending their `colors` declarations with `export`:
-
-```js
-export let colors = d3.scaleOrdinal(d3.schemeTableau10);
-```
-
-Then we create the color scale on the parent page and pass it to each of them.
-For example, `<FileLines />` would become `<FileLines colors={colors} />`.
-
-That by itself is not enough.
-To get consistent colors each component needs to be looking up the color for a technology in the same way.
-Currently, `<Pie>` uses technology labels, while `<FileLines>` uses the raw ids from the data.
-We can make sure the data we pass to `<Pie>` include an `id` property with the raw id and then use that to look up the color.
-To make the component more flexible, we could even use both:
-
-```jsx
-<!-- Rest of attributes omitted
-<!-- <path fill={ colors(d.id ?? d.label) }>
-```
-
-Our visualization is now _way_ more informative!
-
-<!-- <img src="images/consistent-colors-pie-unit.png" class="outline" alt="" /> -->
-
-<!-- ### Step 2.7: Animated race
-
-We can now use the [`animate:fn` directive](https://svelte.dev/docs/element-directives#animate-fn) to animate the files when they move to a new position.
-Svelte provides a built-in animation called `flip`, which sounds perfect for this use case.
-
-We import it at the top of our component:
-
-```js
-import { flip } from 'svelte/animate';
-```
-
-And then we apply it to the `<div>` that contains each file.
-If we are happy with its defaults, it can be as simple as this:
-
-```html
-<div animate:flip></div>
-```
-
-However, if we preview the animation we get the result is …less than great:
-
-<video src="videos/flip-wrong.mp4" loading=lazy muted autoplay loop class="outline"></video>
-
-We can add a long duration (3000) and a delay (1000) (`animate:flip={{delay: 1000, duration: 3000}}) to more clearly see what is happening:
-
-<video src="videos/flip-wrong-slow.mp4" loading=lazy muted autoplay loop class="outline"></video>
-
-From some further investigation, it appears that Svelte is prematurely caching the geometry of the elements (before and after), which is causing the animation to be incorrect.
-
-But we can use a workaround!
-The part after the `animate:` is just referring to a function.
-There is nothing special about `flip`, it’s just a function we import.
-In fact, if we alt + click on it in the import statement, VS Code will take us to the Svelte module that defines it.
-Instead of using it wholesale, we can import with a different name:
-
-```js
-import { flip as originalFlip } from 'svelte/animate';
-```
-
-We can use a reactive statement to _force_ `flip` to update whenever we need it to,
-e.g. whenever `files` changes:
-
-```js
-function getFlip() {
-  return originalFlip;
-}
-$: flip = getFlip(files);
-```
-
-This tricks Svelte into thinking `flip` depends on `files`, so it will re-run whenever `files` changes.
-
-If you try it now (with a reasonable duration and no delay), you will see that the animation is now correct!
-
-<video src="videos/flip-correct.mp4" loading=lazy muted autoplay loop class="outline"></video>
-
-For the final result, you’d likely want to either specify a duration as a function (which depends on the distance travelled) or remove the parameters (since that is the default).
-
-{: .tip }
-
-> Don’t like the appearance of the items when they overlap? You can apply a semi-transparent white background and a glow with the same color to the `<div>` via something like:
->
-> ```css
-> & > div {
->   background: hsl(0 0% 100% / 90%);
->   box-shadow: 0 0 0.2em 0.2em hsl(0 0% 100% / 90%);
-> }
-> ``` -->
-
-<!-- ### Step 3.2: Eliminate flashing by using a keyed `each` block
-
-Our technologies are now sorted, but this made the transition involve a lot of flashing.
-Why is that?
-The pie wedges are always in the same order, so nothing should be changing color!
-
-This is because Svelte doesn't know which data items correspond to which previous data items,
-so it does not necessarily reuse the same `<path>` element for the same data item in the new data.
-To tell Svelte which data items correspond to which previous data items, we can use [a _keyed `each` block_](https://svelte.dev/docs/logic-blocks#each), with a value that uniquely identifies the data item.
-A good candidate for that would be the label:
-
-```html
-{#each pieData as d, index (d.label)}
-```
-
-Just this small addition fixes the issue completely!
-
-<video src="videos/keyed.mp4" loop muted autoplay></video> -->
-
-<!-- ### Step 3.4: Transitioning between pies with different technologies
-
-If you try transitioning between pies with _different_ technologies however, you will notice that it all breaks down:
-
-<video src="videos/d3-transition-inout.mp4" loading=lazy muted autoplay loop></video>
-
-How can we fix this?
-
-Right now, we simply exit the function if we can't find both old and new data items for a wedge.
-What if we generated dummy objects with the right `startAngle` and `endAngle` that we want these wedges to transition from or to?
-We basically want an object where `obj.startAngle` and `obj.endAngle` are both equal to whatever wedge is drawn immediately before the place our wedge is appearing or disappearing from.
-The exact logic is a little tricky, so we’ll just provide the code:
-
-```js
-function getEmptyArc(label, data = pieData) {
-  // Union of old and new labels in the order they appear
-  let labels = d3.sort(new Set([...oldData, ...pieData].map((d) => d.label)));
-  let labelIndex = labels.indexOf(label);
-  let sibling;
-  for (let i = labelIndex - 1; i >= 0; i--) {
-    sibling = data.find((d) => d.label === labels[i]);
-    if (sibling) {
-      break;
-    }
-  }
-
-  let angle = sibling?.endAngle ?? 0;
-  return { startAngle: angle, endAngle: angle };
-}
-```
-
-Now, back in our tweening function, we can use `getEmptyArc()` as a fallback if we can't find the old or new data:
-
-```js
-let from = d_old ? {...d_old} : getEmptyArc(label, oldData);
-let to = // ...
-```
-
-{: .fyi }
-The `test ? iftrue : iffalse` syntax is the [conditional operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator) which helps us get one value or another based on a test, much more compactly than an `if() {...}` block.
-
-We should now get a perfect transition regardless of the technologies present in the old and new pies, right?
-Except …we don’t.
-If we preview, we see that all our effort did not make an iota of difference.
-Why is that?
-
-The reason is that when we transition between pies with different technologies,
-the wedges are added to the DOM or removed from the DOM after our code has run.
-
-Thankfully, Svelte provides a feature dedicated to transitioning element addition or removal from the DOM:
-[Svelte transitions](https://svelte.dev/docs/element-directives#transition-fn)!
-You can either use the same code for both states, via the `transition:fn` directive,
-or separate functions for entering and leaving, via the `in:fn` and `out:fn` directives.
-Svelte provides a bunch of [predefined functions for common effects](https://svelte.dev/docs/svelte-transition) that you can just import, but in this case we’ll define our own function.
-
-The general structure is quite similar to what we did for `d3-transition`,
-just with a different syntax:
-
-```js
-function arc(wedge) {
-  // Calculations that will only be done once per element go here
-  // TODO use transitionArc() to get the data you need
-  return {
-    duration: transitionDuration,
-    css: (t, u) => {
-      // t is a number between 0 and 1 that represents the transition progress; u is 1 - t
-      // TODO return CSS to be applied for the current t as a string, e.g. `fill: red`
-    },
-  };
-}
-```
-
-and then use it, by adding `transition:arc` to our wedge `<path>` (we can also pass parameters, but we won’t do that this time).
-
-There is a lot of the code we wrote in `styleTween` that we can reuse in `animateArc`.
-Let’s abstract it out into a new function, `transitionArc()` that accepts
-a wedge element and optionally its label (as a performance optimization):
-
-```js
-function transitionArc(wedge, label) {
-  label ??= Object.entries(wedges).find(([label, w]) => w === wedge)[0];
-}
-```
-
-We can now move all our code from `styleTween` that calculates `d`, `d_old`, `from`, `to`, `interpolator` etc into `transitionArc`, which will just return an object like:
-
-```js
-return { d, d_old, from, to, interpolator };
-```
-
-After `d` and `d_old` are calculated, we also want to exit early if they are not different:
-
-```js
-if (sameArc(d_old, d)) {
-  return null;
-}
-```
-
-You should implement the `sameArc()` function.
-It should return `true` if either both arcs are falsy (e.g. one is `undefined`, the other `null`),
-or if both arcs have the same `startAngle` and `endAngle`.
-
-Last, it’s useful to also add a `type` property to the object returned so we know what type of transition we are dealing with:
-
-```js
-let type = d ? (d_old ? 'update' : 'in') : 'out';
-```
-
-We can now replace the code in `styleTween()` to use our new `transitionArc()` function:
-
-```js
-let wedge = this;
-let label = Object.keys(wedges)[index];
-let transition = transitionArc(wedge, label);
-return transition?.interpolator;
-```
-
-We can now use the same logic in our Svelte transition!
-Can you fill the `arc()` function so that it calls `transitionArc()` to compute the overall transition details and then use the returned `interpolator` to produce a CSS declaration for each frame?
-Remember that the `interpolator` that `transitionArc()` is returning gives us a CSS `"path(...)"` value, so
-all we need to do to turn this into what Svelte expects is to prepend `"d: "` to it.
-
-{: .caveat }
-In "out" transitions, i.e. where an existing element disappears,
-**Svelte inverts the progression**.
-Therefore, to get the right CSS string, you need to do do something like `transition.type === "out" ? u : t` instead of just `t` as the argument to the interpolator (i.e. `transition.interpolator(transition.type === "out" ? u : t)`).
-
-{: .caveat }
-The `css` function needs to return **a CSS _string_**, not an object!
-If you get an error like "Cannot read properties of `undefined` (reading 'split')" it’s likely because you are returning the wrong type.
-
-If everything goes well, this is what you should see:
-
-<video src="videos/svelte-transition-cubic.mp4" loading=lazy muted autoplay loop></video> -->
-
-<!-- ### Step 3.5: Harmonizing easing across the D3 and Svelte transitions
-
-We’re getting there, but there are some weird gaps.
-This is because we are trying to _synchronize_ Svelte transitions with D3 transitions that have different parameters.
-While we did take care of applying the same duration across both, they use different easings!
-Svelte uses linear easing by default, whereas D3 uses [`easeCubic`](https://d3js.org/d3-ease#easeCubic) by default.
-
-We can fix this in one of two ways:
-
-- By making the D3 transition linear as well, by adding `.ease(d3.easeLinear)` to the chain of function calls that make up the transition.
-- By making the Svelte transition cubic as well, by adding `easing: d3.easeCubic` to the object returned by `arc()`.
-
-Try them both and see what you prefer!
-
-{: .tip }
-An easing function is just a function that takes a number between 0 and 1 and returns a number between 0 and 1.
-Therefore, you can use Svelte easing functions in D3 and vice versa.
-
-<figure class="multiple">
-<video src="videos/svelte-transition-linear.mp4" loading=lazy muted autoplay loop></video>
-<video src="videos/svelte-transition-cubic.mp4" loading=lazy muted autoplay loop></video>
-
-<figcaption>
-Left: Linear.
-Right: Cubic.
-</figcaption>
-</figure> -->
-
 ## Step 3: Scrollytelling Part 1 (commits over time)
 
 {: .files }
-`src/meta/main.js`, `src/style.css`, and `src/meta/index.html`.
+`meta/meta.js`, `style.css`, and `meta/index.html`.
 
-So far, we have been progressing through these visualizations by moving a slider.
-However, these visualizations both tell a story,
-the story of how our repo evolved.
-Wouldn’t it be cool if we could _actually_ tell that story in our own words, and have the viewer progress through the visualizations as they progress through the narrative?
+So far, we have been progressing through these visualizations by moving a
+slider. However, these visualizations both tell a story, the story of how our
+repo evolved. Wouldn’t it be cool if we could _actually_ tell that story in our
+own words, and have the viewer progress through the visualizations as they
+progress through the narrative?
 
 Let’s do that!
 
-### Step 3.0: Making our page a bit wider, if there is space
+### Step 3.1: Setting up the HTML
 
-Because our scrolly will involve a story next to a visualization, we want to be able to use up more space, at least in large viewports.
+{: .files }
+`meta/index.html`.
 
-We can do this only for the Meta page, by adding a CSS rule where the selector is `:global(body)`.
+Let's implement our own Scrolly for the meta page! We will use [the Scrollama
+package][scrollama], developed by Russell Samora from the Pudding.
 
-Then, within the rule, we want to set the `max-width` to `120ch` (instead of `100ch`), but only as long as that doesn’t exceed 80% of the viewport width.
-We can do that like this:
+[scrollama]: https://pudding.cool/process/introducing-scrollama/
 
-```css
-max-width: min(120ch, 80vw);
-```
-
-### Step 3.1: Implementing a Scrolly
-
-Let's implement our own Scrolly. We will first start by adding a new `<div>`-level addition to our HTML file and introducing a few more top-level variables that will help us define the layout of our scrolling window.
-
-First, let's restructure how we want to display the scatterplot along with our scrollytelling window in `src/meta/index.html`. Put the following in place of where you originally had `<div id='chart'></div>`:
+First, let's move the unit visualizations for the files below the scatter plot
+since we'll focus on the scatter plot for now.
 
 ```html
-<div id="scrollytelling">
-  <div id="scroll-container">
-    <div id="spacer"></div>
-    <div id="items-container"></div>
+<!-- rest of the code above -->
+
+<!-- this is moved right to the end of the body tag -->
+<dl id="files"></dl>
+```
+
+We'd like to have some explanatory text on the left side of the screen and the
+scatter plot on the right side. To do this, start by wrapping the scatter plot
+and the `<div>` tags that get updated when the user brushes in a `<div>` with id
+`scatter-plot`. Then, add a `<div>` with id `scatter-story` above
+`scatter-plot`. Finally, wrap both `scatter-story` and `scatter-plot` in a
+`<div>` with id `scrolly-1`. The final HTML should look like:
+
+```html
+<!-- old code -->
+<div id="scrolly-1">
+  <div id="scatter-story">some filler text here</div>
+  <div id="scatter-plot">
+    <!-- old code -->
   </div>
-  <!-- our old scatterplot div -->
-  <div id="chart"></div>
 </div>
+<!-- old code -->
 ```
 
-Let's add some styling to it too (you are free to improvise any of the following style rules):
+{: .files }
+`style.css`.
+
+Let's make the two-column layout now:
 
 ```css
-#scrollytelling {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: subgrid;
-}
-
-/* feel free to play with this to make your scrolly more seemless with your plot */
-#scroll-container {
-  grid-column: 1;
+#scrolly-1 {
   position: relative;
-  width: 95%;
-  height: 350px;
-  overflow-y: scroll;
-  border: 1px solid #ccc;
-  margin-bottom: 50px;
+  display: flex;
+  gap: 1rem;
+
+  > * {
+    flex: 1;
+  }
 }
 
-#chart {
-  grid-column: 2;
+#scatter-story {
+  position: relative;
 }
 
-#spacer {
-  position: absolute;
+#scatter-plot {
+  position: sticky;
   top: 0;
   left: 0;
-  width: 100%;
-  background: none; /* transparent */
-  pointer-events: none;
-}
-
-#items-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-.item {
-  height: 30px;
-  padding: 10px;
-  box-sizing: border-box;
-  border-bottom: 2px solid #eee;
+  bottom: auto;
+  height: 50vh;
 }
 ```
 
-Then let's introduce the global variables:
+Note that setting the `height` for `#scatter-plot` is very important, since
+otherwise `position: sticky` won't have an effect.
+
+### Step 3.2: Generating commit text
+
+{: .files }
+`meta/meta.js`
+
+Now, let's generate some filler text for each commit. In `meta.js`, add this to
+the bottom:
 
 ```js
-let NUM_ITEMS = 100; // Ideally, let this value be the length of your commit history
-let ITEM_HEIGHT = 30; // Feel free to change
-let VISIBLE_COUNT = 10; // Feel free to change as well
-let totalHeight = (NUM_ITEMS - 1) * ITEM_HEIGHT;
-const scrollContainer = d3.select('#scroll-container');
-const spacer = d3.select('#spacer');
-spacer.style('height', `${totalHeight}px`);
-const itemsContainer = d3.select('#items-container');
-scrollContainer.on('scroll', () => {
-  const scrollTop = scrollContainer.property('scrollTop');
-  let startIndex = Math.floor(scrollTop / ITEM_HEIGHT);
-  startIndex = Math.max(
-    0,
-    Math.min(startIndex, commits.length - VISIBLE_COUNT),
+d3.select('#scatter-story')
+  .selectAll('.step')
+  .data(commits)
+  .join('div')
+  .attr('class', 'step')
+  .html(
+    (d, i) => `
+		On ${d.datetime.toLocaleString('en', {
+      dateStyle: 'full',
+      timeStyle: 'short',
+    })},
+		I made <a href="${d.url}" target="_blank">${
+      i > 0 ? 'another glorious commit' : 'my first commit, and it was glorious'
+    }</a>.
+		I edited ${d.totalLines} lines across ${
+      d3.rollups(
+        d.lines,
+        (D) => D.length,
+        (d) => d.file,
+      ).length
+    } files.
+		Then I looked over all I had made, and I saw that it was very good.
+	`,
   );
-  renderItems(startIndex);
-});
 ```
 
-Now as you may already see, it's time to implement the `renderItems()` method to adaptively show us commits info as we scroll through it. It's logic is actually fairly straightforward. Upon function call, first erase all previous scrolling results like we always do, then take a new slice of commits and bind it to the commit item container. Here is how it works:
+Feel free to change the text as you want. The important thing is that each
+generated `<div>` tag has the `.step` class, so we can give them to Scrollama
+later. If the generated text doesn't take up an entire screen's worth of space,
+feel free to add some `padding-bottom` to each `.step` to space them out.
+
+At this point, you should be able to scroll down the page and see that the
+scatter plot remains at the top of the screen as you scroll past your commit
+descriptions. You should also see that when you scroll past the commit
+descriptions, the scatter plot also goes off-screen.
+
+### Step 3.3: Making it update
+
+{: .files }
+`meta/meta.js`
+
+Now, let's use Scrollama to automatically update our scatter plot as we scroll
+past commits!
+
+Add this to the bottom of your JS file:
 
 ```js
-function renderItems(startIndex) {
-    // Clear things off
-    itemsContainer.selectAll('div').remove();
-    const endIndex = Math.min(startIndex + VISIBLE_COUNT, commits.length);
-    let newCommitSlice = commits.slice(startIndex, endIndex);
-    // TODO: how should we update the scatterplot (hint: it's just one function call)
-    ...
-    // Re-bind the commit data to the container and represent each using a div
-    itemsContainer.selectAll('div')
-                  .data(newCommitSlice)
-                  .enter()
-                  .append('div')
-                  ... // TODO: what should we include here? (read the next step)
-                  .style('position', 'absolute')
-                  .style('top', (_, idx) => `${idx * ITEM_HEIGHT}px`)
+function onStepEnter(response) {
+  console.log(response);
+}
+
+const scroller = scrollama();
+scroller
+  .setup({
+    container: '#scrolly-1',
+    step: '#scrolly-1 .step',
+  })
+  .onStepEnter(onStepEnter);
+```
+
+As you scroll up and down the commit descriptions, you should see an object
+logged each time a commit crosses the mid-point of the screen. Now, all we need
+to do is figure out the date of that commit and we can update our scatter plot
+accordingly. Luckily for us, D3 attaches the original data object to
+elements that it creates, so we can revise `onStepEnter` as follows to log the
+commit date:
+
+```js
+function onStepEnter(response) {
+  console.log(response.element.__data__.datetime);
 }
 ```
 
-### Step 3.2: Creating a dummy narrative
+**Your Task:** Reuse the code you wrote earlier in this lab to update the
+scatter plot, just like we did when implementing the slider. Note that if you
+get this working but your commits appear in a weird order, you may need to sort
+the commits by datetime in `processCommits`.
 
-**As you may have guessed, the whole point of implementing a scrolly is to represent something meaningful for the narrative.**
-Don’t spend long on it; you can even generate it with ChatGPT as long as you check that the result is coherent, relevant, and tells a story that complements to the visualization next to it without simply repeating information in a less digestible format.
+Congratulations! You have just implemented your first scrollytelling visualization!
 
-For now, let’s just create some dummy text that we can use to test our scrollytelling
-so that writing the narrative is not a blocker:
+## Step 4: Scrollytelling Part 2 (file sizes, optional)
 
-```html
-// This is one example narrative you can create with each commit
-<p>
-  On {commit.datetime.toLocaleString("en", {dateStyle: "full", timeStyle:
-  "short"})}, I made
-  <a href="{commit.url}" target="_blank">
-    { index > 0 ? 'another glorious commit' : 'my first commit, and it was
-    glorious' } </a
-  >. I edited {commit.totalLines} lines across { d3.rollups(commit.lines, D =>
-  D.length, d => d.file).length } files. Then I looked over all I had made, and
-  I saw that it was very good.
-</p>
-```
+As an optional next step, you can clean up your meta page a bit. For example,
+you don't need the slider at the top of the screen anymore since we're using
+scrolling to accomplish the same animation.
 
-Now given this structure, hink about how you can set it as an attribute or further append as a child to the elements in `itemsContainer` using D3.
-
-{: .caveat}
-If your narrative overflows, it's because we pre-set a really small item height `height: 30px;`. Play around with bigger values until it gives enough space for each of your narratives. And make sure to update the height in both the CSS rule and the `ITEM_HEIGHT` variable.
-
-### Step 3.3: Creating a scroller for our commits over time
-
-Integrate the story you just generated into commit items slicing and rendering.
-
-Also, notice how we were able to create a variable `newCommitSlice` that stores the commits rendered visible from the current scrolling event. We can convenient have our scatter plot to also update based on the same set of commits so they can be consistent!
-
-Once you do that, you should see the following:
-
-<video src="videos/complete.mp4" loading=lazy muted autoplay loop class="tbd"></video>
-
-{: .note}
-Note that the summary stats stay unchanged in this case since they still capture the overall information about all your commits. You can make them also update with your scrollytelling. Just re-calculate the stats using `newCommitSlice`. But for simplicity just tie summary stats update to one of the scrollytellings (yes, we will make another one, keep reading [Step 4](#step-4-scrollytelling-part-2-file-sizes)).
-
-Now that everything works, you should remove the slider as it is irrelevant/redundant with the scrolly, and it's largely repeating information that the scrollbar already provides. However, you do want to save some useful functionalities we implemented before about file sizes. Let's do the following:
-
-```js
-function displayCommitFiles() {
-  const lines = filteredCommits.flatMap((d) => d.lines);
-  let fileTypeColors = d3.scaleOrdinal(d3.schemeTableau10);
-  let files = d3
-    .groups(lines, (d) => d.file)
-    .map(([name, lines]) => {
-      return { name, lines };
-    });
-  files = d3.sort(files, (d) => -d.lines.length);
-  d3.select('.files').selectAll('div').remove();
-  let filesContainer = d3
-    .select('.files')
-    .selectAll('div')
-    .data(files)
-    .enter()
-    .append('div');
-  filesContainer
-    .append('dt')
-    .html(
-      (d) => `<code>${d.name}</code><small>${d.lines.length} lines</small>`,
-    );
-  filesContainer
-    .append('dd')
-    .selectAll('div')
-    .data((d) => d.lines)
-    .enter()
-    .append('div')
-    .attr('class', 'line')
-    .style('background', (d) => fileTypeColors(d.type));
-}
-```
-
-Now you may still be able to update the commit files in display by calling `displayCommitFiles()`. And you now safely remove code that handles event handling on the slider, as well as the HTML code themselves.
-
-Also notice that the demo above has the scrolly and the scatter plot displayed side by side, think about how you can achieve the same using `grid` and `subgrid` displays.
-
-{: .further }
-One thing you could do is show a date next to the actual browser scrollbar thumb,
-so that users have a sense of where they are in the timeline.
-
-<!-- {: .tip }
-It helps to apply `position: sticky; top: 1em` to the filtering slider so that
-it's still visible as you scroll.
-You should also apply a background color to it otherwise it will be hard to read. -->
-
-## Step 4: Scrollytelling Part 2 (file sizes)
-
-### Step 4.1: Adding another scrolly
-
-Create another scrolly for the file sizes visualization (e.g. how many lines you edited, think back to [Step 2](#step-2-the-race-for-the-biggest-file). You may directly edit your `src/meta/index.html` for set-up), after the commit visualization.
-You can copy and paste the same narrative as a temporary placeholder, but as with the one about commits, you should replace it with something meaningful before you finish the lab.
-
-You will want to use a different variable for it since the filtering condition is likely different. Aside from that, the rest is very similar to Step 4. `displayCommitFiles()` should help make things easy for you.
-
-To make it more visually interesting, you may try to place the scrolly on the right while the unit visualization on th left.
-
-<!-- ### Step 5.2: Limit number of updates
-
-Our scrolly currently looks smooth if we scroll relatively slowly, but breaks down if we scroll fast:
-
-<video src="videos/scrolly-broken.mp4" loading=lazy muted autoplay loop class="browser"></video>
-
-This is where [throttling and debouncing](https://css-tricks.com/debouncing-throttling-explained-examples/) come in.
-They are both methods of achieving the same goal: limiting the number of times a function is called.
-
-- **Throttling** enforces a minimum interval between subsequent calls to the same action.
-- **Debouncing** defers an action until a certain period of time has passed since the last user action.
-
-The [`<Scrolly>`](https://www.npmjs.com/package/svelte-scrolly) component we are using supports both, via `throttle` and `debounce` props.
-Experiment with different values for these props (you don't need to use both) to see what works best for your scrolly.
-
----
-
-The final result looks similar to this:
-
-<video src="videos/final.mp4" loading=lazy muted autoplay loop class="browser"></video> -->
+To get more practice implementing scrollytelling, see if you can also implement
+scrollytelling for the unit visualizations of file sizes. The easiest way to do
+this is to generate a copy of the commit descriptions, then repeat our process
+for the scatter plot for the unit visualizations as well.
 
 ## Resources
 
@@ -1188,6 +828,13 @@ Tech:
 - [An interactive guide to CSS transitions](https://www.joshwcomeau.com/animation/css-transitions/)
 
 ### Scrollytelling
+
+- [Scrollama
+  documentation](https://github.com/russellsamora/scrollama?tab=readme-ov-file)
+- [Example of Scrollama for a side-by-side scrollytelling (similar to our
+  lab)](https://russellsamora.github.io/scrollama/sticky-side/)
+  - [source code for example](https://github.com/russellsamora/scrollama/blob/main/docs/sticky-side/index.html)
+- [More Scrollama examples](https://github.com/russellsamora/scrollama/tree/main/docs)
 
 Cool examples:
 
