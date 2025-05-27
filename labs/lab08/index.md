@@ -200,7 +200,7 @@ those that are **less than** `commitMaxTime`.
 
 ```js
 // Will get updated as user changes slider
-const filteredCommits = commits;
+let filteredCommits = commits;
 
 function onTimeSliderChange() {
   // ...previous code
