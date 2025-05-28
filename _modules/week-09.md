@@ -17,6 +17,7 @@ days:
       - name: LEC 16
         type: lecture
         title: Uncertainty & Review
+        url: lectures/15-DSC106-Uncertainty.pdf
   - date: '2025-05-30'
     events:
       - name: LEC 17
