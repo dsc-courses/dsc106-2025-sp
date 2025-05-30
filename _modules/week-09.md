@@ -23,4 +23,5 @@ days:
       - name: LEC 17
         type: lecture
         title: Final Project Feedback
+        url: lectures/16-DSC106-Peer-Feedback.pdf
 ---

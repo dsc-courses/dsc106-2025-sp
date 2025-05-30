@@ -243,15 +243,15 @@ schedule (which is subject to change in any given week):
 
 Here is how we'll compute your grade:
 
-| Component           | Weight | Notes                                                                       |
-| ------------------- | ------ | --------------------------------------------------------------------------- |
-| Participation       | 8%     | 1% per week, 2 lowest weeks dropped                                         |
-| Labs                | 8%     | 1% per lab                                                                  |
-| Project 1           | 10%    |                                                                             |
-| Project 2           | 15%    | 14% for submission, 1% for peer review                                      |
-| Project 3           | 15%    | 14% for submission, 1% for peer review                                      |
-| Project Checkpoints | 4%     | 1% for Project 1 and 2 checkpoints, 2% for Project 3 checkpoint             |
-| Final Project       | 40%    | 1% for proposal, 2% prototype, 10% video, 20% final submission, 7% showcase |
+| Component           | Weight | Notes                                                                                              |
+| ------------------- | ------ | -------------------------------------------------------------------------------------------------- |
+| Participation       | 8%     | 1% per week, 2 lowest weeks dropped                                                                |
+| Labs                | 8%     | 1% per lab                                                                                         |
+| Project 1           | 10%    |                                                                                                    |
+| Project 2           | 15%    | 14% for submission, 1% for peer review                                                             |
+| Project 3           | 15%    | 14% for submission, 1% for peer review                                                             |
+| Project Checkpoints | 4%     | 1% for Project 1 and 2 checkpoints, 2% for Project 3 checkpoint                                    |
+| Final Project       | 40%    | 1% for proposal, 2% prototype, 10% video, 20% final submission, 5% showcase, 2% peer feedback form |
 
 ### Late Policy, Slip Days, and Drops
 
