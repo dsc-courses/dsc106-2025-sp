@@ -17,9 +17,11 @@ days:
       - name: LEC 18
         type: lecture
         title: Mock Showcase
+        url: lectures/17-DSC106-Mock-Showcase.pdf
   - date: '2025-06-06'
     events:
       - name: LEC 19
         type: lecture
         title: Video Showcase
+        url: lectures/18-DSC106-Video-Showcase.pdf
 ---
