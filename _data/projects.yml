@@ -27,38 +27,6 @@
   - Nicolas Toon
   video: https://www.youtube.com/watch?v=k6msKLNUl1A
   award: Best Project, People's Choice
-- title: Keys of Parkinson's
-  submission_id: 336356121
-  url: https://k1mittal.github.io/Keys-of-Parkinsons/
-  team:
-  - Ketan Mittal
-  - Kaii Bijlani
-  - Anirudh Annabathula
-  - Ganesh Kumarappan
-  video: https://www.youtube.com/watch?v=REY856nx11Q
-  award: Best Project
-- title: Outperforming the Index
-  submission_id: 336428750
-  url: https://cartert27.github.io/outperforming-the-index/
-  team:
-  - April Huang
-  - Carter Tran
-  - Cheryl Xiang
-  video: https://youtu.be/nCfoEgjV_nE?si=LlGHEuLJf0ojvf0C
-  award: Best Project
-- title: SleepTracker
-  submission_id: 336393253
-  url: https://lindbergryan04.github.io/SleepTracker/
-  team:
-  - Karina Shah
-  - Shriya Pattapu
-  - Ryan Lindberg
-  - Audrey Meredith
-  video: 'https://www.youtube.com/watch?v=QS7OdWXBZmM
-
-
-    Video link also located in the footer of the main website.'
-  award: Best Project
 - title: 'Food Waste in the United States: A Visual Exploration of America''s Food
     Waste Crisis'
   submission_id: 336336158
@@ -79,25 +47,6 @@
   - Noah Golder
   video: https://youtu.be/4Iy9rS-rDEI
   award: Honorable Mention, People's Choice
-- title: 'Glucose Spikes: Bunny''s Space Quest'
-  submission_id: 336419506
-  url: https://williamchou500.github.io/Final-Project-Demo-Video-Build/
-  team:
-  - Hanna Serykava
-  - William Chou
-  - Chang-Yu Lee
-  - Jimmy Huang
-  video: https://www.youtube.com/watch?v=wp7OID6Uqik
-  award: Honorable Mention
-- title: The Sleep Medication Story
-  submission_id: 336429801
-  url: https://connieliugh.github.io/DSC106_Final_Project/medication_effects/
-  team:
-  - Connie Liu
-  - Milan Rona
-  - Matti Key
-  - Jasdeep Sandhu
-  award: Honorable Mention
 - title: Stockfish for Soccer?
   submission_id: 336389430
   url: https://zcochran27.github.io/Soccer-Events-Analyzed/
@@ -108,36 +57,37 @@
   - Zach Cochran
   video: https://www.youtube.com/watch?v=0gLwtad0Lig
   award: Honorable Mention
-- title: 'Effects of 24-hour Sleep Deprivation on Cognition: an Interactive Storytelling
-    Project'
-  submission_id: 336430093
-  url: https://glyjtha.github.io/dsc106_final_project/
+- title: Keys of Parkinson's
+  submission_id: 336356121
+  url: https://k1mittal.github.io/Keys-of-Parkinsons/
   team:
-  - Erin Li
-  - Juntong Ye
-  - Yixuan Xin
-  - Sirui Zhang
-  video: https://youtu.be/AU1LYU7LIRw
+  - Ketan Mittal
+  - Kaii Bijlani
+  - Anirudh Annabathula
+  - Ganesh Kumarappan
+  video: https://www.youtube.com/watch?v=REY856nx11Q
   award: Honorable Mention
-- title: 'Silent Signs: Typing Patterns and Parkinson''s Risk'
-  submission_id: 336405200
-  url: https://jordipham.github.io/HEALTH-PROJ/
+- title: Outperforming the Index
+  submission_id: 336428750
+  url: https://cartert27.github.io/outperforming-the-index/
   team:
-  - Jordi Pham
-  - Aiden Lai
-  - Coltrane Gowan
-  - Jennifer Kuei
-  video: https://youtu.be/G5Ijbaycbjk?feature=shared
+  - April Huang
+  - Carter Tran
+  - Cheryl Xiang
+  video: https://youtu.be/nCfoEgjV_nE?si=LlGHEuLJf0ojvf0C
   award: Honorable Mention
-- title: Rodent Riddle
-  submission_id: 336429382
-  url: https://dsc106soir.github.io/rodent_riddle/
+- title: SleepTracker
+  submission_id: 336393253
+  url: https://lindbergryan04.github.io/SleepTracker/
   team:
-  - Son Nguyen
-  - Ryota Takemura
-  - Owen Miller
-  - Ishita Takkar
-  video: https://youtu.be/B_cnuwQKing
+  - Karina Shah
+  - Shriya Pattapu
+  - Ryan Lindberg
+  - Audrey Meredith
+  video: 'https://www.youtube.com/watch?v=QS7OdWXBZmM
+
+
+    Video link also located in the footer of the main website.'
   award: Honorable Mention
 - title: A Day in My Life
   submission_id: 336156217
@@ -250,6 +200,23 @@
   - Ritvik Chand
   - Annaly Ellis
   video: https://youtu.be/OO6OiLBAk9Q
+- title: 'Glucose Spikes: Bunny''s Space Quest'
+  submission_id: 336419506
+  url: https://williamchou500.github.io/Final-Project-Demo-Video-Build/
+  team:
+  - Hanna Serykava
+  - William Chou
+  - Chang-Yu Lee
+  - Jimmy Huang
+  video: https://www.youtube.com/watch?v=wp7OID6Uqik
+- title: The Sleep Medication Story
+  submission_id: 336429801
+  url: https://connieliugh.github.io/DSC106_Final_Project/medication_effects/
+  team:
+  - Connie Liu
+  - Milan Rona
+  - Matti Key
+  - Jasdeep Sandhu
 - title: 'Stress Signals: How Physiology Reflects Academic Pressure'
   submission_id: 336405688
   url: https://hjxhh030315.github.io/project4/
@@ -309,6 +276,25 @@
   - Rakshan Patnaik
   - Andrew Chen
   video: https://www.youtube.com/watch?v=-6biZ9UWoNE
+- title: 'Effects of 24-hour Sleep Deprivation on Cognition: an Interactive Storytelling
+    Project'
+  submission_id: 336430093
+  url: https://glyjtha.github.io/dsc106_final_project/
+  team:
+  - Erin Li
+  - Juntong Ye
+  - Yixuan Xin
+  - Sirui Zhang
+  video: https://youtu.be/AU1LYU7LIRw
+- title: 'Silent Signs: Typing Patterns and Parkinson''s Risk'
+  submission_id: 336405200
+  url: https://jordipham.github.io/HEALTH-PROJ/
+  team:
+  - Jordi Pham
+  - Aiden Lai
+  - Coltrane Gowan
+  - Jennifer Kuei
+  video: https://youtu.be/G5Ijbaycbjk?feature=shared
 - title: What's Your Sleep Story
   submission_id: 336426244
   url: https://jiya-makhija.github.io/luna/
@@ -317,6 +303,15 @@
   - Aarshia Gupta
   - Jiya Makhija
   video: https://youtu.be/0bpmy2GXZug
+- title: Rodent Riddle
+  submission_id: 336429382
+  url: https://dsc106soir.github.io/rodent_riddle/
+  team:
+  - Son Nguyen
+  - Ryota Takemura
+  - Owen Miller
+  - Ishita Takkar
+  video: https://youtu.be/B_cnuwQKing
 - title: Exertion to Exhaustion
   submission_id: 336412240
   url: https://mfjacobsen.github.io/gxt-physiology/
