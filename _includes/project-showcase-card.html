@@ -1,29 +1,31 @@
-<div class="project-card">
+<div class="project-card" markdown="0">
   <div class="project-thumbnail">
-    {% if project.submission_id %}
+    {%- if project.submission_id -%}
     <img
       src="../assets/showcase-thumbnails/{{ project.submission_id }}/image.png"
-      alt="{{ project.title }} thumbnail"
+      alt="{{ project.title | escape }} thumbnail"
     />
-    {% else %}
+    {%- else -%}
     <div class="placeholder-image">No Image</div>
-    {% endif %}
+    {%- endif -%}
   </div>
 
   <div class="project-details">
     <h3 class="project-title">
       {% if project.url %}
-      <a href="{{ project.url }}" target="_blank">{{ project.title }}</a>
-      {% else %} {{ project.title }} {% endif %}
+      <a href="{{ project.url }}" target="_blank"
+        >{{ project.title | escape }}</a
+      >
+      {% else %} {{ project.title | escape }} {% endif %}
     </h3>
 
     <div class="project-team">
-      <strong>Team:</strong> {{ project.team | join: ", " }}
+      <strong>Team:</strong> {{ project.team | join: ", " | escape }}
     </div>
 
     {% if project.award %}
     <div class="project-award">
-      <span class="award-badge">{{ project.award }}</span>
+      <span class="award-badge">{{ project.award | escape }}</span>
     </div>
     {% endif %} {% if project.url %}
     <div class="project-website">
